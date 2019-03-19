@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "body-parser": "^1.18.3",
+>>>>>>> refs/remotes/origin/master
     "express": "^4.16.4",
     "moment": "^2.24.0"
   },

@@ -227,7 +227,7 @@ app.delete("/api/v1/public-expenditure-educations", (req,res)=>{
     res.sendStatus(204);
 });
 
-// GET /api/v1/public-expenditure-educations/españa
+// GET /api/v1/public-expenditure-educations/alemania
 
 app.get("/api/v1/public-expenditure-educations/:country", (req,res)=>{
 
@@ -311,8 +311,7 @@ app.put("/api/v1/public-expenditure-educations", (req,res)=>{
 
 //POST /api/v1/public-expenditure-educations (ERROR)
 
-app.post("/api/v1/public-expenditure-educations/country", (req,res)=>{
-
+app.post("/api/v1/public-expenditure-educations/:country", (req,res)=>{
    
         res.sendStatus(405);
 

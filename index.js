@@ -13,7 +13,7 @@ app.use("/", express.static(__dirname + "/public"))
 
 // -------------------API REST Antonio J-----------------------
 
-var gastosPublicos = [{
+var generalPublicExpenses = [{
     country: "españa",
     year: "2017",
     publicSpending: "478126,0",
@@ -21,7 +21,7 @@ var gastosPublicos = [{
     healthExpense: "15,14",
     defenseSpending: "2,99",
     publicSpendingPib: "41,00",
-    //var: "-1,20"
+    var_: "-1,20"
     
     },
     {
@@ -32,51 +32,83 @@ var gastosPublicos = [{
     healthExpense: "21,36",
     defenseSpending: "2,73",
     publicSpendingPib: "43,90",
-    //var: "0"
+    _var: "0"
     
     }];
+    
+app.get("/api/v1/generalPublicExpenses/loadInitialData", (req,res)=>{
+    
+    var newGeneralPublicExpenses = [{
+    
+    country: "francia",
+    year: "2017",
+    publicSpending: "1.291.948,0",
+    educationExpense: "9,66",
+    healthExpense: "16,97",
+    defenseSpending: "4,01",
+    publicSpendingPib: "56,50",
+    var_: "-0,10"
+    
+    },{
+    country: "italia",
+    year: "2017",
+    publicSpending: "840.763,0",
+    educationExpense: "8,11",
+    healthExpense: "13,47",
+    defenseSpending: "3,12",
+    publicSpendingPib: "48,70",
+    var_: "-0,40"
+    
+}];
+    
+    newGeneralPublicExpenses.forEach( (i)=>{
+       generalPublicExpenses.push(i) 
+        
+    })
+    res.sendStatus(200);
+});
 
-// GET /gastosPublicos/
+// GET /api/v1/generalPublicExpenses/
 
-app.get("/gastosPublicos", (req, res) =>{
-    res.send(gastosPublicos);
+app.get("/api/v1/generalPublicExpenses", (req, res) =>{
+    res.send(generalPublicExpenses);
 });
 
 
-// POST /gastosPublicos/
+// POST /api/v1/generalPublicExpenses
 
-app.post("/gastosPublicos", (req,res)=>{
+app.post("/api/v1/generalPublicExpenses", (req,res)=>{
     
-    var newGastoPublico = req.body;
+    var newGeneralPublicExpenses = req.body;
     
-    gastosPublicos.push(newGastoPublico)
+    generalPublicExpenses.push(newGeneralPublicExpenses)
     
     res.sendStatus(201);
 });
 
 
-// DELETE /gastosPublicos/
+// DELETE /api/v1/generalPublicExpenses/
 
-app.delete("/gastosPublicos", (req,res)=>{
+app.delete("/api/v1/generalPublicExpenses", (req,res)=>{
     
-    gastosPublicos =  [];
+    generalPublicExpenses =  [];
 
     res.sendStatus(200);
 });
 
 
-// GET /gastosPublicos/españa
+// GET /api/v1/generalPublicExpenses/españa
 
-app.get("/gastosPublicos/:country", (req,res)=>{
+app.get("/api/v1/generalPublicExpenses/:country", (req,res)=>{
 
     var country = req.params.country;
 
-    var filteredGastosPublicos = gastosPublicos.filter((c) =>{
+    var filteredGeneralPublicExpenses = generalPublicExpenses.filter((c) =>{
        return c.country == country; 
     })
     
-    if (filteredGastosPublicos.length >= 1){
-        res.send(filteredGastosPublicos[0]);
+    if (filteredGeneralPublicExpenses.length >= 1){
+        res.send(filteredGeneralPublicExpenses[0]);
     }else{
         res.sendStatus(404);
     }
@@ -84,19 +116,19 @@ app.get("/gastosPublicos/:country", (req,res)=>{
 });
 
 
-// PUT /gastosPublicos/españa
+// PUT /api/v1/generalPublicExpenses/españa
 
-app.put("/gastosPublicos/:country", (req,res)=>{
+app.put("/api/v1/generalPublicExpenses/:country", (req,res)=>{
 
     var country = req.params.country;
-    var updatedGastosPublicos = req.body;
+    var updatedGeneralPublicExpenses = req.body;
     var found = false;
 
-    var updatedGastosPublicos = gastosPublicos.map((c) =>{
+    var updatedGeneralPublicExpenses = generalPublicExpenses.map((c) =>{
     
         if(c.country == country){
             found = true;
-            return updatedGastosPublicos;
+            return updatedGeneralPublicExpenses;
         }else{
             return c;            
         }
@@ -106,21 +138,21 @@ app.put("/gastosPublicos/:country", (req,res)=>{
     if (found == false){
         res.sendStatus(404);
     }else{
-        gastosPublicos = updatedGastosPublicos;
+        generalPublicExpenses = updatedGeneralPublicExpenses;
         res.sendStatus(200);
     }
 
 });
 
 
-// DELETE /contacts/españa
+// DELETE /api/v1/generalPublicExpenses/españa
 
-app.delete("/gastosPublicos/:country", (req,res)=>{
+app.delete("/api/v1/generalPublicExpenses/:country", (req,res)=>{
 
     var country = req.params.country;
     var found = false;
 
-    var updatedGastosPublicos = gastosPublicos.filter((c) =>{
+    var updatedGeneralPublicExpenses = generalPublicExpenses.filter((c) =>{
         
             if(c.country == country)  
                 found = true;
@@ -131,11 +163,31 @@ app.delete("/gastosPublicos/:country", (req,res)=>{
     if (found == false){
         res.sendStatus(404);
     }else{
-        gastosPublicos = updatedGastosPublicos;
+        generalPublicExpenses = updatedGeneralPublicExpenses;
         res.sendStatus(200);
     }
 
 });
+
+// Métodos incorrectos
+//PUT /api/v1/generalPublicExpenses (ERROR)
+
+app.put("/api/v1/generalPublicExpenses", (req,res)=>{
+        
+   
+        res.sendStatus(405);
+
+});
+
+//POST /api/v1/generalPublicExpenses/españa (ERROR)
+
+app.post("/api/v1/generalPublicExpenses/:country", (req,res)=>{
+   
+        res.sendStatus(405);
+
+});
+
+//-----------------------------------------------------------------------
 
 // -------------------API REST Juan Manuel Centeno-----------------------
 

@@ -230,24 +230,33 @@ app.get("/api/v1/public-expenditure-educations/loadInitialData", (req, res) => {
 
     var newPublicExpenditureEducations = [{
 
-        country: "francia",
-        year: "2015",
-        educationExpense: "120127,6",
-        educationExpensePub: "9,66",
-        educationExpensePib: "5,46",
-        healthExpenditurePerCapita: "1803",
-        var_: "-15,71",
+    country: "espania",
+    year: "2015",
+    educationExpense: "46241,5",
+    educationExpensePub: "9,77",
+    educationExpensePib: "4,28",
+    healthExpenditurePerCapita: "977",
+    var_: "-13,08",
 
-    }, {
-        country: "italia",
-        year: "2015",
-        educationExpense: "67411,0",
-        educationExpensePub: "8,11",
-        educationExpensePib: "4,08",
-        healthExpenditurePerCapita: "1110",
-        var_: "-14,82",
+}, {
+    country: "alemania",
+    year: "2015",
+    educationExpense: "146754,1",
+    educationExpensePub: "10,98",
+    educationExpensePib: "4,81",
+    healthExpenditurePerCapita: "1975",
+    var_: "-16,16",
 
-    }];
+}, {
+    country: "reino unido",
+    year: "2016",
+    educationExpense: "133190,4",
+    educationExpensePub: "13,91",
+    educationExpensePib: "5,54",
+    healthExpenditurePerCapita: "2028",
+    var_: "-10,36",
+
+}];
 
     newPublicExpenditureEducations.forEach((i) => {
         publicExpenditureEducations.push(i)

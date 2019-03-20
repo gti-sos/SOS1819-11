@@ -13,7 +13,7 @@ app.use("/", express.static(__dirname + "/public"));
 // -------------------API REST Antonio J-----------------------
 
 var generalPublicExpenses = [{
-        country: "españa",
+        country: "espania",
         year: "2017",
         publicSpending: "478126,0",
         educationExpense: "9,77",
@@ -97,7 +97,7 @@ app.delete("/api/v1/generalPublicExpenses", (req, res) => {
 });
 
 
-// GET /api/v1/generalPublicExpenses/españa
+// GET /api/v1/generalPublicExpenses/espania
 
 app.get("/api/v1/generalPublicExpenses/:country", (req, res) => {
 
@@ -117,7 +117,7 @@ app.get("/api/v1/generalPublicExpenses/:country", (req, res) => {
 });
 
 
-// PUT /api/v1/generalPublicExpenses/españa
+// PUT /api/v1/generalPublicExpenses/espania
 
 app.put("/api/v1/generalPublicExpenses/:country", (req, res) => {
 
@@ -148,7 +148,7 @@ app.put("/api/v1/generalPublicExpenses/:country", (req, res) => {
 });
 
 
-// DELETE /api/v1/generalPublicExpenses/españa
+// DELETE /api/v1/generalPublicExpenses/espania
 
 app.delete("/api/v1/generalPublicExpenses/:country", (req, res) => {
 
@@ -183,7 +183,7 @@ app.put("/api/v1/generalPublicExpenses", (req, res) => {
 
 });
 
-//POST /api/v1/generalPublicExpenses/españa (ERROR)
+//POST /api/v1/generalPublicExpenses/espania (ERROR)
 
 app.post("/api/v1/generalPublicExpenses/:country", (req, res) => {
 

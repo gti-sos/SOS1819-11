@@ -9,7 +9,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
 var countries;
 
 client.connect(err => {
-  countries = client.db("sos1819").collection("generalPublicExpenses");
+  generalPublicExpenses = client.db("sos1819").collection("generalPublicExpenses");
   console.log("Connected!");
 });
 

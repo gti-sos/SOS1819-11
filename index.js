@@ -1,8 +1,18 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
-var MongoClient = mongodb.MongoClient;
-var mdbURL = "mongodb://test:"
+
+const MongoClient = require("mongodb").MongoClient;
+const uri = "mongodb+srv://test:<test>@sos-project-enqlt.mongodb.net/test?retryWrites=true";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+
+var countries;
+
+client.connect(err => {
+  countries = client.db("sos1819").collection("generalPublicExpenses");
+  console.log("Connected!");
+});
+
 var app = express();
 
 app.use(bodyParser.json());
@@ -41,7 +51,29 @@ var generalPublicExpenses = [{
 app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
 
     var newGeneralPublicExpenses = [{
+        
+        country: "espania",
+        year: "2017",
+        publicSpending: "478126,0",
+        educationExpense: "9,77",
+        healthExpense: "15,14",
+        defenseSpending: "2,99",
+        publicSpendingPib: "41,00",
+        var_: "-1,20"
 
+    },
+    {
+        country: "alemania",
+        year: "2017",
+        publicSpending: "1439839,0",
+        educationExpense: "10,98",
+        healthExpense: "21,36",
+        defenseSpending: "2,73",
+        publicSpendingPib: "43,90",
+        _var: "0"
+
+    },
+    {
         country: "francia",
         year: "2017",
         publicSpending: "1.291.948,0",
@@ -51,7 +83,8 @@ app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
         publicSpendingPib: "56,50",
         var_: "-0,10"
 
-    }, {
+    }, 
+    {
         country: "italia",
         year: "2017",
         publicSpending: "840.763,0",
@@ -61,7 +94,17 @@ app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
         publicSpendingPib: "48,70",
         var_: "-0,40"
 
-    }];
+    },
+    {
+        country: "reinoUnido",
+        year: "2017",
+        publicSpending: "954262,1",
+        educationExpense: "13,91",
+        healthExpense: "18,88",
+        defenseSpending: "4,66",
+        publicSpendingPib: "40,90"
+
+}];
 
     newGeneralPublicExpenses.forEach((i) => {
         generalPublicExpenses.push(i)
@@ -73,7 +116,14 @@ app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
 // GET /api/v1/generalPublicExpenses/
 
 app.get("/api/v1/general-public-expenses", (req, res) => {
-    res.send(generalPublicExpenses);
+    
+    generalPublicExpenses.find({}).toArray((err, generalPublicExpensesArray)=>{
+        if(err)
+            console.log("Error: "+err);
+            
+        res.send(generalPublicExpensesArray);
+    });
+    
 });
 
 

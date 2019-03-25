@@ -36,7 +36,7 @@ var generalPublicExpenses = [{
     }
 ];
 
-app.get("/api/v1/generalPublicExpenses/loadInitialData", (req, res) => {
+app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
 
     var newGeneralPublicExpenses = [{
 
@@ -99,7 +99,7 @@ app.delete("/api/v1/generalPublicExpenses", (req, res) => {
 
 // GET /api/v1/generalPublicExpenses/espania
 
-app.get("/api/v1/generalPublicExpenses/:country", (req, res) => {
+app.get("/api/v1/general-public-expenses/:country", (req, res) => {
 
     var country = req.params.country;
 
@@ -119,7 +119,7 @@ app.get("/api/v1/generalPublicExpenses/:country", (req, res) => {
 
 // PUT /api/v1/generalPublicExpenses/espania
 
-app.put("/api/v1/generalPublicExpenses/:country", (req, res) => {
+app.put("/api/v1/general-public-expenses/:country", (req, res) => {
 
     var country = req.params.country;
     var updatedGeneralPublicExpenses = req.body;

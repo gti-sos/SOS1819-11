@@ -1,6 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-
+var mongodb = require("mongodb");
+var MongoClient = mongodb.MongoClient;
+var mdbURL = "mongodb://test:"
 var app = express();
 
 app.use(bodyParser.json());
@@ -70,14 +72,14 @@ app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
 
 // GET /api/v1/generalPublicExpenses/
 
-app.get("/api/v1/generalPublicExpenses", (req, res) => {
+app.get("/api/v1/general-public-expenses", (req, res) => {
     res.send(generalPublicExpenses);
 });
 
 
 // POST /api/v1/generalPublicExpenses
 
-app.post("/api/v1/generalPublicExpenses", (req, res) => {
+app.post("/api/v1/general-public-expenses", (req, res) => {
 
     var newGeneralPublicExpenses = req.body;
 
@@ -89,7 +91,7 @@ app.post("/api/v1/generalPublicExpenses", (req, res) => {
 
 // DELETE /api/v1/generalPublicExpenses/
 
-app.delete("/api/v1/generalPublicExpenses", (req, res) => {
+app.delete("/api/v1/general-public-expenses", (req, res) => {
 
     generalPublicExpenses = [];
 
@@ -150,7 +152,7 @@ app.put("/api/v1/general-public-expenses/:country", (req, res) => {
 
 // DELETE /api/v1/generalPublicExpenses/espania
 
-app.delete("/api/v1/generalPublicExpenses/:country", (req, res) => {
+app.delete("/api/v1/general-public-expenses/:country", (req, res) => {
 
     var country = req.params.country;
     var found = false;
@@ -176,7 +178,7 @@ app.delete("/api/v1/generalPublicExpenses/:country", (req, res) => {
 // Métodos incorrectos
 //PUT /api/v1/generalPublicExpenses (ERROR)
 
-app.put("/api/v1/generalPublicExpenses", (req, res) => {
+app.put("/api/v1/general-public-expenses", (req, res) => {
 
 
     res.sendStatus(405);
@@ -185,7 +187,7 @@ app.put("/api/v1/generalPublicExpenses", (req, res) => {
 
 //POST /api/v1/generalPublicExpenses/espania (ERROR)
 
-app.post("/api/v1/generalPublicExpenses/:country", (req, res) => {
+app.post("/api/v1/general-public-expenses/:country", (req, res) => {
 
     res.sendStatus(405);
 

@@ -18,7 +18,6 @@ var countries;
 
 client.connect(err => {
   generalPublicExpenses = client.db("sos1819").collection("generalPublicExpenses");
-  client.close();
   console.log("Connected!");
 });
 
@@ -257,7 +256,6 @@ var publicExpenditureEducations;
 
 clientJMCC.connect(err => {
   publicExpenditureEducations = clientJMCC.db("sos1819").collection("public-expenditure-educations");
-  clientJMCC.close();
   console.log("Connected!");
 });
 

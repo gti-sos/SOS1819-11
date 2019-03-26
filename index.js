@@ -1,13 +1,14 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var path = require("path");
 const MongoClient = require("mongodb").MongoClient;
 
 var app = express();
-
-app.use(bodyParser.json());
-
 var port = process.env.PORT || 8080;
 
+
+app.use(bodyParser.json());
+app.use('/',express.static( path.join(__dirname,"public")));
 
 
 const uri = "mongodb+srv://test:<test>@sos-project-enqlt.mongodb.net/test?retryWrites=true";
@@ -21,8 +22,6 @@ client.connect(err => {
 });
 
 
-
-//app.use("/", express.static(__dirname + "/public"));
 
 
 // -------------------API REST Antonio J-----------------------

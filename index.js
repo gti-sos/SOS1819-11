@@ -87,7 +87,8 @@ app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
         educationExpense: "13,91",
         healthExpense: "18,88",
         defenseSpending: "4,66",
-        publicSpendingPib: "40,90"
+        publicSpendingPib: "40,90",
+        var_: "-0,40"
 
 }];
 

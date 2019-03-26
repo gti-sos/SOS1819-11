@@ -1,7 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
-const MongoClient = require("mongodb").MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 
 var app = express();
 var port = process.env.PORT || 8080;
@@ -11,13 +11,14 @@ app.use(bodyParser.json());
 app.use('/',express.static( path.join(__dirname,"public")));
 
 
-const uri = "mongodb+srv://test:<test>@sos-project-enqlt.mongodb.net/test?retryWrites=true";
+const uri = "mongodb+srv://test:test@sos-project-enqlt.mongodb.net/test?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
 var countries;
 
 client.connect(err => {
   generalPublicExpenses = client.db("sos1819").collection("generalPublicExpenses");
+  client.close();
   console.log("Connected!");
 });
 
@@ -255,7 +256,8 @@ const clientJMCC = new MongoClient(uriJMCC, { useNewUrlParser: true });
 var publicExpenditureEducations;
 
 clientJMCC.connect(err => {
-  publicExpenditureEducations = client.db("sos1819").collection("public-expenditure-educations");
+  publicExpenditureEducations = clientJMCC.db("sos1819").collection("public-expenditure-educations");
+  clientJMCC.close();
   console.log("Connected!");
 });
 

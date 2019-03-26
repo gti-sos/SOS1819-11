@@ -1,8 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var mongodb = require("mongodb");
-
 const MongoClient = require("mongodb").MongoClient;
+
+
 const uri = "mongodb+srv://test:<test>@sos-project-enqlt.mongodb.net/test?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 

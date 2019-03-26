@@ -3,14 +3,14 @@ var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 
 const MongoClient = require("mongodb").MongoClient;
-const uri = "mongodb+srv://test:<test>@sos-project-enqlt.mongodb.net/test?retryWrites=true";
+const uri = "mongodb+srv://test:test@sos-project-enqlt.mongodb.net/test?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
 var countries;
 
 client.connect(err => {
-  generalPublicExpenses = client.db("sos1819").collection("generalPublicExpenses");
-  console.log("Connected!");
+    generalPublicExpenses = client.db("sos1819").collection("generalPublicExpenses");
+    console.log("Connected!");
 });
 
 var app = express();
@@ -51,60 +51,61 @@ var generalPublicExpenses = [{
 app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
 
     var newGeneralPublicExpenses = [{
-        
-        country: "espania",
-        year: "2017",
-        publicSpending: "478126,0",
-        educationExpense: "9,77",
-        healthExpense: "15,14",
-        defenseSpending: "2,99",
-        publicSpendingPib: "41,00",
-        var_: "-1,20"
 
-    },
-    {
-        country: "alemania",
-        year: "2017",
-        publicSpending: "1439839,0",
-        educationExpense: "10,98",
-        healthExpense: "21,36",
-        defenseSpending: "2,73",
-        publicSpendingPib: "43,90",
-        _var: "0"
+            country: "espania",
+            year: "2017",
+            publicSpending: "478126,0",
+            educationExpense: "9,77",
+            healthExpense: "15,14",
+            defenseSpending: "2,99",
+            publicSpendingPib: "41,00",
+            var_: "-1,20"
 
-    },
-    {
-        country: "francia",
-        year: "2017",
-        publicSpending: "1.291.948,0",
-        educationExpense: "9,66",
-        healthExpense: "16,97",
-        defenseSpending: "4,01",
-        publicSpendingPib: "56,50",
-        var_: "-0,10"
+        },
+        {
+            country: "alemania",
+            year: "2017",
+            publicSpending: "1439839,0",
+            educationExpense: "10,98",
+            healthExpense: "21,36",
+            defenseSpending: "2,73",
+            publicSpendingPib: "43,90",
+            _var: "0"
 
-    }, 
-    {
-        country: "italia",
-        year: "2017",
-        publicSpending: "840.763,0",
-        educationExpense: "8,11",
-        healthExpense: "13,47",
-        defenseSpending: "3,12",
-        publicSpendingPib: "48,70",
-        var_: "-0,40"
+        },
+        {
+            country: "francia",
+            year: "2017",
+            publicSpending: "1.291.948,0",
+            educationExpense: "9,66",
+            healthExpense: "16,97",
+            defenseSpending: "4,01",
+            publicSpendingPib: "56,50",
+            var_: "-0,10"
 
-    },
-    {
-        country: "reinoUnido",
-        year: "2017",
-        publicSpending: "954262,1",
-        educationExpense: "13,91",
-        healthExpense: "18,88",
-        defenseSpending: "4,66",
-        publicSpendingPib: "40,90"
+        },
+        {
+            country: "italia",
+            year: "2017",
+            publicSpending: "840.763,0",
+            educationExpense: "8,11",
+            healthExpense: "13,47",
+            defenseSpending: "3,12",
+            publicSpendingPib: "48,70",
+            var_: "-0,40"
 
-}];
+        },
+        {
+            country: "reinoUnido",
+            year: "2017",
+            publicSpending: "954262,1",
+            educationExpense: "13,91",
+            healthExpense: "18,88",
+            defenseSpending: "4,66",
+            publicSpendingPib: "40,90"
+
+        }
+    ];
 
     newGeneralPublicExpenses.forEach((i) => {
         generalPublicExpenses.push(i)
@@ -116,14 +117,14 @@ app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
 // GET /api/v1/generalPublicExpenses/
 
 app.get("/api/v1/general-public-expenses", (req, res) => {
-    
-    generalPublicExpenses.find({}).toArray((err, generalPublicExpensesArray)=>{
-        if(err)
-            console.log("Error: "+err);
-            
+
+    generalPublicExpenses.find({}).toArray((err, generalPublicExpensesArray) => {
+        if (err)
+            console.log("Error: " + err);
+
         res.send(generalPublicExpensesArray);
     });
-    
+
 });
 
 
@@ -282,33 +283,33 @@ app.get("/api/v1/public-expenditure-educations/loadInitialData", (req, res) => {
 
     var newPublicExpenditureEducations = [{
 
-    country: "espania",
-    year: "2015",
-    educationExpense: "46241,5",
-    educationExpensePub: "9,77",
-    educationExpensePib: "4,28",
-    healthExpenditurePerCapita: "977",
-    var_: "-13,08",
+        country: "espania",
+        year: "2015",
+        educationExpense: "46241,5",
+        educationExpensePub: "9,77",
+        educationExpensePib: "4,28",
+        healthExpenditurePerCapita: "977",
+        var_: "-13,08",
 
-}, {
-    country: "alemania",
-    year: "2015",
-    educationExpense: "146754,1",
-    educationExpensePub: "10,98",
-    educationExpensePib: "4,81",
-    healthExpenditurePerCapita: "1975",
-    var_: "-16,16",
+    }, {
+        country: "alemania",
+        year: "2015",
+        educationExpense: "146754,1",
+        educationExpensePub: "10,98",
+        educationExpensePib: "4,81",
+        healthExpenditurePerCapita: "1975",
+        var_: "-16,16",
 
-}, {
-    country: "reino unido",
-    year: "2016",
-    educationExpense: "133190,4",
-    educationExpensePub: "13,91",
-    educationExpensePib: "5,54",
-    healthExpenditurePerCapita: "2028",
-    var_: "-10,36",
+    }, {
+        country: "reino unido",
+        year: "2016",
+        educationExpense: "133190,4",
+        educationExpensePub: "13,91",
+        educationExpensePib: "5,54",
+        healthExpenditurePerCapita: "2028",
+        var_: "-10,36",
 
-}];
+    }];
 
     newPublicExpenditureEducations.forEach((i) => {
         publicExpenditureEducations.push(i)
@@ -442,34 +443,19 @@ app.post("/api/v1/public-expenditure-educations/:country", (req, res) => {
 
 // -------------------API REST Joaquín Morillo Capitán------------------------
 
-var publicHealthExpenses = [{
-    country: "españa",
-    year: "2017",
-    publicHealthExpense: "70,77",
-    healthExpense: "72812,9",
-    totalPublicExpense: "15,14",
-    healthExpensePib: "6,26",
-    healthExpenditurePerCapita: "1565",
-    var_: "3,84"
-}, {
-    country: "alemania",
-    year: "2017",
-    publicHealthExpense: "85,00",
-    healthExpense: "312672,0",
-    totalPublicExpense: "21,36",
-    healthExpensePib: "9,58",
-    healthExpenditurePerCapita: "3789",
-    var_: "7,24"
-}, {
-    country: "reino unido",
-    year: "2017",
-    publicHealthExpense: "78,71",
-    healthExpense: "176435,0",
-    totalPublicExpense: "18,88",
-    healthExpensePib: "7,59",
-    healthExpenditurePerCapita: "2681",
-    var_: "-9,18"
-}];
+var publicHealthExpenses;
+
+// const MongoClient = require("mongodb").MongoClient;
+const uriJMC = "mongodb+srv://test:test@sos-xfza6.mongodb.net/test?retryWrites=true";
+const clientJMC = new MongoClient(uriJMC, { useNewUrlParser: true });
+
+clientJMC.connect(err => {
+    publicHealthExpenses = clientJMC.db("SOS1819").collection("public-health-expenses");
+    console.log("Connected with public-health-expenses!");
+    // perform actions on the collection object
+    //   client_jmc.close();
+});
+
 
 app.get("/api/v1/public-health-expenses/loadInitialData", (req, res) => {
 
@@ -491,20 +477,70 @@ app.get("/api/v1/public-health-expenses/loadInitialData", (req, res) => {
         healthExpensePib: "6,59",
         healthExpenditurePerCapita: "1867",
         var_: "3,43"
+    }, {
+        country: "espania",
+        year: "2017",
+        publicHealthExpense: "70,77",
+        healthExpense: "72812,9",
+        totalPublicExpense: "15,14",
+        healthExpensePib: "6,26",
+        healthExpenditurePerCapita: "1565",
+        var_: "3,84"
+    }, {
+        country: "alemania",
+        year: "2017",
+        publicHealthExpense: "85,00",
+        healthExpense: "312672,0",
+        totalPublicExpense: "21,36",
+        healthExpensePib: "9,58",
+        healthExpenditurePerCapita: "3789",
+        var_: "7,24"
+    }, {
+        country: "reino unido",
+        year: "2017",
+        publicHealthExpense: "78,71",
+        healthExpense: "176435,0",
+        totalPublicExpense: "18,88",
+        healthExpensePib: "7,59",
+        healthExpenditurePerCapita: "2681",
+        var_: "-9,18"
     }];
 
-    newPublicHealthExpenses.forEach((i) => {
-        publicHealthExpenses.push(i);
+    publicHealthExpenses.find({}).toArray((error, result) => {
+        if (error) {
+            console.log("Error: " + error);
+            res.sendStatus(500);
+        }
+        else if (result.length > 0) {
+            res.sendStatus(409);
+        }
+        else {
+            newPublicHealthExpenses.forEach((i) => {
+                publicHealthExpenses.insert(i);
+            });
+
+            res.sendStatus(200);
+        }
     });
 
-    res.sendStatus(200);
 });
 
 
 // GET /api/v1/public-health-expenses
 
 app.get("/api/v1/public-health-expenses", (req, res) => {
-    res.send(publicHealthExpenses);
+    publicHealthExpenses.find({}).toArray((error, result) => {
+        if (error) {
+            console.log("Error: " + error);
+            res.sendStatus(500);
+        }
+        else {
+            res.status(200).send(result.map((phe) => {
+                delete phe._id;
+                return phe;
+            }));
+        }
+    });
 });
 
 
@@ -514,9 +550,30 @@ app.post("/api/v1/public-health-expenses", (req, res) => {
 
     var newPublicHealthExpenses = req.body;
 
-    publicHealthExpenses.push(newPublicHealthExpenses);
+    publicHealthExpenses.find({ "country": newPublicHealthExpenses["country"] }).toArray((error, result) => {
+        if (error) {
+            console.log("Error: " + error);
+            res.sendStatus(500);
+        }
+        else if (result.length > 0) {
+            res.sendStatus(409);
+        }
+        else if (newPublicHealthExpenses["country"] == "" || newPublicHealthExpenses["year"] == null || newPublicHealthExpenses["publicHealthExpense"] == "" || newPublicHealthExpenses["healthExpense"] == "" ||
+            newPublicHealthExpenses["totalPublicExpense"] == "" || newPublicHealthExpenses["healthExpensePib"] == "" || newPublicHealthExpenses["healthExpenditurePerCapita"] == null || newPublicHealthExpenses["var_"] == "") {
+            res.sendStatus(400);
+        }
+        else {
+            publicHealthExpenses.insert(newPublicHealthExpenses, (error, obj) => {
+                if (error) {
+                    res.sendStatus(500);
+                }
+                else {
+                    res.sendStatus(201);
+                }
+            });
+        }
+    });
 
-    res.sendStatus(201);
 });
 
 
@@ -524,9 +581,14 @@ app.post("/api/v1/public-health-expenses", (req, res) => {
 
 app.delete("/api/v1/public-health-expenses", (req, res) => {
 
-    publicHealthExpenses = [];
-
-    res.sendStatus(204);
+    publicHealthExpenses.remove({}, (error, obj) => {
+        if (error) {
+            res.sendStatus(500);
+        }
+        else {
+            res.sendStatus(204);
+        }
+    });
 });
 
 
@@ -536,74 +598,79 @@ app.get("/api/v1/public-health-expenses/:country", (req, res) => {
 
     var country = req.params.country;
 
-    var filteredPublicHealthExpenses = publicHealthExpenses.filter((c) => {
-        return c.country == country;
+    publicHealthExpenses.find({ "country": country }).toArray((error, result) => {
+        if (error) {
+            console.log("Error: " + error);
+            res.sendStatus(500);
+        }
+        else if (result.length < 1) {
+            res.sendStatus(404);
+        }
+        else if (country != result[0]["country"]) {
+            res.sendStatus(400);
+        }
+        else {
+            res.status(200).send(result.map((phe) => {
+                delete phe._id;
+                return phe;
+            }));
+        }
     });
-
-    if (filteredPublicHealthExpenses.length >= 1) {
-        res.send(filteredPublicHealthExpenses[0]);
-    }
-    else {
-        res.sendStatus(404);
-    }
 
 });
 
 
-// PUT /api/v1/public-health-expenses/españa
+// PUT /api/v1/public-health-expenses/alemania
 
 app.put("/api/v1/public-health-expenses/:country", (req, res) => {
 
     var country = req.params.country;
-    var updatedPublicHealthExpense = req.body;
-    var found = false;
+    var newvalues = req.body;
 
-    var updatedPublicHealthExpenses = publicHealthExpenses.map((c) => {
-
-        if (c.country == country) {
-            found = true;
-            return updatedPublicHealthExpense;
+    publicHealthExpenses.find({ "country": country }).toArray((error, result) => {
+        if (error) {
+            console.log("Error: " + error);
+            res.sendStatus(500);
+        }
+        else if (result.length == 0) {
+            res.sendStatus(404);
+        }
+        else if (country != newvalues.country) {
+            res.sendStatus(400);
         }
         else {
-            return c;
+            publicHealthExpenses.update({ "country": country }, newvalues, (error, obj) => {
+                if (error) {
+                    res.sendStatus(500);
+                }
+                else {
+                    res.sendStatus(204);
+                }
+            });
         }
-
     });
-
-    if (found == false) {
-        res.sendStatus(404);
-    }
-    else {
-        publicHealthExpenses = updatedPublicHealthExpenses;
-        res.sendStatus(204);
-    }
-
 });
 
 
-// DELETE /api/v1/public-health-expenses/españa
+// DELETE /api/v1/public-health-expenses/alemania
 
 app.delete("/api/v1/public-health-expenses/:country", (req, res) => {
 
     var country = req.params.country;
-    var found = false;
 
-    var updatedPublicHealthExpenses = publicHealthExpenses.filter((c) => {
-
-        if (c.country == country)
-            found = true;
-
-        return c.country != country;
+    publicHealthExpenses.find({ "country": country }).toArray((error, result) => {
+        if (error) {
+            console.log("Error: " + error);
+            res.sendStatus(500);
+        }
+        else if (result.length < 1) {
+            res.sendStatus(404);
+        }
+        else {
+            publicHealthExpenses.remove({ "country": country });
+            res.sendStatus(204);
+        }
     });
-
-    if (found == false) {
-        res.sendStatus(404);
-    }
-    else {
-        publicHealthExpenses = updatedPublicHealthExpenses;
-        res.sendStatus(204);
-    }
-
 });
 
 

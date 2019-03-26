@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 
 const MongoClient = require("mongodb").MongoClient;
-const uri = "mongodb+srv://test:test@sos-idqtq.mongodb.net/test?retryWrites=true";
+const uri = "mongodb+srv://test:<test>@sos-project-enqlt.mongodb.net/test?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
 var countries;
@@ -247,19 +247,15 @@ app.post("/api/v1/general-public-expenses/:country", (req, res) => {
 
 // -------------------API REST Juan Manuel Centeno-----------------------
 
+const uriJMCC = "mongodb+srv://test:test@sos-idqtq.mongodb.net/test?retryWrites=true";
+const clientJMCC = new MongoClient(uriJMCC, { useNewUrlParser: true });
 
 var publicExpenditureEducations;
 
-client.connect(err => {
+clientJMCC.connect(err => {
   publicExpenditureEducations = client.db("sos1819").collection("public-expenditure-educations");
   console.log("Connected!");
 });
-
-var app = express();
-
-app.use(bodyParser.json());
-
-var port = process.env.PORT || 8080;
 
 
 app.get("/api/v1/public-expenditure-educations/docs", (req, res) => {

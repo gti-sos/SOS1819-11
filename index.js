@@ -1,52 +1,33 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var mongodb = require("mongodb");
+var path = require("path");
+const MongoClient = require('mongodb').MongoClient;
 
-const MongoClient = require("mongodb").MongoClient;
-const uri = "mongodb+srv://test:test@sos-project-enqlt.mongodb.net/test?retryWrites=true";
-const client = new MongoClient(uri, { useNewUrlParser: true });
+var app = express();
+var port = process.env.PORT || 8080;
 
-var countries;
+app.use(bodyParser.json());
+app.use('/', express.static(path.join(__dirname, "public")));
 
-client.connect(err => {
-    generalPublicExpenses = client.db("sos1819").collection("generalPublicExpenses");
+// --------------------------------------------------------------------------------------------------------------------------------------------
+
+
+// ----------------------------------------------------API REST Antonio J----------------------------------------------------------------------
+
+const uriAJSM = "mongodb+srv://test:test@sos-project-enqlt.mongodb.net/test?retryWrites=true";
+const clientAJSM = new MongoClient(uriAJSM, { useNewUrlParser: true });
+
+var generalPublicExpenses;
+
+clientAJSM.connect(err => {
+    generalPublicExpenses = clientAJSM.db("sos1819").collection("general-public-expenses");
     console.log("Connected!");
 });
 
-var app = express();
+app.get("/api/v1/general-public-expenses/docs", (req, res) => {
+    res.redirect("https://documenter.getpostman.com/view/6869292/S17tRo7p");
+});
 
-app.use(bodyParser.json());
-
-var port = process.env.PORT || 8080;
-
-app.use("/", express.static(__dirname + "/public"));
-
-
-// -------------------API REST Antonio J-----------------------
-
-var generalPublicExpenses = [{
-        country: "espania",
-        year: "2017",
-        publicSpending: "478126,0",
-        educationExpense: "9,77",
-        healthExpense: "15,14",
-        defenseSpending: "2,99",
-        publicSpendingPib: "41,00",
-        var_: "-1,20"
-
-    },
-    {
-        country: "alemania",
-        year: "2017",
-        publicSpending: "1439839,0",
-        educationExpense: "10,98",
-        healthExpense: "21,36",
-        defenseSpending: "2,73",
-        publicSpendingPib: "43,90",
-        _var: "0"
-
-    }
-];
 
 app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
 
@@ -96,7 +77,7 @@ app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
 
         },
         {
-            country: "reinoUnido",
+            country: "reino unido",
             year: "2017",
             publicSpending: "954262,1",
             educationExpense: "13,91",
@@ -107,6 +88,33 @@ app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
         }
     ];
 
+    generalPublicExpenses.find({}).toArray((err, pEE) => {
+
+        if (err) {
+
+            res.sendStatus(500);
+
+        }
+        else {
+
+            if (pEE.length > 0) {
+
+
+                res.sendStatus(409);
+
+            }
+            else {
+
+                newGeneralPublicExpenses.forEach((i) => {
+                    console.log(i);
+                    generalPublicExpenses.insert(i);
+                });
+
+                res.sendStatus(200);
+            }
+        }
+    })
+
     newGeneralPublicExpenses.forEach((i) => {
         generalPublicExpenses.push(i)
 
@@ -114,120 +122,305 @@ app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
     res.sendStatus(200);
 });
 
-// GET /api/v1/generalPublicExpenses/
+// ------------------------------------- GET /api/v1/general-public-expenses ------------------------------------
 
 app.get("/api/v1/general-public-expenses", (req, res) => {
 
-    generalPublicExpenses.find({}).toArray((err, generalPublicExpensesArray) => {
-        if (err)
-            console.log("Error: " + err);
+    //Búsqueda por año
+    var startY = parseInt(req.query.from);
+    var endY = parseInt(req.query.to);
 
-        res.send(generalPublicExpensesArray);
+    //Paginación
+    var limit = parseInt(req.query.limit);
+    var offset = parseInt(req.query.offset);
+
+    //Paginación y búsqueda
+
+    if (Number.isInteger(limit) && Number.isInteger(offset) && Number.isInteger(startY) && Number.isInteger(endY)) {
+
+        generalPublicExpenses.find({ "year": { $gte: startY, $lte: endY } }).skip(offset).limit(limit).toArray((err, generalPublicExpenses) => {
+
+            if (err) {
+
+                res.sendStatus(500);
+
+            }
+            else {
+
+                res.status(200).send(generalPublicExpenses.map((c) => {
+
+                    delete c._id;
+                    return c;
+
+                }));
+            }
+        });
+
+        //Paginación
+
+    }
+    else if (Number.isInteger(limit) && Number.isInteger(offset)) {
+
+        generalPublicExpenses.find({}).skip(offset).limit(limit).toArray((err, generalPublicExpenses) => {
+
+            if (err) {
+
+                res.sendStatus(500);
+
+            }
+            else {
+
+                res.status(200).send(generalPublicExpenses.map((c) => {
+                    delete c._id;
+                    return c;
+
+                }));
+
+            }
+        });
+
+        //Búsqueda
+
+    }
+    else if (Number.isInteger(startY) && Number.isInteger(endY)) {
+
+        generalPublicExpenses.find({ "year": { $gte: startY, $lte: endY } }).toArray((err, generalPublicExpenses) => {
+
+            if (err) {
+
+                res.sendStatus(500);
+
+            }
+            else {
+
+                res.status(200).send(generalPublicExpenses.map((c) => {
+                    delete c._id;
+                    return c;
+
+                }));
+            }
+        });
+    }
+    else {
+
+        generalPublicExpenses.find({}).toArray((err, generalPublicExpenses) => {
+
+            if (err) {
+
+                res.sendStatus(500);
+
+            }
+            else {
+
+                res.status(200).send(generalPublicExpenses.map((c) => {
+                    delete c._id;
+                    return c;
+
+                }));
+            }
+        });
+    }
+
+});
+
+
+// --------------------------------- POST /api/v1/general-public-expenses ------------------------------------------
+
+app.post("/api/v1/general-public-expenses", (req, res) => {
+
+    var data = req.body;
+
+    generalPublicExpenses.find({ "country": data["country"] }).toArray((err, newPEE) => {
+
+        if (err) { //Internal server error
+
+            res.sendStatus(500);
+        }
+        else {
+
+            if (newPEE.length > 0) { //The resource already exists
+
+                res.sendStatus(409);
+
+            }
+            else {
+
+                if (data["country"] == "" || data["year"] == null || data["public-spending"] == null || data["education-expense"] == null ||
+                    data["health-expense"] == null || data["defense-speding"] == null || data["public-spending-pib"] == null || data["var_"] == null) {
+
+                    res.sendStatus(400); //Miramos si existe algún error (ej: solicitud malformada, sintaxis errónea, etc)
+
+                }
+                else {
+
+                    generalPublicExpenses.insert(data, (err, newPEE) => {
+
+                        if (err) {
+
+                            res.sendStatus(500);
+
+                        }
+                        else {
+
+                            res.sendStatus(201);
+                        }
+                    });
+                }
+            }
+        }
     });
 
 });
 
 
-// POST /api/v1/generalPublicExpenses
-
-app.post("/api/v1/general-public-expenses", (req, res) => {
-
-    var newGeneralPublicExpenses = req.body;
-
-    generalPublicExpenses.push(newGeneralPublicExpenses)
-
-    res.sendStatus(201);
-});
-
-
-// DELETE /api/v1/generalPublicExpenses/
+//------------------------------------------------ DELETE /api/v1/general-public-expenses --------------------------------
 
 app.delete("/api/v1/general-public-expenses", (req, res) => {
 
-    generalPublicExpenses = [];
+    generalPublicExpenses.remove({}, (err, generalPublicExpenses) => {
 
-    res.sendStatus(200);
+        if (err) {
+
+            res.sendStatus(500);
+
+        }
+        else {
+
+            res.sendStatus(200);
+
+        }
+    });
 });
 
 
-// GET /api/v1/generalPublicExpenses/espania
+//------------------------------------------ GET /api/v1/general-public-expenses/espania -------------------------------------
 
 app.get("/api/v1/general-public-expenses/:country", (req, res) => {
 
     var country = req.params.country;
 
-    var filteredGeneralPublicExpenses = generalPublicExpenses.filter((c) => {
-        return c.country == country;
-    })
+    generalPublicExpenses.find({ "country": country }).toArray((err, generalPublicExpenses) => {
 
-    if (filteredGeneralPublicExpenses.length >= 1) {
-        res.send(filteredGeneralPublicExpenses[0]);
-    }
-    else {
-        res.sendStatus(404);
-    }
+        if (err) {
 
+            res.sendStatus(500);
+
+        }
+        else {
+
+            if (generalPublicExpenses.length < 1) {
+
+                res.sendStatus(404);
+
+            }
+            else {
+
+                if (country != generalPublicExpenses[0]["country"]) {
+
+                    res.sendStatus(400);
+
+                }
+                else {
+
+                    res.status(200).send({ generalPublicExpenses });
+                }
+            }
+        }
+    });
 });
 
 
-// PUT /api/v1/generalPublicExpenses/espania
+//------------------------------------------------------- PUT /api/v1/general-public-expenses/espania -------------------------------------
 
 app.put("/api/v1/general-public-expenses/:country", (req, res) => {
 
     var country = req.params.country;
-    var updatedGeneralPublicExpenses = req.body;
-    var found = false;
+    var updateData = req.body;
 
-    var updatedGeneralPublicExpenses = generalPublicExpenses.map((c) => {
+    generalPublicExpenses.find({ "country": country }).toArray((err, findGeneralPublicExpenses) => {
 
-        if (c.country == country) {
-            found = true;
-            return updatedGeneralPublicExpenses;
+        if (err) { //error interno del servidor
+
+            res.sendStatus(500);
+
         }
         else {
-            return c;
+
+
+            if (findGeneralPublicExpenses.length == 0) { //Miramos si existe el recurso
+
+                res.sendStatus(404);
+
+            }
+            else {
+
+                if (country != updateData.country) { //Miramos si existe algún error (ej: solicitud malformada, sintaxis errónea, etc)
+
+                    res.sendStatus(400);
+
+                }
+                else {
+
+                    generalPublicExpenses.update({ "country": country }, updateData, (err, updatePEE) => {
+
+                        if (err) {
+
+                            res.sendStatus(500);
+
+                        }
+                        else {
+
+                            res.sendStatus(200);
+
+                        }
+
+                    });
+
+                }
+
+            }
+
         }
 
     });
 
-    if (found == false) {
-        res.sendStatus(404);
-    }
-    else {
-        generalPublicExpenses = updatedGeneralPublicExpenses;
-        res.sendStatus(200);
-    }
 
 });
 
 
-// DELETE /api/v1/generalPublicExpenses/espania
+//----------------------------------------------------- DELETE /api/v1/general-public-expenses/espania------------------------------
 
 app.delete("/api/v1/general-public-expenses/:country", (req, res) => {
 
     var country = req.params.country;
-    var found = false;
 
-    var updatedGeneralPublicExpenses = generalPublicExpenses.filter((c) => {
+    generalPublicExpenses.find({ "country": country }).toArray((err, deleteGeneralPublicExpenses) => {
 
-        if (c.country == country)
-            found = true;
+        if (err) {
 
-        return c.country != country;
+            res.status(500);
+
+        }
+        else {
+
+            if (deleteGeneralPublicExpenses.length < 1) {
+
+                res.sendStatus(404);
+
+            }
+            else {
+
+                generalPublicExpenses.remove({ "country": country });
+                res.sendStatus(200);
+
+            }
+        }
     });
-
-    if (found == false) {
-        res.sendStatus(404);
-    }
-    else {
-        generalPublicExpenses = updatedGeneralPublicExpenses;
-        res.sendStatus(200);
-    }
 
 });
 
-// Métodos incorrectos
-//PUT /api/v1/generalPublicExpenses (ERROR)
+//----------------------------------------------- Métodos incorrectos ------------------------------------------------
+//----------------------------------------------- PUT /api/v1/general-public-expenses (ERROR) ------------------------
 
 app.put("/api/v1/general-public-expenses", (req, res) => {
 
@@ -236,7 +429,7 @@ app.put("/api/v1/general-public-expenses", (req, res) => {
 
 });
 
-//POST /api/v1/generalPublicExpenses/espania (ERROR)
+//-------------------------------------------------- POST /api/v1/general-public-expenses/espania (ERROR) ----------------------
 
 app.post("/api/v1/general-public-expenses/:country", (req, res) => {
 
@@ -244,194 +437,479 @@ app.post("/api/v1/general-public-expenses/:country", (req, res) => {
 
 });
 
+
+//   -------------------------------------------- GET /api/v1/secute/general-public-expenses -------------------------------------------
+app.get("/api/v1/general-public-expenses", (req, res) => {
+
+    var user = req.headers.user;
+    var pass = req.headers.pass;
+
+    if (user == "ajsm" && pass == "ajsm") { // pasamanos por la cabecera el usuario y la contraseña
+
+        generalPublicExpenses.find({}).toArray((err, generalPublicExpenses) => {
+
+            if (err) {
+
+                res.sendStatus(500);
+
+            }
+            else {
+
+                res.send(generalPublicExpenses.map((c) => {
+                    delete c._id;
+                    return c;
+                }));
+            }
+
+        });
+
+
+    }
+    else {
+        // No autorizado
+        res.sendStatus(401);
+    }
+});
+
+
 //-----------------------------------------------------------------------
 
 // -------------------API REST Juan Manuel Centeno-----------------------
 
+const uriJMCC = "mongodb+srv://test:test@sos-idqtq.mongodb.net/test?retryWrites=true";
+const clientJMCC = new MongoClient(uriJMCC, { useNewUrlParser: true });
 
-var publicExpenditureEducations = [{
+var publicExpenditureEducations;
 
-    country: "espania",
-    year: "2015",
-    educationExpense: "46241,5",
-    educationExpensePub: "9,77",
-    educationExpensePib: "4,28",
-    healthExpenditurePerCapita: "977",
-    var_: "-13,08",
+clientJMCC.connect(err => {
+    publicExpenditureEducations = clientJMCC.db("sos1819").collection("public-expenditure-educations");
+    console.log("Connected!");
+});
 
-}, {
-    country: "alemania",
-    year: "2015",
-    educationExpense: "146754,1",
-    educationExpensePub: "10,98",
-    educationExpensePib: "4,81",
-    healthExpenditurePerCapita: "1975",
-    var_: "-16,16",
 
-}, {
-    country: "reino unido",
-    year: "2016",
-    educationExpense: "133190,4",
-    educationExpensePub: "13,91",
-    educationExpensePib: "5,54",
-    healthExpenditurePerCapita: "2028",
-    var_: "-10,36",
+app.get("/api/v1/public-expenditure-educations/docs", (req, res) => {
 
-}];
+    res.redirect("https://documenter.getpostman.com/view/4815062/S17oxV3R");
+});
+
+
 
 app.get("/api/v1/public-expenditure-educations/loadInitialData", (req, res) => {
 
     var newPublicExpenditureEducations = [{
 
         country: "espania",
-        year: "2015",
-        educationExpense: "46241,5",
-        educationExpensePub: "9,77",
-        educationExpensePib: "4,28",
-        healthExpenditurePerCapita: "977",
-        var_: "-13,08",
+        year: 2015,
+        educationExpense: 46241.5,
+        educationExpensePub: 9.77,
+        educationExpensePib: 4.28,
+        healthExpenditurePerCapita: 977,
+        var_: -13.08,
 
     }, {
         country: "alemania",
-        year: "2015",
-        educationExpense: "146754,1",
-        educationExpensePub: "10,98",
-        educationExpensePib: "4,81",
-        healthExpenditurePerCapita: "1975",
-        var_: "-16,16",
+        year: 2015,
+        educationExpense: 146754.1,
+        educationExpensePub: 10.98,
+        educationExpensePib: 4.81,
+        healthExpenditurePerCapita: 1975,
+        var_: -16.16,
 
     }, {
         country: "reino unido",
-        year: "2016",
-        educationExpense: "133190,4",
-        educationExpensePub: "13,91",
-        educationExpensePib: "5,54",
-        healthExpenditurePerCapita: "2028",
-        var_: "-10,36",
+        year: 2013,
+        educationExpense: 133190.4,
+        educationExpensePub: 13.91,
+        educationExpensePib: 5.54,
+        healthExpenditurePerCapita: 2028,
+        var_: -10.36,
+
+    }, {
+        country: "portugal",
+        year: 2018,
+        educationExpense: 133.4,
+        educationExpensePub: 132.91,
+        educationExpensePib: 52.54,
+        healthExpenditurePerCapita: 228,
+        var_: -10.36,
+
+    }, {
+        country: "belgica",
+        year: 2016,
+        educationExpense: 13313.4,
+        educationExpensePub: 13.91,
+        educationExpensePib: 5.54,
+        healthExpenditurePerCapita: 28,
+        var_: -10.36,
 
     }];
 
-    newPublicExpenditureEducations.forEach((i) => {
-        publicExpenditureEducations.push(i)
 
-    })
-    res.sendStatus(200);
+
+    publicExpenditureEducations.find({}).toArray((err, pEE) => {
+
+        if (err) {
+
+            res.sendStatus(500);
+
+        }
+        else {
+
+            if (pEE.length > 0) {
+
+                res.sendStatus(409);
+
+            }
+            else {
+
+                newPublicExpenditureEducations.forEach((i) => {
+                    console.log(i);
+                    publicExpenditureEducations.insert(i);
+
+
+                });
+                res.sendStatus(200);
+            }
+
+        }
+
+    });
+
+
+
 });
 
 
-// GET /api/v1/public-expenditure-educations
+
+// --------------------------------------------   GET /api/v1/public-expenditure-educations -----------------------------------------------------
 
 app.get("/api/v1/public-expenditure-educations", (req, res) => {
-    res.send(publicExpenditureEducations);
+
+    //Busqueda por año
+    var startY = parseInt(req.query.from);
+    var endY = parseInt(req.query.to);
+    //Paginación
+    var limit = parseInt(req.query.limit);
+    var offset = parseInt(req.query.offset);
+
+
+    //Paginación y Búsqueda
+    if (Number.isInteger(limit) && Number.isInteger(offset) && Number.isInteger(startY) && Number.isInteger(endY)) {
+
+        publicExpenditureEducations.find({ "year": { $gte: startY, $lte: endY } }).skip(offset).limit(limit).toArray((err, publicExpenditureEducation) => {
+
+            if (err) {
+
+                res.sendStatus(500);
+
+            }
+            else {
+
+                res.status(200).send(publicExpenditureEducation.map((c) => {
+                    delete c._id;
+                    return c;
+
+                }));
+
+            }
+        });
+
+        //Paginacón
+    }
+    else if (Number.isInteger(limit) && Number.isInteger(offset)) {
+
+        publicExpenditureEducations.find({}).skip(offset).limit(limit).toArray((err, publicExpenditureEducation) => {
+
+            if (err) {
+
+                res.sendStatus(500);
+
+            }
+            else {
+
+                res.status(200).send(publicExpenditureEducation.map((c) => {
+                    delete c._id;
+                    return c;
+
+                }));
+
+            }
+        });
+        //Búsqueda 
+    }
+    else if (Number.isInteger(startY) && Number.isInteger(endY)) {
+
+        publicExpenditureEducations.find({ "year": { $gte: startY, $lte: endY } }).toArray((err, publicExpenditureEducation) => {
+
+            if (err) {
+
+                res.sendStatus(500);
+
+            }
+            else {
+
+                res.status(200).send(publicExpenditureEducation.map((c) => {
+                    delete c._id;
+                    return c;
+
+                }));
+
+            }
+        });
+    }
+    else {
+
+        publicExpenditureEducations.find({}).toArray((err, publicExpenditureEducation) => {
+
+            if (err) {
+
+                res.sendStatus(500);
+
+            }
+            else {
+
+                res.status(200).send(publicExpenditureEducation.map((c) => {
+                    delete c._id;
+                    return c;
+
+                }));
+
+            }
+        });
+
+    }
+
+
 });
 
-// POST /api/v1/public-expenditure-educations
+
+
+
+
+
+
+// --------------------------------------------   POST /api/v1/public-expenditure-educations-----------------------------------------------------
 
 app.post("/api/v1/public-expenditure-educations", (req, res) => {
 
-    var newPublicExpenditureEducations = req.body;
+    var data = req.body;
 
-    publicExpenditureEducations.push(newPublicExpenditureEducations)
+    publicExpenditureEducations.find({ "country": data["country"] }).toArray((err, newPEE) => {
 
-    res.sendStatus(201);
+        if (err) { //Error interno del servidor
+
+            res.sendStatus(500);
+
+        }
+        else {
+
+            if (newPEE.length > 0) { // Ya existe el recurso
+
+                res.sendStatus(409);
+
+            }
+            else {
+
+                if (data["country"] == "" || data["year"] == null || data["educationExpense"] == null || data["educationExpensePub"] == null ||
+                    data["educationExpensePib"] == null || data["healthExpenditurePerCapita"] == null || data["var_"] == null) {
+
+                    res.sendStatus(400); // //Miramos si existe algún error (ej: solicitud malformada, sintaxis errónea, etc)
+
+                }
+                else {
+
+
+                    publicExpenditureEducations.insert(data, (err, newPEE) => {
+
+                        if (err) {
+
+                            res.sendStatus(500);
+
+                        }
+                        else {
+
+                            res.sendStatus(201);
+
+                        }
+
+                    });
+                }
+
+
+
+            }
+
+        }
+    });
 });
 
-// DELETE /api/v1/public-expenditure-educations
+// -------------------------------------------- DELETE /api/v1/public-expenditure-educations --------------------------------------------
 
 app.delete("/api/v1/public-expenditure-educations", (req, res) => {
 
-    publicExpenditureEducations = [];
+    publicExpenditureEducations.remove({}, (err, publicExpenditureEducation) => {
 
-    res.sendStatus(204);
+        if (err) {
+
+            res.sendStatus(500);
+
+        }
+        else {
+
+            res.sendStatus(200);
+
+        }
+
+    });
+
+
 });
 
-// GET /api/v1/public-expenditure-educations/alemania
+
+//  -------------------------------------------- GET /api/v1/public-expenditure-educations/alemania  --------------------------------------------
 
 app.get("/api/v1/public-expenditure-educations/:country", (req, res) => {
-
     var country = req.params.country;
 
-    var filteredPublicExpenditureEducations = publicExpenditureEducations.filter((c) => {
-        return c.country == country;
-    })
+    publicExpenditureEducations.find({ "country": country }).toArray((err, publicExpenditureEducation) => {
 
-    if (filteredPublicExpenditureEducations.length >= 1) {
-        res.send(filteredPublicExpenditureEducations[0]);
-    }
-    else {
-        res.sendStatus(404);
-    }
+        if (err) {
 
+            res.sendStatus(500);
+
+        }
+        else {
+
+            if (publicExpenditureEducation.length < 1) {
+
+                res.sendStatus(404);
+
+            }
+            else {
+
+                if (country != publicExpenditureEducation[0]["country"]) {
+
+
+                    res.sendStatus(400);
+
+                }
+                else {
+
+                    res.status(200).send({ publicExpenditureEducation });
+
+                }
+
+
+
+            }
+        }
+    });
 });
 
-// PUT /api/v1/public-expenditure-educations/españa
+
+
+//   --------------------------------------------PUT /api/v1/public-expenditure-educations/españa   --------------------------------------------
 
 app.put("/api/v1/public-expenditure-educations/:country", (req, res) => {
 
     var country = req.params.country;
-    var updatedPublicExpenditureEducation = req.body;
-    var found = false;
+    var updateData = req.body;
 
-    var updatedPublicExpenditureEducations = publicExpenditureEducations.map((c) => {
+    publicExpenditureEducations.find({ "country": country }).toArray((err, findPublicExpenditureEducation) => {
 
-        if (c.country == country) {
-            found = true;
-            return updatedPublicExpenditureEducation;
+        if (err) { //error interno del servidor
+
+            res.sendStatus(500);
+
         }
         else {
-            return c;
+
+
+            if (findPublicExpenditureEducation.length == 0) { //Miramos si existe el recurso
+
+                res.sendStatus(404);
+
+            }
+            else {
+
+                if (country != updateData.country) { //Miramos si existe algún error (ej: solicitud malformada, sintaxis errónea, etc)
+
+                    res.sendStatus(400);
+
+                }
+                else {
+
+                    publicExpenditureEducations.update({ "country": country }, updateData, (err, updatePEE) => {
+
+                        if (err) {
+
+                            res.sendStatus(500);
+
+                        }
+                        else {
+
+                            res.sendStatus(200);
+
+                        }
+
+                    });
+
+                }
+
+            }
+
         }
 
     });
 
-    if (found == false) {
-        res.sendStatus(404);
-    }
-    else {
-        publicExpenditureEducations = updatedPublicExpenditureEducations;
-        res.sendStatus(200);
-    }
 
 });
 
 
-// DELETE /api/v1/public-expenditure-educations/españa
+//  --------------------------------------------  DELETE /api/v1/public-expenditure-educations/espania   --------------------------------------------
 
 app.delete("/api/v1/public-expenditure-educations/:country", (req, res) => {
 
     var country = req.params.country;
-    var found = false;
 
-    var updatedPublicExpenditureEducations = publicExpenditureEducations.filter((c) => {
+    publicExpenditureEducations.find({ "country": country }).toArray((err, deletePublicExpenditureEducations) => {
 
-        if (c.country == country)
-            found = true;
+        if (err) {
 
-        return c.country != country;
+            res.status(500);
+
+        }
+        else {
+
+            if (deletePublicExpenditureEducations.length < 1) {
+
+                res.sendStatus(404);
+
+            }
+            else {
+
+                publicExpenditureEducations.remove({ "country": country });
+                res.sendStatus(200);
+
+            }
+        }
     });
-
-    if (found == false) {
-        res.sendStatus(404);
-    }
-    else {
-        publicExpenditureEducations = updatedPublicExpenditureEducations;
-        res.sendStatus(200);
-    }
 
 });
 
 
-// Métodos incorrectos
-//PUT /api/v1/public-expenditure-educations (ERROR)
+//   --------------------------------------------Métodos erróneos  --------------------------------------------
+
+//   -------------------------------------------- PUT /api/v1/public-expenditure-educations (ERROR)   --------------------------------------------
 
 app.put("/api/v1/public-expenditure-educations", (req, res) => {
-
 
     res.sendStatus(405);
 
 });
 
-//POST /api/v1/public-expenditure-educations (ERROR)
+
+//   -------------------------------------------- POST /api/v1/public-expenditure-educations (ERROR)   --------------------------------------------
 
 app.post("/api/v1/public-expenditure-educations/:country", (req, res) => {
 
@@ -439,7 +917,44 @@ app.post("/api/v1/public-expenditure-educations/:country", (req, res) => {
 
 });
 
+
+//   -------------------------------------------- GET /api/v1/secute/public-expenditure-educations -------------------------------------------
+app.get("/api/v1/secute/public-health-expenses", (req, res) => {
+
+    var user = req.headers.user;
+    var pass = req.headers.pass;
+
+    if (user == "jmcc" && pass == "jmcc") { // pasamanos por la cabecera el usuario y la contraseña
+
+        publicExpenditureEducations.find({}).toArray((err, publicExpenditureEducation) => {
+
+            if (err) {
+
+                res.sendStatus(500);
+
+            }
+            else {
+
+                res.send(publicExpenditureEducation.map((c) => {
+                    delete c._id;
+                    return c;
+                }));
+            }
+
+        });
+
+
+    }
+    else {
+        // No autorizado
+        res.sendStatus(401);
+    }
+});
+
+
+
 //----------------------------------------------------------------------------
+
 
 // -------------------API REST Joaquín Morillo Capitán------------------------
 

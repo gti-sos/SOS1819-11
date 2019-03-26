@@ -2,6 +2,13 @@ var express = require("express");
 var bodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
 
+var app = express();
+
+app.use(bodyParser.json());
+
+var port = process.env.PORT || 8080;
+
+
 
 const uri = "mongodb+srv://test:<test>@sos-project-enqlt.mongodb.net/test?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
@@ -13,13 +20,9 @@ client.connect(err => {
   console.log("Connected!");
 });
 
-var app = express();
 
-app.use(bodyParser.json());
 
-var port = process.env.PORT || 8080;
-
-app.use("/", express.static(__dirname + "/public"));
+//app.use("/", express.static(__dirname + "/public"));
 
 
 // -------------------API REST Antonio J-----------------------

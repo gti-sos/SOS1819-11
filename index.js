@@ -1034,7 +1034,7 @@ app.get("/api/v1/public-health-expenses/loadInitialData", (req, res) => {
                 publicHealthExpenses.insert(i);
             });
 
-            res.sendStatus(200);
+            res.sendStatus(201);
         }
     });
 

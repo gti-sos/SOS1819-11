@@ -1047,18 +1047,74 @@ app.get("/api/v1/public-health-expenses/loadInitialData", (req, res) => {
 // GET /api/v1/public-health-expenses
 
 app.get("/api/v1/public-health-expenses", (req, res) => {
-    publicHealthExpenses.find({}).toArray((error, result) => {
-        if (error) {
-            console.log("Error: " + error);
-            res.sendStatus(500);
-        }
-        else {
-            res.status(200).send(result.map((phe) => {
-                delete phe._id;
-                return phe;
-            }));
-        }
-    });
+
+    // Búsqueda por año
+    var initialYear = parseInt(req.query.from);
+    var finalYear = parseInt(req.query.to);
+
+    // Paginación
+    var limit = parseInt(req.query.limit);
+    var offset = parseInt(req.query.offset);
+
+    // Paginación y búsqueda
+    if (Number.isInteger(limit) && Number.isInteger(offset) && Number.isInteger(initialYear) && Number.isInteger(finalYear)) {
+        publicHealthExpenses.find({ "year": { $gte: initialYear, $lte: finalYear } }).skip(offset).limit(limit).toArray((error, result) => {
+            if (error) {
+                console.log("Error: " + error);
+                res.sendStatus(500);
+            }
+            else {
+                res.status(200).send(result.map((phe) => {
+                    delete phe._id;
+                    return phe;
+                }));
+            }
+        });
+    }
+    // Paginación
+    else if (Number.isInteger(limit) && Number.isInteger(offset)) {
+        publicHealthExpenses.find({}).skip(offset).limit(limit).toArray((error, result) => {
+            if (error) {
+                console.log("Error: " + error);
+                res.sendStatus(500);
+            }
+            else {
+                res.status(200).send(result.map((phe) => {
+                    delete phe._id;
+                    return phe;
+                }));
+            }
+        });
+    }
+    // Búsqueda
+    else if (Number.isInteger(initialYear) && Number.isInteger(finalYear)) {
+        publicHealthExpenses.find({ "year": { $gte: initialYear, $lte: finalYear } }).toArray((error, result) => {
+            if (error) {
+                console.log("Error: " + error);
+                res.sendStatus(500);
+            }
+            else {
+                res.status(200).send(result.map((phe) => {
+                    delete phe._id;
+                    return phe;
+                }));
+            }
+        });
+    }
+    else {
+        publicHealthExpenses.find({}).toArray((error, result) => {
+            if (error) {
+                console.log("Error: " + error);
+                res.sendStatus(500);
+            }
+            else {
+                res.status(200).send(result.map((phe) => {
+                    delete phe._id;
+                    return phe;
+                }));
+            }
+        });
+    }
 });
 
 
@@ -1189,6 +1245,34 @@ app.delete("/api/v1/public-health-expenses/:country", (req, res) => {
             res.sendStatus(204);
         }
     });
+});
+
+
+// GET /api/v1/secure/public-health-expenses
+
+app.get("/api/v1/secure/public-health-expenses", (req, res) => {
+
+    var user = req.headers.user;
+    var password = req.headers.pass;
+
+    if (user == "jmc" && password == "jmc") {
+        publicHealthExpenses.find({}).toArray((error, result) => {
+            if (error) {
+                console.log("Error: " + error);
+                res.sendStatus(500);
+            }
+            else {
+                res.send(result.map((phe) => {
+                    delete phe._id;
+                    return phe;
+                }));
+            }
+
+        });
+    }
+    else {
+        res.sendStatus(401);
+    }
 });
 
 

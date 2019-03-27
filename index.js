@@ -979,7 +979,7 @@ app.get("/api/v1/public-health-expenses/loadInitialData", (req, res) => {
 
     var newPublicHealthExpenses = [{
         country: "francia",
-        year: "2017",
+        year: 2017,
         publicHealthExpense: "82,99",
         healthExpense: "217528,3",
         totalPublicExpense: "16,97",
@@ -988,7 +988,7 @@ app.get("/api/v1/public-health-expenses/loadInitialData", (req, res) => {
         var_: "3,80"
     }, {
         country: "italia",
-        year: "2017",
+        year: 2017,
         publicHealthExpense: "74,03",
         healthExpense: "113131,0",
         totalPublicExpense: "13,47",
@@ -997,7 +997,7 @@ app.get("/api/v1/public-health-expenses/loadInitialData", (req, res) => {
         var_: "3,43"
     }, {
         country: "espania",
-        year: "2017",
+        year: 2017,
         publicHealthExpense: "70,77",
         healthExpense: "72812,9",
         totalPublicExpense: "15,14",
@@ -1006,7 +1006,7 @@ app.get("/api/v1/public-health-expenses/loadInitialData", (req, res) => {
         var_: "3,84"
     }, {
         country: "alemania",
-        year: "2017",
+        year: 2017,
         publicHealthExpense: "85,00",
         healthExpense: "312672,0",
         totalPublicExpense: "21,36",
@@ -1015,7 +1015,7 @@ app.get("/api/v1/public-health-expenses/loadInitialData", (req, res) => {
         var_: "7,24"
     }, {
         country: "reino unido",
-        year: "2017",
+        year: 2017,
         publicHealthExpense: "78,71",
         healthExpense: "176435,0",
         totalPublicExpense: "18,88",

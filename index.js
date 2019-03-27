@@ -89,7 +89,7 @@ app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
         }
     ];
 
-    generalPublicExpenses.find({}).toArray((err, pEE) => {
+    generalPublicExpenses.find({}).toArray((err, gPP) => {
 
         if (err) {
 
@@ -98,8 +98,7 @@ app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
         }
         else {
 
-            if (pEE.length > 0) {
-
+            if (gPP.length > 0) {
 
                 res.sendStatus(409);
 
@@ -109,18 +108,16 @@ app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
                 newGeneralPublicExpenses.forEach((i) => {
                     console.log(i);
                     generalPublicExpenses.insert(i);
-                });
 
+
+                });
                 res.sendStatus(200);
             }
+
         }
-    })
 
-    newGeneralPublicExpenses.forEach((i) => {
-        generalPublicExpenses.push(i)
+    });
 
-    })
-    res.sendStatus(200);
 });
 
 // ------------------------------------- GET /api/v1/general-public-expenses ------------------------------------
@@ -1195,33 +1192,6 @@ app.delete("/api/v1/public-health-expenses/:country", (req, res) => {
 });
 
 
-// GET /api/v1/secure/public-health-expenses
-
-// app.get("/api/v1/secure/public-health-expenses", (req, res) => {
-
-//     var user = req.headers.user;
-//     var password = req.headers.pass;
-
-//     if (user == "jmc" && password == "jmc") {
-//         publicHealthExpenses.find({}).toArray((error, result) => {
-//             if (error) {
-//                 console.log("Error: " + error);
-//                 res.sendStatus(500);
-//             }
-//             else {
-//                 res.send(result.map((phe) => {
-//                     delete phe._id;
-//                     return phe;
-//                 }));
-//             }
-//         });
-//     }
-//     else {
-//         res.sendStatus(401);
-//     }
-// });
-
-
 // Métodos erróneos
 
 //PUT /api/v1/public-health-expenses (ERROR)
@@ -1245,5 +1215,6 @@ app.post("/api/v1/public-health-expenses/:country", (req, res) => {
 
 
 app.listen(port, () => {
+
     console.log("Super server ready on port " + port);
 });

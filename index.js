@@ -251,7 +251,7 @@ app.post("/api/v1/general-public-expenses", (req, res) => {
                 }
                 else {
 
-                    generalPublicExpenses.insert(data, (err, newPEE) => {
+                    generalPublicExpenses.insertOne(data, (err, newPEE) => {
 
                         if (err) {
 

@@ -21,7 +21,7 @@ var generalPublicExpenses;
 
 clientAJSM.connect(err => {
     generalPublicExpenses = clientAJSM.db("sos1819").collection("general-public-expenses");
-    console.log("Connected!");
+    console.log("Connected! server general-public-expenses");
 });
 
 app.get("/api/v1/general-public-expenses/docs", (req, res) => {
@@ -439,8 +439,8 @@ app.post("/api/v1/general-public-expenses/:country", (req, res) => {
 });
 
 
-//   -------------------------------------------- GET /api/v1/secute/general-public-expenses -------------------------------------------
-app.get("/api/v1/general-public-expenses", (req, res) => {
+//   -------------------------------------------- GET /api/v1/secure/general-public-expenses -------------------------------------------
+app.get("/api/v1/secure/general-public-expenses", (req, res) => {
 
     var user = req.headers.user;
     var pass = req.headers.pass;

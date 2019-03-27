@@ -89,7 +89,7 @@ app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
         }
     ];
 
-    generalPublicExpenses.find({}).toArray((err, pEE) => {
+    generalPublicExpenses.find({}).toArray((err, gPP) => {
 
         if (err) {
 
@@ -98,8 +98,7 @@ app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
         }
         else {
 
-            if (pEE.length > 0) {
-
+            if (gPP.length > 0) {
 
                 res.sendStatus(409);
 
@@ -109,18 +108,16 @@ app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
                 newGeneralPublicExpenses.forEach((i) => {
                     console.log(i);
                     generalPublicExpenses.insert(i);
-                });
 
+
+                });
                 res.sendStatus(200);
             }
+
         }
-    })
 
-    newGeneralPublicExpenses.forEach((i) => {
-        generalPublicExpenses.push(i)
+    });
 
-    })
-    res.sendStatus(200);
 });
 
 // ------------------------------------- GET /api/v1/general-public-expenses ------------------------------------

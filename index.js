@@ -32,61 +32,62 @@ app.get("/api/v1/general-public-expenses/docs", (req, res) => {
 app.get("/api/v1/general-public-expenses/loadInitialData", (req, res) => {
 
     var newGeneralPublicExpenses = [{
-        
-        country: "espania",
-        year: "2017",
-        publicSpending: "478126,0",
-        educationExpense: "9,77",
-        healthExpense: "15,14",
-        defenseSpending: "2,99",
-        publicSpendingPib: "41,00",
-        var_: "-1,20"
 
-    },
-    {
-        country: "alemania",
-        year: "2017",
-        publicSpending: "1439839,0",
-        educationExpense: "10,98",
-        healthExpense: "21,36",
-        defenseSpending: "2,73",
-        publicSpendingPib: "43,90",
-        _var: "0"
+            country: "espania",
+            year: "2017",
+            publicSpending: "478126,0",
+            educationExpense: "9,77",
+            healthExpense: "15,14",
+            defenseSpending: "2,99",
+            publicSpendingPib: "41,00",
+            var_: "-1,20"
 
-    },
-    {
-        country: "francia",
-        year: "2017",
-        publicSpending: "1.291.948,0",
-        educationExpense: "9,66",
-        healthExpense: "16,97",
-        defenseSpending: "4,01",
-        publicSpendingPib: "56,50",
-        var_: "-0,10"
+        },
+        {
+            country: "alemania",
+            year: "2017",
+            publicSpending: "1439839,0",
+            educationExpense: "10,98",
+            healthExpense: "21,36",
+            defenseSpending: "2,73",
+            publicSpendingPib: "43,90",
+            _var: "0"
 
-    }, 
-    {
-        country: "italia",
-        year: "2017",
-        publicSpending: "840.763,0",
-        educationExpense: "8,11",
-        healthExpense: "13,47",
-        defenseSpending: "3,12",
-        publicSpendingPib: "48,70",
-        var_: "-0,40"
+        },
+        {
+            country: "francia",
+            year: "2017",
+            publicSpending: "1.291.948,0",
+            educationExpense: "9,66",
+            healthExpense: "16,97",
+            defenseSpending: "4,01",
+            publicSpendingPib: "56,50",
+            var_: "-0,10"
 
-    },
-    {
-        country: "reino unido",
-        year: "2017",
-        publicSpending: "954262,1",
-        educationExpense: "13,91",
-        healthExpense: "18,88",
-        defenseSpending: "4,66",
-        publicSpendingPib: "40,90",
-        var_: "-0,40"
+        },
+        {
+            country: "italia",
+            year: "2017",
+            publicSpending: "840.763,0",
+            educationExpense: "8,11",
+            healthExpense: "13,47",
+            defenseSpending: "3,12",
+            publicSpendingPib: "48,70",
+            var_: "-0,40"
 
-    }];
+        },
+        {
+            country: "reino unido",
+            year: "2017",
+            publicSpending: "954262,1",
+            educationExpense: "13,91",
+            healthExpense: "18,88",
+            defenseSpending: "4,66",
+            publicSpendingPib: "40,90",
+            var_: "-0,40"
+
+        }
+    ];
 
     generalPublicExpenses.find({}).toArray((err, pEE) => {
 
@@ -919,7 +920,7 @@ app.post("/api/v1/public-expenditure-educations/:country", (req, res) => {
 
 
 //   -------------------------------------------- GET /api/v1/secute/public-expenditure-educations -------------------------------------------
-app.get("/api/v1/secute/public-health-expenses", (req, res) => {
+app.get("/api/v1/secure/public-expenditure-educations", (req, res) => {
 
     var user = req.headers.user;
     var pass = req.headers.pass;
@@ -969,6 +970,11 @@ clientJMC.connect(err => {
     console.log("Connected with public-health-expenses!");
     // perform actions on the collection object
     //   client_jmc.close();
+});
+
+
+app.get("/api/v1/public-health-expenses/docs", (req, res) => {
+    res.redirect("https://documenter.getpostman.com/view/6914253/S17ozAXZ");
 });
 
 
@@ -1034,7 +1040,7 @@ app.get("/api/v1/public-health-expenses/loadInitialData", (req, res) => {
                 publicHealthExpenses.insert(i);
             });
 
-            res.sendStatus(200);
+            res.sendStatus(201);
         }
     });
 

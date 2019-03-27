@@ -920,7 +920,7 @@ app.post("/api/v1/public-expenditure-educations/:country", (req, res) => {
 
 
 //   -------------------------------------------- GET /api/v1/secute/public-expenditure-educations -------------------------------------------
-app.get("/api/v1/secute/public-health-expenses", (req, res) => {
+app.get("/api/v1/secure/public-expenditure-educations", (req, res) => {
 
     var user = req.headers.user;
     var pass = req.headers.pass;

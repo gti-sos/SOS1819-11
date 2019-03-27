@@ -1087,7 +1087,7 @@ app.get("/api/v1/public-health-expenses", (req, res) => {
         });
     }
     // Búsqueda
-    else if (Number.isInteger(initialYear) && Number.isInteger(finalYear)) {
+    else if (initialYear &&finalYear) {
         publicHealthExpenses.find({ "year": { $gte: initialYear, $lte: finalYear } }).toArray((error, result) => {
             if (error) {
                 console.log("Error: " + error);

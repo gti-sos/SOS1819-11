@@ -1049,16 +1049,16 @@ app.get("/api/v1/public-health-expenses/loadInitialData", (req, res) => {
 app.get("/api/v1/public-health-expenses", (req, res) => {
 
     // Búsqueda por año
-    var initialYear = parseInt(req.query.from);
-    var finalYear = parseInt(req.query.to);
+    var from = parseInt(req.query.from);
+    var to = parseInt(req.query.to);
 
     // Paginación
     var limit = parseInt(req.query.limit);
     var offset = parseInt(req.query.offset);
 
     // Paginación y búsqueda
-    if (Number.isInteger(limit) && Number.isInteger(offset) && Number.isInteger(initialYear) && Number.isInteger(finalYear)) {
-        publicHealthExpenses.find({ "year": { $gte: initialYear, $lte: finalYear } }).skip(offset).limit(limit).toArray((error, result) => {
+    if (Number.isInteger(limit) && Number.isInteger(offset) && Number.isInteger(from) && Number.isInteger(to)) {
+        publicHealthExpenses.find({ "year": { $gte: from, $lte: to } }).skip(offset).limit(limit).toArray((error, result) => {
             if (error) {
                 console.log("Error: " + error);
                 res.sendStatus(500);
@@ -1087,8 +1087,8 @@ app.get("/api/v1/public-health-expenses", (req, res) => {
         });
     }
     // Búsqueda
-    else if (initialYear &&finalYear) {
-        publicHealthExpenses.find({ "year": { $gte: initialYear, $lte: finalYear } }).toArray((error, result) => {
+    else if (Number.isInteger(from) && Number.isInteger(to)) {
+        publicHealthExpenses.find({ "year": { $gte: from, $lte: to } }).toArray((error, result) => {
             if (error) {
                 console.log("Error: " + error);
                 res.sendStatus(500);

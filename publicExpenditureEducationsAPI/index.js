@@ -13,7 +13,7 @@ apiRest.register = (app, publicExpenditureEducations) => {
 
     app.get("/api/v1/public-expenditure-educations/docs", (req, res) => {
     
-        res.redirect("https://documenter.getpostman.com/view/4815062/S17oxV3R");
+        res.redirect("https://documenter.getpostman.com/view/4815062/S17xrkNG");
     });
     
     

@@ -13,7 +13,8 @@
   "devDependencies": {},
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "newman run https://www.getpostman.com/collections/e3711b07f370903a2787",
+    "test-publicExpenditureEducationsAPI": "newman run https://www.getpostman.com/collections/e3711b07f370903a2787"
   },
   "repository": {
     "type": "git",

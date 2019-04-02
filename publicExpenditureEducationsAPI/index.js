@@ -298,8 +298,6 @@ apiRest.register = (app, publicExpenditureEducations) =>{
                         || !data.hasOwnProperty("educationExpensePub") || !data.hasOwnProperty("educationExpensePib")
                         || !data.hasOwnProperty("healthExpenditurePerCapita") || !data.hasOwnProperty("var_")) {
                             
-                            
-                        console.log(!Number.isInteger(data["educationExpense"])  );
                         res.sendStatus(400); // //Miramos si existe algún error (ej: solicitud malformada, sintaxis errónea, etc)
     
                     }
@@ -491,7 +489,6 @@ apiRest.register = (app, publicExpenditureEducations) =>{
             }
             else {
     
-                console.log(findPublicExpenditureEducation);
                 if (findPublicExpenditureEducation.length == 0) { //Miramos si existe el recurso
     
                     res.sendStatus(404);
@@ -506,10 +503,11 @@ apiRest.register = (app, publicExpenditureEducations) =>{
                         || !updateData.hasOwnProperty("educationExpensePub") || !updateData.hasOwnProperty("educationExpensePib")
                         || !updateData.hasOwnProperty("healthExpenditurePerCapita") || !updateData.hasOwnProperty("var_") ){
                             
-    
+                        
                         res.sendStatus(400);
     
                     }else {
+                       
     
                         publicExpenditureEducations.update(params, updateData, (err, updatePEE) => {
     

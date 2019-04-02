@@ -488,9 +488,10 @@ const uriJMCC = "mongodb+srv://test:test@sos-idqtq.mongodb.net/test?retryWrites=
 const clientJMCC = new MongoClient(uriJMCC, { useNewUrlParser: true });
 
 var publicExpenditureEducationsAPI = require("./publicExpenditureEducationsAPI/index.js");
+var publicExpenditureEducations;
 
 clientJMCC.connect(err => {
-    var publicExpenditureEducations = clientJMCC.db("sos1819").collection("public-expenditure-educations");
+    publicExpenditureEducations = clientJMCC.db("sos1819").collection("public-expenditure-educations");
     
     publicExpenditureEducationsAPI.register(app,publicExpenditureEducations );
     console.log("Connected!");

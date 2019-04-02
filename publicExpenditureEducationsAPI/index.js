@@ -9,7 +9,7 @@ module.exports = apiRest;
 
 
 
-apiRest.register = (app, publicExpenditureEducations) =>{
+apiRest.register = (app, publicExpenditureEducations) => {
 
     app.get("/api/v1/public-expenditure-educations/docs", (req, res) => {
     
@@ -87,7 +87,7 @@ apiRest.register = (app, publicExpenditureEducations) =>{
                 else {
     
                     newPublicExpenditureEducations.forEach((i) => {
-                        console.log(i);
+                     
                         publicExpenditureEducations.insert(i);
     
     
@@ -274,59 +274,53 @@ apiRest.register = (app, publicExpenditureEducations) =>{
             healthExpenditurePerCapita: req.body.healthExpenditurePerCapita,
             var_: req.body.var_
         }
-    
-        publicExpenditureEducations.find({ "country": data["country"] }).toArray((err, newPEE) => {
-    
-            if (err) { //Error interno del servidor
-    
-                res.sendStatus(500);
-    
-            }
-            else {
-    
-                if (newPEE.length > 0) { // Ya existe el recurso
-    
-                    res.sendStatus(409);
-    
-                }
-                else {
-    
-                    if (data["country"] == ""|| !isNaN(data["country"]) || isNaN(data["year"]) || isNaN(data["educationExpense"]) ||
-                        isNaN(data["educationExpensePub"]) || isNaN(data["educationExpensePib"]) || 
-                        isNaN(data["healthExpenditurePerCapita"])|| isNaN(data["var_"]) ||
-                        !data.hasOwnProperty("country") || !data.hasOwnProperty("year") || !data.hasOwnProperty("educationExpense")
-                        || !data.hasOwnProperty("educationExpensePub") || !data.hasOwnProperty("educationExpensePib")
-                        || !data.hasOwnProperty("healthExpenditurePerCapita") || !data.hasOwnProperty("var_")) {
+        
+        
+        if (data["country"] == ""|| !isNaN(data["country"]) || isNaN(data["year"]) || isNaN(data["educationExpense"]) ||
+            isNaN(data["educationExpensePub"]) || isNaN(data["educationExpensePib"]) || 
+            isNaN(data["healthExpenditurePerCapita"])|| isNaN(data["var_"]) ||
+            !data.hasOwnProperty("country") || !data.hasOwnProperty("year") || !data.hasOwnProperty("educationExpense")
+            || !data.hasOwnProperty("educationExpensePub") || !data.hasOwnProperty("educationExpensePib")
+            || !data.hasOwnProperty("healthExpenditurePerCapita") || !data.hasOwnProperty("var_")) {
                             
-                        res.sendStatus(400); // //Miramos si existe algún error (ej: solicitud malformada, sintaxis errónea, etc)
+            res.sendStatus(400); // //Miramos si existe algún error (ej: solicitud malformada, sintaxis errónea, etc)
     
-                    }
-                    else {
+        }else{
     
-                        
+            publicExpenditureEducations.find({ "country": data["country"] }).toArray((err, newPEE) => {
+        
+                if (err) { //Error interno del servidor
+        
+                    res.sendStatus(500);
+        
+                }else {
+        
+                    if (newPEE.length > 0) { // Ya existe el recurso
+        
+                        res.sendStatus(409);
+        
+                    }else {
+        
                         publicExpenditureEducations.insert(data, (err, newPEE) => {
-    
-                            if (err) {
-    
-                                res.sendStatus(500);
-    
-                            }
-                            else {
-    
-                                res.sendStatus(201);
-    
-                            }
-    
-                        });
-                    }
-    
-    
-    
-                }
-    
-            }
-        });
+        
+                             if (err) {
+        
+                                    res.sendStatus(500);
+        
+                                }else {
+        
+                                    res.sendStatus(201);
+        
+                                }
+        
+                            });
+        
+                 }   }
+            });
+        }    
+        
     });
+
     
     // -------------------------------------------- DELETE /api/v1/public-expenditure-educations --------------------------------------------
     

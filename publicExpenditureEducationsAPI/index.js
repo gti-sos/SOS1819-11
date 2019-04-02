@@ -239,12 +239,19 @@ apiRest.register = (app, publicExpenditureEducations) => {
     
                 }
                 else {
+                    
+                    if(!publicExpenditureEducation.length){
+                        
+                        res.sendStatus(404);
+                        
+                    }else{
     
-                    res.status(200).send(publicExpenditureEducation.map((c) => {
-                        delete c._id;
-                        return c;
-    
-                    }));
+                        res.status(200).send(publicExpenditureEducation.map((c) => {
+                            delete c._id;
+                            return c;
+        
+                        }));
+                    }
                     
     
                 }

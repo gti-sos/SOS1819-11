@@ -291,13 +291,15 @@ apiRest.register = (app, publicExpenditureEducations) =>{
                 }
                 else {
     
-                    if (data["country"] == ""|| !isNaN(data["country"])|| !Number.isInteger(data["year"]) || !Number.isInteger(data["educationExpense"]) ||
-                        !Number.isInteger(data["educationExpensePub"]) || !Number.isInteger(data["educationExpensePib"]) || 
-                        !Number.isInteger(data["healthExpenditurePerCapita"])|| !Number.isInteger(data["var_"]) ||
+                    if (data["country"] == ""|| !isNaN(data["country"]) || isNaN(data["year"]) || isNaN(data["educationExpense"]) ||
+                        isNaN(data["educationExpensePub"]) || isNaN(data["educationExpensePib"]) || 
+                        isNaN(data["healthExpenditurePerCapita"])|| isNaN(data["var_"]) ||
                         !data.hasOwnProperty("country") || !data.hasOwnProperty("year") || !data.hasOwnProperty("educationExpense")
                         || !data.hasOwnProperty("educationExpensePub") || !data.hasOwnProperty("educationExpensePib")
                         || !data.hasOwnProperty("healthExpenditurePerCapita") || !data.hasOwnProperty("var_")) {
-    
+                            
+                            
+                        console.log(!Number.isInteger(data["educationExpense"])  );
                         res.sendStatus(400); // //Miramos si existe algún error (ej: solicitud malformada, sintaxis errónea, etc)
     
                     }

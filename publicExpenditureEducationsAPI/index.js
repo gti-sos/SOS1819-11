@@ -115,8 +115,11 @@ apiRest.register = (app, publicExpenditureEducations) => {
         //Paginación
         var limit = Number(req.query.limit);
         var offset = Number(req.query.offset);
-        
+    
+            
         var queries = req.query;
+        
+        
         
         if(req.query.country){
         
@@ -231,10 +234,8 @@ apiRest.register = (app, publicExpenditureEducations) => {
         }
         else {
             
-                if(req.query.country || req.query.year || req.query.educationExpense || req.query.educationExpensePub ||
-                  req.query.educationExpensePib || req.query.var_ || req.query.healthExpenditurePerCapita){
             
-            
+                if(JSON.stringify(queries) != "{}"){
             
                         publicExpenditureEducations.find(queries).toArray((err, publicExpenditureEducation) => {
                 

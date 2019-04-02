@@ -230,32 +230,62 @@ apiRest.register = (app, publicExpenditureEducations) => {
             });
         }
         else {
-    
-            publicExpenditureEducations.find(queries).toArray((err, publicExpenditureEducation) => {
-    
-                if (err) {
-    
-                    res.sendStatus(500);
-    
-                }
-                else {
+            
+                if(req.query.country || req.query.year || req.query.educationExpense || req.query.educationExpensePub ||
+                  req.query.educationExpensePib || req.query.var_ || req.query.healthExpenditurePerCapita){
+            
+            
+            
+                        publicExpenditureEducations.find(queries).toArray((err, publicExpenditureEducation) => {
+                
+                            if (err) {
+                
+                                res.sendStatus(500);
+                
+                            }
+                            else {
+                                
+                                if(!publicExpenditureEducation.length ){
+                                    
+                                    res.sendStatus(404);
+                                    
+                                }else{
+                
+                                    res.status(200).send(publicExpenditureEducation.map((c) => {
+                                        delete c._id;
+                                        return c;
                     
-                    if(!publicExpenditureEducation.length){
+                                    }));
+                                }
+                                
+                
+                            }
+                        });
                         
-                        res.sendStatus(404);
-                        
-                    }else{
-    
-                        res.status(200).send(publicExpenditureEducation.map((c) => {
-                            delete c._id;
-                            return c;
-        
-                        }));
-                    }
+                }else{
                     
-    
+                    
+                    publicExpenditureEducations.find({}).toArray((err, publicExpenditureEducation) => {
+                
+                            if (err) {
+                
+                                res.sendStatus(500);
+                
+                            }
+                            else {
+                
+                                res.status(200).send(publicExpenditureEducation.map((c) => {
+                                    delete c._id;
+                                    return c;
+                    
+                                  }));
+
+                            }
+                        });
+                    
+                    
+                    
                 }
-            });
     
         }
     

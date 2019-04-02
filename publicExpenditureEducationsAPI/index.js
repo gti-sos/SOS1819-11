@@ -267,12 +267,12 @@ apiRest.register = (app, publicExpenditureEducations) =>{
     
         var data = {
             country: req.body.country,
-            year: Number(req.body.year),
-            educationExpense: Number(req.body.educationExpense),
-            educationExpensePub: Number(req.body.educationExpensePub),
-            educationExpensePib: Number(req.body.educationExpensePib),
-            healthExpenditurePerCapita: Number(req.body.healthExpenditurePerCapita),
-            var_: Number(req.body.var_)
+            year: req.body.year,
+            educationExpense: req.body.educationExpense,
+            educationExpensePub: req.body.educationExpensePub,
+            educationExpensePib: req.body.educationExpensePib,
+            healthExpenditurePerCapita: req.body.healthExpenditurePerCapita,
+            var_: req.body.var_
         }
     
         publicExpenditureEducations.find({ "country": data["country"] }).toArray((err, newPEE) => {

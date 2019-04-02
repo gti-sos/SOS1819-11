@@ -138,7 +138,7 @@ apiRest.register = (app, generalPublicExpenses) => {
 
             if (req.query.healtExpense) {
 
-                queries.healtExpense = Number(req.query.healtExpense);
+                queries.healtExpense = Number(req.query.healthExpense);
             }
 
             if (req.query.defenseSpending) {

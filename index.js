@@ -491,11 +491,9 @@ var publicExpenditureEducationsAPI = require("./publicExpenditureEducationsAPI/i
 var publicExpenditureEducations;
 
 clientJMCC.connect(err => {
-    
     publicExpenditureEducations = clientJMCC.db("sos1819").collection("public-expenditure-educations");
     
     publicExpenditureEducationsAPI.register(app,publicExpenditureEducations );
-    
     console.log("Connected!");
 });
 

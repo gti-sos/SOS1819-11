@@ -489,7 +489,7 @@ apiRest.register = (app, generalPublicExpenses) => {
                         //Miramos si existe algún error (ej: solicitud malformada, sintaxis errónea, etc)
                         if (updateData.country != req.params.country || updateData.year != params["year"] || !isNaN(updateData.country) ||
                             isNaN(updateData.year) || isNaN(updateData.publicSpending) || isNaN(updateData.educationExpense) ||
-                            isNaN(updateData.healtExpense) || isNaN(updateData.defenseSpending) || isNaN(updateData.publicSpendingPib) ||
+                            isNaN(updateData.healthExpense) || isNaN(updateData.defenseSpending) || isNaN(updateData.publicSpendingPib) ||
                             isNaN(updateData.var_) ||
                             !updateData.hasOwnProperty("country") || !updateData.hasOwnProperty("year") || !updateData.hasOwnProperty("publicSpending") ||
                             !updateData.hasOwnProperty("educationExpense") || !updateData.hasOwnProperty("healthExpense") ||

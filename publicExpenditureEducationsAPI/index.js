@@ -450,7 +450,8 @@ apiRest.register = (app, publicExpenditureEducations) => {
     
                     
      
-                    if(publicExpenditureEducation.length==1){
+                    if(publicExpenditureEducation.length==1 && Number.isInteger(data)){
+                        
                         delete publicExpenditureEducation[0]._id;
                         res.status(200).send(publicExpenditureEducation[0]);
                                   

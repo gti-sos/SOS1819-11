@@ -18,7 +18,7 @@ const uriAJSM = "mongodb+srv://test:test@sos-project-enqlt.mongodb.net/test?retr
 const clientAJSM = new MongoClient(uriAJSM, { useNewUrlParser: true });
 
 
-var generalPublicExpensesAPI = require("./generalPublicExpenesesAPI/index.js");
+var generalPublicExpensesAPI = require("./generalPublicExpensesAPI/index.js");
 var generalPublicExpenses;
 
 clientAJSM.connect(err => {

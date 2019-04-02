@@ -234,7 +234,7 @@ apiRest.register = (app, publicExpenditureEducations) => {
         }
         else {
             
-            
+                // si no esta vacio entra
                 if(JSON.stringify(queries) != "{}"){
             
                         publicExpenditureEducations.find(queries).toArray((err, publicExpenditureEducation) => {
@@ -305,12 +305,12 @@ apiRest.register = (app, publicExpenditureEducations) => {
     
         var data = {
             country: req.body.country,
-            year: req.body.year,
-            educationExpense: req.body.educationExpense,
-            educationExpensePub: req.body.educationExpensePub,
-            educationExpensePib: req.body.educationExpensePib,
-            healthExpenditurePerCapita: req.body.healthExpenditurePerCapita,
-            var_: req.body.var_
+            year: Number(req.body.year),
+            educationExpense: Number(req.body.educationExpense),
+            educationExpensePub: Number(req.body.educationExpensePub),
+            educationExpensePib: Number(req.body.educationExpensePib),
+            healthExpenditurePerCapita: Number(req.body.healthExpenditurePerCapita),
+            var_: Number(req.body.var_)
         }
         
         
@@ -332,12 +332,36 @@ apiRest.register = (app, publicExpenditureEducations) => {
                     res.sendStatus(500);
         
                 }else {
+                    // Si existe el pais, pues se comprueba si el pais y eño es el mismo
+                    //si es el año y pais iguales pues se envia un 409
+                    // sino pues se crea
+                    if(newPEE.length > 0){
+                    
+                        if (data["country"] == newPEE[0].country && data["year"] == newPEE[0].year) { // Ya existe el recurso
+            
+                            res.sendStatus(409);
+            
+                        }else{
+                            
+                           publicExpenditureEducations.insert(data, (err, newPEE) => {
         
-                    if (newPEE.length > 0) { // Ya existe el recurso
+                             if (err) {
         
-                        res.sendStatus(409);
+                                    res.sendStatus(500);
         
-                    }else {
+                                }else {
+        
+                                    res.sendStatus(201);
+        
+                                }
+        
+                            }); 
+                            
+                        }
+                    
+                    
+                   }else {
+                        
         
                         publicExpenditureEducations.insert(data, (err, newPEE) => {
         
@@ -353,7 +377,11 @@ apiRest.register = (app, publicExpenditureEducations) => {
         
                             });
         
-                 }   }
+                 
+                    } 
+                    
+                    
+                } 
             });
         }    
         
@@ -404,54 +432,37 @@ apiRest.register = (app, publicExpenditureEducations) => {
             
         }
     
+        
+        
         publicExpenditureEducations.find(queries).toArray((err, publicExpenditureEducation) => {
-    
+
             if (err) {
     
                 res.sendStatus(500);
     
-            }
-            else {
-    
-                if (publicExpenditureEducation.length < 1) {
+            }else {
+
+                if (publicExpenditureEducation.length < 1 && Number.isInteger(data)) {
     
                     res.sendStatus(404);
     
-                }
-                else {
+                }else {
     
-                    if (queries["country"] != publicExpenditureEducation[0]["country"] && Number.isNaN(queries["country"])) {
-    
-    
-                        res.sendStatus(400);
-    
-                    }else if(queries["year"] != publicExpenditureEducation[0]["year"] && Number.isInteger(queries["year"])){
-                        
-                        
-                        res.sendStatus(400);
-    
-                    }
-                    else {
+                    
      
-                            
-                            
-                            if(publicExpenditureEducation.length==1){
-                                 delete publicExpenditureEducation[0]._id;
-                                 res.status(200).send(publicExpenditureEducation[0]);
+                    if(publicExpenditureEducation.length==1){
+                        delete publicExpenditureEducation[0]._id;
+                        res.status(200).send(publicExpenditureEducation[0]);
                                   
                                 
-                            }else{
+                    }else{
                                 
-                                res.status(200).send(publicExpenditureEducation.map((c) => {
-                                    delete c._id;
-                                    return c;
+                        res.status(200).send(publicExpenditureEducation.map((c) => {
+                            delete c._id;
+                            return c;
                                     
-                                }));
+                        }));
                                 
-                            }
-                            
-                            
-    
                     }
     
                 }

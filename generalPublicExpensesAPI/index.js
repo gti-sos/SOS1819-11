@@ -476,7 +476,7 @@ apiRest.register = (app, generalPublicExpenses) => {
             }
             else {
     
-                if (generalPublicExpenses.length < 1) {
+                if (generalPublicExpenses == 0) {
     
                     res.sendStatus(404);
     

@@ -1,11 +1,4 @@
-// -------------------API REST Joaquín Morillo Capitán------------------------
-
-/******ESTO IRÍA EN EL ARCHIVO DE TODAS LAS APIs**********/
-/*********************************************************/
-
-
-
-/******************************************************/
+/*************************API REST Joaquín Morillo Capitán**************************/
 
 const BASE_PATH = "/api/v1/public-health-expenses";
 

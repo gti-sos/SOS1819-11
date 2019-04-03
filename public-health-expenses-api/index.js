@@ -352,6 +352,8 @@ api.register = (app, publicHealthExpenses) => {
                 res.sendStatus(404);
             }
             else if (newvalues["country"] == "" ||
+                newvalues["country"] != params.country ||
+                newvalues["year"] != params.year ||
                 !isNaN(newvalues["country"]) ||
                 isNaN(newvalues["year"]) ||
                 isNaN(newvalues["publicHealthExpense"]) ||

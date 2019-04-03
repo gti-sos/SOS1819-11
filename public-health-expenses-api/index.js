@@ -496,7 +496,7 @@ api.register = (app, publicHealthExpenses) => {
 
     //POST /api/v1/public-health-expenses (ERROR)
 
-    app.post(BASE_PATH + "/:country", (req, res) => {
+    app.post(BASE_PATH + "/:country/:year", (req, res) => {
         res.sendStatus(405);
     });
 

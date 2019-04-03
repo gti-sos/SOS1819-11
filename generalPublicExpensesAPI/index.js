@@ -504,7 +504,7 @@ apiRest.register = (app, generalPublicExpenses) => {
     
         var params = {
             country: req.params.country,
-            year: Number(req.params.year)
+            year: parseInt(req.params.year)
             
         } 
         

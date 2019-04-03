@@ -24,16 +24,13 @@ var generalPublicExpenses;
 clientAJSM.connect(err => {
     generalPublicExpenses = clientAJSM.db("sos1819").collection("general-public-expenses");
     generalPublicExpensesAPI.register(app, generalPublicExpenses);
-    
+
     console.log("Connected! server general-public-expenses");
 });
-
 
 //-----------------------------------------------------------------------
 
 // -------------------API REST Juan Manuel Centeno-----------------------
-
-
 
 const uriJMCC = "mongodb+srv://test:test@sos-idqtq.mongodb.net/test?retryWrites=true";
 const clientJMCC = new MongoClient(uriJMCC, { useNewUrlParser: true });
@@ -43,19 +40,31 @@ var publicExpenditureEducations;
 
 clientJMCC.connect(err => {
     publicExpenditureEducations = clientJMCC.db("sos1819").collection("public-expenditure-educations");
-    
-    publicExpenditureEducationsAPI.register(app,publicExpenditureEducations );
+
+    publicExpenditureEducationsAPI.register(app, publicExpenditureEducations);
     console.log("Connected!");
 });
-
 
 //---------------------------------------------------------------------------
 
 
 // -------------------API REST Joaquín Morillo Capitán------------------------
 
-//----------------------------------------------------------------------------
+// const MongoClient = require("mongodb").MongoClient;
+const uriJMC = "mongodb+srv://test:test@sos-xfza6.mongodb.net/test?retryWrites=true";
+const clientJMC = new MongoClient(uriJMC, { useNewUrlParser: true });
 
+var api = require("./public-health-expenses-api");
+var publicHealthExpenses;
+
+clientJMC.connect(error => {
+    publicHealthExpenses = clientJMC.db("SOS1819").collection("public-health-expenses");
+    console.log("Connected with public-health-expenses!");
+    api.register(app, publicHealthExpenses);
+    console.log("Connected!");
+});
+
+//----------------------------------------------------------------------------
 
 app.listen(port, () => {
 

@@ -504,7 +504,7 @@ apiRest.register = (app, generalPublicExpenses) => {
     
         var params = {
             country: req.params.country,
-            year: parseInt(req.params.year)
+            year: Number(req.params.year)
             
         } 
         
@@ -526,11 +526,11 @@ apiRest.register = (app, generalPublicExpenses) => {
                 }
                 else {
                     //Miramos si existe algún error (ej: solicitud malformada, sintaxis errónea, etc)
-                    if (updateData.country != req.params.country || updateData.year != params["year"] || !isNaN(updateData.country) 
+                    if (updateData.country != params["country"] || updateData.year != params["year"] || !isNaN(updateData.country) 
                         ||  isNaN(updateData.year) || isNaN(updateData.publicSpending) || isNaN(updateData.educationExpense) 
                         || isNaN(updateData.healthExpense) || isNaN(updateData.defenseSpending) || isNaN(updateData.publicSpendingPib)
                         || isNaN(updateData.var_)||
-                        !updateData.hasOwnProperty("country") || !updateData.hasOwnProperty("year") || !updateData.hasOwnProperty("publicSpending")
+                        !updateData.hasOwnProperty("country") || !updateData.hasOwnProperty("year") || !updateData.hasOwnProperty("espania")
                         || !updateData.hasOwnProperty("educationExpense") || !updateData.hasOwnProperty("healthExpense")
                         || !updateData.hasOwnProperty("defenseSpending") || !updateData.hasOwnProperty("publicSpendingPib") 
                         || !updateData.hasOwnProperty("var_") ){

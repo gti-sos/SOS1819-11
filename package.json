@@ -14,7 +14,7 @@
   "devDependencies": {},
   "scripts": {
     "start": "node index.js",
-    "test": "newman run https://www.getpostman.com/collections/e3711b07f370903a2787",
+    "test": "newman run https://www.getpostman.com/collections/e3711b07f370903a2787; newman run https://www.getpostman.com/collections/ed02aba36f63580c7f99; newman run https://www.getpostman.com/collections/1821c572780c632dbeab",
     "test-publicExpenditureEducationsAPI": "newman run https://www.getpostman.com/collections/e3711b07f370903a2787",
     "test-generalPublicExpensesAPI": "newman run https://www.getpostman.com/collections/1821c572780c632dbeab",
     "test-public-health-expenses-api": "newman run https://www.getpostman.com/collections/ed02aba36f63580c7f99"

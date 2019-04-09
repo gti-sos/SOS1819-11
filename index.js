@@ -32,6 +32,12 @@ clientAJSM.connect(err => {
 
 // -------------------API REST Juan Manuel Centeno-----------------------
 
+//---------------------------------------Minipostman Juan Manuel Centeno -------------------------------------------
+
+app.use('/public-expenditure-educations', express.static(path.join(__dirname, "public/public-expenditure-educations/views")));
+
+
+
 const uriJMCC = "mongodb+srv://test:test@sos-idqtq.mongodb.net/test?retryWrites=true";
 const clientJMCC = new MongoClient(uriJMCC, { useNewUrlParser: true });
 

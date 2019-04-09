@@ -14,6 +14,11 @@ app.use('/', express.static(path.join(__dirname, "public")));
 
 // ----------------------------------------------------API REST Antonio J----------------------------------------------------------------------
 
+//----------------------------> Mini-Postman Antonio Jesús
+
+app.use('/general-public-expenses', express.static(path.join(__dirname, "public/general-public-expenses/views")));
+
+
 const uriAJSM = "mongodb+srv://test:test@sos-project-enqlt.mongodb.net/test?retryWrites=true";
 const clientAJSM = new MongoClient(uriAJSM, { useNewUrlParser: true });
 

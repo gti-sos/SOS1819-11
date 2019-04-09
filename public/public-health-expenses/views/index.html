@@ -11,7 +11,7 @@
 </head>
 
 <body ng-model="MainCtrl">
-    <h1>My minipostman</h1>
+    <h1 class="text-center">My minipostman</h1>
 
     <!-- separador -->
     <hr width="50%" />
@@ -40,17 +40,17 @@
             </div>
 
             <!-- columna de devolución -->
-            <div class="col-sm">
+            <div class="col-sm" ng-model="getResponse">
 
-                <div class="alert alert-warning" ng-model="state">
+                <div class="alert alert-warning">
 
-                    Status: {{state}}
+                    Status: {{getResponse.state}}
 
                 </div>
 
-                <div class="alert alert-secondary" ng-model="data">
+                <div class="alert alert-secondary">
 
-                    Response: {{data}}
+                    Response: {{getResponse.data}}
 
                 </div>
 
@@ -71,28 +71,28 @@
 
                     <div class="form-group">
 
-                        <label>DELETE <input type="text" class="form-control"/></label>
+                        <label>DELETE <input type="text" class="form-control" ng-model="query"/></label>
 
                     </div>
 
-                    <button class="btn btn-danger" ng-click="delete()">Send</button>
+                    <button class="btn btn-danger" ng-click="delete(query)">Send</button>
 
                 </form>
 
             </div>
 
             <!-- columna de devolución -->
-            <div class="col-sm">
+            <div class="col-sm" ng-model="deleteResponse">
 
                 <div class="alert alert-warning">
 
-                    Status: {{state}}
+                    Status: {{deleteResponse.state}}
 
                 </div>
 
                 <div class="alert alert-secondary">
 
-                    Response: {{data}}
+                    Response: {{deleteResponse.data}}
 
                 </div>
 
@@ -109,7 +109,7 @@
             <!-- columna de envío -->
             <div class="col-sm">
 
-                <form>
+                <form ng-model="send">
 
                     <div class="form-group">
 
@@ -180,17 +180,17 @@
             </div>
 
             <!-- columna de devolución -->
-            <div class="col-sm">
+            <div class="col-sm" ng-model="postResponse">
 
                 <div class="alert alert-warning">
 
-                    Status: {{state}}
+                    Status: {{postResponse.state}}
 
                 </div>
 
                 <div class="alert alert-secondary">
 
-                    Response: {{data}}
+                    Response: {{postResponse.data}}
 
                 </div>
 
@@ -207,7 +207,7 @@
             <!-- columna de envío -->
             <div class="col-sm">
 
-                <form>
+                <form ng-model="send">
 
                     <div class="form-group">
 
@@ -271,24 +271,24 @@
 
                     </div>
 
-                    <button class="btn btn-default" ng-click="put(send)">Send</button>
+                    <button class="btn btn-success" ng-click="put(send)">Send</button>
 
                 </form>
 
             </div>
 
             <!-- columna de devolución -->
-            <div class="col-sm">
+            <div class="col-sm" ng-model="putResponse">
 
                 <div class="alert alert-warning">
 
-                    Status: {{state}}
+                    Status: {{putResponse.state}}
 
                 </div>
 
                 <div class="alert alert-secondary">
 
-                    Response: {{data}}
+                    Response: {{putResponse.data}}
 
                 </div>
 

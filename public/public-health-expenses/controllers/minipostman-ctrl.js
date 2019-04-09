@@ -6,6 +6,8 @@ app.controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
     console.log("MainCtrl initialized!");
 
     $scope.url = "/api/v1/public-health-expenses";
+    
+    $scope.query="";
 
     $scope.send = {
         country: "france",
@@ -18,8 +20,8 @@ app.controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
         var_: 3.80
     };
 
-    $scope.get = function() {
-        $http.get($scope.url).then(function(response) {
+    $scope.get = function(query) {
+        $http.get($scope.url+query).then(function(response) {
             $scope.state = JSON.stringify(response.status, null, 2);
             $scope.data = JSON.stringify(response.data, null, 2);
         }).catch(function(response) {

@@ -29,11 +29,11 @@
 
                     <div class="form-group">
 
-                        <label>GET <input type="text" class="form-control" ng-model="url"/></label>
+                        <label>GET <input type="text" class="form-control" ng-model="query"/></label>
 
                     </div>
 
-                    <button class="btn btn-primary" ng-click="get()">Send</button>
+                    <button class="btn btn-primary" ng-click="get(query)">Send</button>
 
                 </form>
 
@@ -42,13 +42,13 @@
             <!-- columna de devolución -->
             <div class="col-sm">
 
-                <div class="alert alert-warning">
+                <div class="alert alert-warning" ng-model="state">
 
                     Status: {{state}}
 
                 </div>
 
-                <div class="alert alert-secondary">
+                <div class="alert alert-secondary" ng-model="data">
 
                     Response: {{data}}
 
@@ -71,7 +71,7 @@
 
                     <div class="form-group">
 
-                        <label>DELETE <input type="text" class="form-control" ng-model="url"/></label>
+                        <label>DELETE <input type="text" class="form-control"/></label>
 
                     </div>
 
@@ -113,7 +113,7 @@
 
                     <div class="form-group">
 
-                        <label>POST <input type="text" class="form-control" ng-model="url"/></label>
+                        <label>POST <input type="text" class="form-control"/></label>
 
                     </div>
 
@@ -211,7 +211,7 @@
 
                     <div class="form-group">
 
-                        <label>PUT <input type="text" class="form-control" ng-model="url"/></label>
+                        <label>PUT <input type="text" class="form-control"/></label>
 
                     </div>
 

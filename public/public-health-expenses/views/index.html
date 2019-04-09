@@ -29,7 +29,7 @@
 
                     <div class="form-group">
 
-                        <label>GET <input type="text" class="form-control" ng-model="query"/></label>
+                        <label>GET /api/v1/public-health-expenses<input type="text" class="form-control" ng-model="query"/></label>
 
                     </div>
 
@@ -71,7 +71,7 @@
 
                     <div class="form-group">
 
-                        <label>DELETE <input type="text" class="form-control" ng-model="query"/></label>
+                        <label>DELETE /api/v1/public-health-expenses<input type="text" class="form-control" ng-model="query"/></label>
 
                     </div>
 
@@ -113,7 +113,7 @@
 
                     <div class="form-group">
 
-                        <label>POST <input type="text" class="form-control"/></label>
+                        <label>POST /api/v1/public-health-expenses<input type="text" class="form-control" ng-model="query"/></label>
 
                     </div>
 
@@ -173,7 +173,7 @@
 
                     </div>
 
-                    <button class="btn btn-success" ng-click="post(send)">Send</button>
+                    <button class="btn btn-success" ng-click="post(query,send)">Send</button>
 
                 </form>
 
@@ -211,7 +211,7 @@
 
                     <div class="form-group">
 
-                        <label>PUT <input type="text" class="form-control"/></label>
+                        <label>PUT /api/v1/public-health-expenses<input type="text" class="form-control" ng-model="query"/></label>
 
                     </div>
 
@@ -271,7 +271,7 @@
 
                     </div>
 
-                    <button class="btn btn-success" ng-click="put(send)">Send</button>
+                    <button class="btn btn-success" ng-click="put(query,send)">Send</button>
 
                 </form>
 

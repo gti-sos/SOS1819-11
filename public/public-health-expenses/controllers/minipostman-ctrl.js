@@ -36,7 +36,7 @@ app.controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
         });
     };
 
-    $scope.post = function(send) {
+    $scope.post = function(query, send) {
         $http.post($scope.url, $scope.send).then(function(response) {
             $scope.postResponse = { state: JSON.stringify(response.status, null, 2), data: JSON.stringify(response.data, null, 2) };
         }).catch(function(response) {
@@ -44,7 +44,7 @@ app.controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
         });
     };
 
-    $scope.put = function(send) {
+    $scope.put = function(query, send) {
         $http.put($scope.url, $scope.send).then(function(response) {
             $scope.putResponse = { state: JSON.stringify(response.status, null, 2), data: JSON.stringify(response.data, null, 2) };
         }).catch(function(response) {

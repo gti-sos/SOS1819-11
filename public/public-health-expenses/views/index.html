@@ -10,7 +10,7 @@
     <script src="/public-health-expenses/controllers/minipostman-ctrl.js"></script>
 </head>
 
-<body>
+<body ng-model="MainCtrl">
     <h1>My minipostman</h1>
 
     <!-- separador -->
@@ -29,11 +29,11 @@
 
                     <div class="form-group">
 
-                        <label>GET <input type="text" class="form-control" placeholder="/api/v1/public-health-expenses/loadInitialData"/></label>
+                        <label>GET <input type="text" class="form-control" ng-model="url"/></label>
 
                     </div>
 
-                    <button class="btn btn-primary">Send</button>
+                    <button class="btn btn-primary" ng-click="get()">Send</button>
 
                 </form>
 
@@ -44,13 +44,13 @@
 
                 <div class="alert alert-warning">
 
-                    Status:
+                    Status: {{state}}
 
                 </div>
 
                 <div class="alert alert-secondary">
 
-                    Response:
+                    Response: {{data}}
 
                 </div>
 
@@ -71,11 +71,11 @@
 
                     <div class="form-group">
 
-                        <label>DELETE <input type="text" class="form-control" placeholder="/api/v1/public-health-expenses/france/2017"/></label>
+                        <label>DELETE <input type="text" class="form-control" ng-model="url"/></label>
 
                     </div>
 
-                    <button class="btn btn-danger">Send</button>
+                    <button class="btn btn-danger" ng-click="delete()">Send</button>
 
                 </form>
 
@@ -86,13 +86,13 @@
 
                 <div class="alert alert-warning">
 
-                    Status:
+                    Status: {{state}}
 
                 </div>
 
                 <div class="alert alert-secondary">
 
-                    Response:
+                    Response: {{data}}
 
                 </div>
 
@@ -113,67 +113,67 @@
 
                     <div class="form-group">
 
-                        <label>POST <input type="text" class="form-control" placeholder="/api/v1/public-health-expenses"/></label>
+                        <label>POST <input type="text" class="form-control" ng-model="url"/></label>
 
                     </div>
 
                     <div class="form-group">
 
                         <label>country</label>
-                        <input type="text" class="form-control" placeholder="france" />
+                        <input type="text" class="form-control" placeholder="france" ng-model="send.country" />
 
                     </div>
 
                     <div class="form-group">
 
                         <label>year</label>
-                        <input type="text" class="form-control" placeholder="2017" />
+                        <input type="text" class="form-control" placeholder="2017" ng-model="send.year" />
 
                     </div>
 
                     <div class="form-group">
 
                         <label>publicHealthExpense</label>
-                        <input type="text" class="form-control" placeholder="82.99" />
+                        <input type="text" class="form-control" placeholder="82.99" ng-model="send.publicHealthExpense" />
 
                     </div>
 
                     <div class="form-group">
 
                         <label>healthExpense</label>
-                        <input type="text" class="form-control" placeholder="217528.3" />
+                        <input type="text" class="form-control" placeholder="217528.3" ng-model="send.healthExpense" />
 
                     </div>
 
                     <div class="form-group">
 
                         <label>totalPublicExpense</label>
-                        <input type="text" class="form-control" placeholder="16.97" />
+                        <input type="text" class="form-control" placeholder="16.97" ng-model="send.totalPublicExpense" />
 
                     </div>
 
                     <div class="form-group">
 
                         <label>healthExpensePib</label>
-                        <input type="text" class="form-control" placeholder="9.51" />
+                        <input type="text" class="form-control" placeholder="9.51" ng-model="send.healthExpensePib" />
 
                     </div>
 
                     <div class="form-group">
 
                         <label>healthExpenditurePerCapita</label>
-                        <input type="text" class="form-control" placeholder="3247" />
+                        <input type="text" class="form-control" placeholder="3247" ng-model="send.healthExpenditurePerCapita" />
 
                     </div>
 
                     <div class="form-group">
 
                         <label>var_</label>
-                        <input type="text" class="form-control" placeholder="3.80" />
+                        <input type="text" class="form-control" placeholder="3.80" ng-model="send.var_" />
 
                     </div>
 
-                    <button class="btn btn-success">Send</button>
+                    <button class="btn btn-success" ng-click="post(send)">Send</button>
 
                 </form>
 
@@ -184,13 +184,13 @@
 
                 <div class="alert alert-warning">
 
-                    Status:
+                    Status: {{state}}
 
                 </div>
 
                 <div class="alert alert-secondary">
 
-                    Response:
+                    Response: {{data}}
 
                 </div>
 
@@ -211,67 +211,67 @@
 
                     <div class="form-group">
 
-                        <label>PUT <input type="text" class="form-control" placeholder="/api/v1/public-health-expenses/france/2017"/></label>
+                        <label>PUT <input type="text" class="form-control" ng-model="url"/></label>
 
                     </div>
 
                     <div class="form-group">
 
                         <label>country</label>
-                        <input type="text" class="form-control" placeholder="france" />
+                        <input type="text" class="form-control" placeholder="france" ng-model="send.country" />
 
                     </div>
 
                     <div class="form-group">
 
                         <label>year</label>
-                        <input type="text" class="form-control" placeholder="2017" />
+                        <input type="text" class="form-control" placeholder="2017" ng-model="send.year" />
 
                     </div>
 
                     <div class="form-group">
 
                         <label>publicHealthExpense</label>
-                        <input type="text" class="form-control" placeholder="82.99" />
+                        <input type="text" class="form-control" placeholder="82.99" ng-model="send.publicHealthExpense" />
 
                     </div>
 
                     <div class="form-group">
 
                         <label>healthExpense</label>
-                        <input type="text" class="form-control" placeholder="217528.3" />
+                        <input type="text" class="form-control" placeholder="217528.3" ng-model="send.healthExpense" />
 
                     </div>
 
                     <div class="form-group">
 
                         <label>totalPublicExpense</label>
-                        <input type="text" class="form-control" placeholder="16.97" />
+                        <input type="text" class="form-control" placeholder="16.97" ng-model="send.totalPublicExpense" />
 
                     </div>
 
                     <div class="form-group">
 
                         <label>healthExpensePib</label>
-                        <input type="text" class="form-control" placeholder="9.51" />
+                        <input type="text" class="form-control" placeholder="9.51" ng-model="send.healthExpensePib" />
 
                     </div>
 
                     <div class="form-group">
 
                         <label>healthExpenditurePerCapita</label>
-                        <input type="text" class="form-control" placeholder="3247" />
+                        <input type="text" class="form-control" placeholder="3247" ng-model="send.healthExpenditurePerCapita" />
 
                     </div>
 
                     <div class="form-group">
 
                         <label>var_</label>
-                        <input type="text" class="form-control" placeholder="3.80" />
+                        <input type="text" class="form-control" placeholder="3.80" ng-model="send.var_" />
 
                     </div>
 
-                    <button class="btn btn-default">Send</button>
+                    <button class="btn btn-default" ng-click="put(send)">Send</button>
 
                 </form>
 
@@ -282,13 +282,13 @@
 
                 <div class="alert alert-warning">
 
-                    Status:
+                    Status: {{state}}
 
                 </div>
 
                 <div class="alert alert-secondary">
 
-                    Response:
+                    Response: {{data}}
 
                 </div>
 

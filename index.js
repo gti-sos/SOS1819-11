@@ -61,6 +61,7 @@ clientJMCC.connect(err => {
 
 // -------------------API REST Joaquín Morillo Capitán------------------------
 
+app.use("/public-health-expenses", express.static(path.join(__dirname, "public/public-health-expenses/views")));
 // const MongoClient = require("mongodb").MongoClient;
 const uriJMC = "mongodb+srv://test:test@sos-xfza6.mongodb.net/test?retryWrites=true";
 const clientJMC = new MongoClient(uriJMC, { useNewUrlParser: true });

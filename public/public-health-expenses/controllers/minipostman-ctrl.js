@@ -6,8 +6,8 @@ app.controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
     console.log("MainCtrl initialized!");
 
     $scope.url = "/api/v1/public-health-expenses";
-    
-    $scope.query="";
+
+    $scope.query = "";
 
     $scope.send = {
         country: "france",
@@ -21,42 +21,34 @@ app.controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
     };
 
     $scope.get = function(query) {
-        $http.get($scope.url+query).then(function(response) {
-            $scope.state = JSON.stringify(response.status, null, 2);
-            $scope.data = JSON.stringify(response.data, null, 2);
+        $http.get($scope.url + query).then(function(response) {
+            $scope.getResponse = { state: JSON.stringify(response.status, null, 2), data: JSON.stringify(response.data, null, 2) };
         }).catch(function(response) {
-            $scope.state = JSON.stringify(response.status, null, 2);
-            $scope.data = JSON.stringify(response.data, null, 2);
+            $scope.getResponse = { state: JSON.stringify(response.status, null, 2), data: JSON.stringify(response.data, null, 2) };
         });
     };
 
-    $scope.delete = function() {
-        $http.delete($scope.url).then(function(response) {
-            $scope.state = JSON.stringify(response.status, null, 2);
-            $scope.data = JSON.stringify(response.data, null, 2);
+    $scope.delete = function(query) {
+        $http.delete($scope.url + query).then(function(response) {
+            $scope.deleteResponse = { state: JSON.stringify(response.status, null, 2), data: JSON.stringify(response.data, null, 2) };
         }).catch(function(response) {
-            $scope.state = JSON.stringify(response.status, null, 2);
-            $scope.data = JSON.stringify(response.data, null, 2);
+            $scope.deleteResponse = { state: JSON.stringify(response.status, null, 2), data: JSON.stringify(response.data, null, 2) };
         });
     };
 
     $scope.post = function(send) {
         $http.post($scope.url, $scope.send).then(function(response) {
-            $scope.state = JSON.stringify(response.status, null, 2);
-            $scope.data = JSON.stringify(response.data, null, 2);
+            $scope.postResponse = { state: JSON.stringify(response.status, null, 2), data: JSON.stringify(response.data, null, 2) };
         }).catch(function(response) {
-            $scope.state = JSON.stringify(response.status, null, 2);
-            $scope.data = JSON.stringify(response.data, null, 2);
+            $scope.postResponse = { state: JSON.stringify(response.status, null, 2), data: JSON.stringify(response.data, null, 2) };
         });
     };
 
     $scope.put = function(send) {
         $http.put($scope.url, $scope.send).then(function(response) {
-            $scope.state = JSON.stringify(response.status, null, 2);
-            $scope.data = JSON.stringify(response.data, null, 2);
+            $scope.putResponse = { state: JSON.stringify(response.status, null, 2), data: JSON.stringify(response.data, null, 2) };
         }).catch(function(response) {
-            $scope.state = JSON.stringify(response.status, null, 2);
-            $scope.data = JSON.stringify(response.data, null, 2);
+            $scope.putResponse = { state: JSON.stringify(response.status, null, 2), data: JSON.stringify(response.data, null, 2) };
         });
     };
 

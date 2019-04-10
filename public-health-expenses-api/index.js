@@ -332,6 +332,69 @@ api.register = (app, publicHealthExpenses) => {
     });
 
 
+    // POST /api/v1/public-health-expenses/spain
+
+    app.post(BASE_PATH + "/:country", (req, res) => {
+
+        var country = req.params.country;
+
+        var newPHE = {
+            country: req.body.country,
+            year: Number(req.body.year),
+            publicHealthExpense: Number(req.body.publicHealthExpense),
+            healthExpense: Number(req.body.healthExpense),
+            totalPublicExpense: Number(req.body.totalPublicExpense),
+            healthExpensePib: Number(req.body.healthExpensePib),
+            healthExpenditurePerCapita: Number(req.body.healthExpenditurePerCapita),
+            var_: Number(req.body.var_)
+        };
+
+        // Se comprueba que no existe ningún error a la hora de introducir los valores de cada propiedad
+        if (newPHE["country"] == "" ||
+            !isNaN(newPHE["country"]) ||
+            newPHE["country"] != country ||
+            isNaN(newPHE["year"]) ||
+            isNaN(newPHE["publicHealthExpense"]) ||
+            isNaN(newPHE["healthExpense"]) ||
+            isNaN(newPHE["totalPublicExpense"]) ||
+            isNaN(newPHE["healthExpensePib"]) ||
+            isNaN(newPHE["healthExpenditurePerCapita"]) ||
+            isNaN(newPHE["var_"]) ||
+            !newPHE.hasOwnProperty("country") ||
+            !newPHE.hasOwnProperty("year") ||
+            !newPHE.hasOwnProperty("publicHealthExpense") ||
+            !newPHE.hasOwnProperty("healthExpense") ||
+            !newPHE.hasOwnProperty("totalPublicExpense") ||
+            !newPHE.hasOwnProperty("healthExpensePib") ||
+            !newPHE.hasOwnProperty("healthExpenditurePerCapita") ||
+            !newPHE.hasOwnProperty("var_")) {
+
+            res.sendStatus(400);
+        }
+        else {
+            publicHealthExpenses.find({ "country": newPHE["country"] }).toArray((error, result) => {
+                if (error) {
+                    console.log("Error: " + error);
+                    res.sendStatus(500);
+                }
+                else if (result.length > 0 && newPHE["country"] == result[0].country && newPHE["year"] == result[0].year) {
+                    res.sendStatus(409);
+                }
+                else {
+                    publicHealthExpenses.insert(newPHE, (error, obj) => {
+                        if (error) {
+                            res.sendStatus(500);
+                        }
+                        else {
+                            res.sendStatus(201);
+                        }
+                    });
+                }
+            });
+        }
+    });
+
+
     // PUT /api/v1/public-health-expenses/spain/2017
 
     app.put(BASE_PATH + "/:country/:year", (req, res) => {
@@ -496,7 +559,14 @@ api.register = (app, publicHealthExpenses) => {
     });
 
 
-    //POST /api/v1/public-health-expenses (ERROR)
+    //PUT /api/v1/public-health-expenses/spain (ERROR)
+
+    app.put(BASE_PATH + "/:country", (req, res) => {
+        res.sendStatus(405);
+    });
+
+
+    //POST /api/v1/public-health-expenses/spain/2017 (ERROR)
 
     app.post(BASE_PATH + "/:country/:year", (req, res) => {
         res.sendStatus(405);

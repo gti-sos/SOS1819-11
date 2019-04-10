@@ -675,7 +675,7 @@ apiRest.register = (app, publicExpenditureEducations) => {
     
     //   -------------------------------------------- POST /api/v1/public-expenditure-educations (ERROR)   --------------------------------------------
     
-    app.post( BASE_PATH + "/:country", (req, res) => {
+    app.post( BASE_PATH + "/:country/:year", (req, res) => {
     
         res.sendStatus(405);
     

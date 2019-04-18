@@ -6,12 +6,14 @@ var apiRest = {};
 module.exports = apiRest;
 
 apiRest.register = (app, generalPublicExpenses) => {
-
+        
+        // Al hacer un get a la ruta /api/v1/general-public-expenses/docs redirijo a "https://documenter.getpostman.com/view/6869292/S17tRo7p"
         app.get("/api/v1/general-public-expenses/docs", (req, res) => {
 
             res.redirect("https://documenter.getpostman.com/view/6869292/S17tRo7p");
         });
 
+        // Load Initial Data
         app.get(BASE_PATH + "/loadInitialData", (req, res) => {
 
             var newGeneralPublicExpenses = [{
@@ -71,7 +73,9 @@ apiRest.register = (app, generalPublicExpenses) => {
 
                 }
             ];
-
+            
+            //Codigos de estado Load Initial Data
+            
             generalPublicExpenses.find({}).toArray((err, GPP) => {
 
                 if (err) {
@@ -110,6 +114,7 @@ apiRest.register = (app, generalPublicExpenses) => {
         //Busqueda por año
         var startY = parseInt(req.query.from);
         var endY = parseInt(req.query.to);
+        
         //Paginación
         var limit = Number(req.query.limit);
         var offset = Number(req.query.offset);

@@ -13,19 +13,23 @@ app.use('/', express.static(path.join(__dirname, "public")));
 
 
 // ----------------------------------------------------API REST Antonio J----------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------------------------------
 
 //----------------------------> Mini-Postman Antonio Jesús
 
-app.use('/general-public-expenses', express.static(path.join(__dirname, "public/general-public-expenses/views")));
+app.use('/general-public-expenses', express.static(path.join(__dirname, "public/general-public-expenses/views")));  // Redirige a esa ruta cuando haces un get a general-public-expense
 
+//------------------------------
 
+//Conexión a base de datos Mongodb
 const uriAJSM = "mongodb+srv://test:test@sos-project-enqlt.mongodb.net/test?retryWrites=true";
 const clientAJSM = new MongoClient(uriAJSM, { useNewUrlParser: true });
 
-
+//Ejecuta el archivo index.js individual para la conexion
 var generalPublicExpensesAPI = require("./generalPublicExpensesAPI/index.js");
 var generalPublicExpenses;
 
+//Conexion con el server
 clientAJSM.connect(err => {
     generalPublicExpenses = clientAJSM.db("sos1819").collection("general-public-expenses");
     generalPublicExpensesAPI.register(app, generalPublicExpenses);

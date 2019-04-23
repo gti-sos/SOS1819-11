@@ -1,5 +1,5 @@
 /*global angular*/
 
-angular.module("App", []);
+angular.module("App", ["ngDialog"]);
 
 console.log("App initialized!");

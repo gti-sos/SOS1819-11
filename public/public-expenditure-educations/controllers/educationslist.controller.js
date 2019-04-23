@@ -1,7 +1,7 @@
-/* global angular $scope $routeParams */
+/* global angular  */
 var app = angular.module("App");
 
-app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSerializer", function ($scope,$http,$location, $httpParamSerializer){
+app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer", function ($scope,$http, $httpParamSerializer){
     
    
     
@@ -56,13 +56,13 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSer
            
 
             getList() ;              
-            message(res); 
+        
             
             
         }).catch(function(res){
             
             getList();
-            message(res); 
+          
             
         });
         

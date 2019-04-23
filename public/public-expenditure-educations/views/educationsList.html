@@ -1,0 +1,201 @@
+
+
+
+<div class="container" style="margin-top: 20px;">
+  
+<div class="row justify-content-center">
+    <h1 ><u>Gasto Público Educación</u></h1>
+</div>          
+
+    
+      
+      
+ 
+<div class="row">
+        
+        
+     
+       
+       <h4  style="margin-top: 20px;"><u>Buscar por rango</u></h4>
+       
+       
+         
+       
+        <div class="input-group  ">
+            
+            <input type="text" class="form-control" ng-model = "search.from" placeholder="From">
+            <input type="text" class="form-control" ng-model = "search.to" placeholder="To">
+            <div class="input-group-append">
+              <button class="btn btn-success" ng-click = "search()">Go</button> 
+            </div>
+            
+             
+            
+        </div>
+        
+
+      
+        <table class="table " style="margin-top: 20px; text-align: center; font-size:15px;">
+          <thead class="thead-dark">
+                <tr ng-model="getLista">
+                  <th scope="col">#</th>
+                  <th scope="col">País</th>
+                  <th scope="col">Año</th>
+                  <th scope="col">Gasto Educación</th>
+                  <th scope="col">G. Educación (% Pub)</th>
+                  <th scope="col">G. Educación (% Pib)</th>
+                  <th scope="col">G. Educación Per Capita </th>
+                  <th scope="col">Var.</th>
+                  <th scope="col"></th>
+                  
+                 
+                </tr>
+          </thead>
+          <tbody>
+        
+                <tr ng-repeat = "i in getLista.datos" >
+                
+                  <td>{{$index + 1}}</td>
+                  <td><a href = "/#!/ui/v1/public-expenditure-educations/{{i.country}}/{{i.year}}">{{i.country}}</a></td>
+                  <td>{{i.year}}</td>
+                  <td>{{i.educationExpense}}</td>
+                  <td>{{i.educationExpensePub}}</td>
+                  <td>{{i.educationExpensePib}}</td>
+                  <td>{{i.healthExpenditurePerCapita}}</td>
+                  <td>{{i.var_}}</td>
+                  
+      
+                  
+                  <td>
+                    
+                   <button type="button"  ng-click="deleteR(i.country,i.year)" style="background-color:white; border:hidden;" ><i class="fa fa-trash" style="font-size:20px;color:rgb(255, 45, 0  )"></i></button>
+                    
+                  </td>
+            
+                </tr>
+  
+            
+            
+          </tbody>
+          
+        </table>
+        
+</div>     
+  
+</div>
+<!---------------------------------- Paginación-------------------------------------------------------------->
+
+<div class="container">
+
+            
+            
+        <div class="row align-items-start">
+          
+              
+              <div class="col" style = "padding : 0px;">
+                
+                <div class="btn-group" role="group" aria-label="Basic example" >
+                  <button type="button" style="background-color:white; border:hidden;" ng-click="pagination(1)" class="btn"><i class="fa fa-toggle-left" style="font-size:48px"></i></button>
+                  <button type="button" ng-click="button()" class="btn"  style="background-color:white; border:hidden;"><i class="fa fa-search" style="font-size:48px;color:#5D7ACC"></i></button>
+                  <button type="button" ng-click="pagination(2)" class="btn "><i class="fa fa-toggle-right" style="font-size:48px;"></i></button>
+                </div>
+                
+              </div>
+              
+              <div class="col">
+               
+              </div>
+              
+              
+              <div class="col" style = "padding : 0px;">
+                
+                <div class="btn-group" role="group" aria-label="Basic example"  style = "padding-left : 260px;">
+                  <button type="button" style="background-color:white; border:hidden;" ng-click="loadInitialData()" class="btn"><i class="fa fa-check-square-o" style="font-size:48px;color:#18B929"></i></button>
+                  <button type="button" ng-click="deleteAll()" class="btn"  style="background-color:white; border:hidden;"><i class="fa fa-trash" style="font-size:48px;color:red; margin-bottom: 5px;"></i></button>
+                  
+                </div>
+                
+              </div>
+        </div>
+            
+            
+            
+  </div>
+  
+  
+</div>  
+
+
+<!---------------------------------- New rec-------------------------------------------------------------->
+
+<div class="container"  >
+  
+  <div class="d-flex justify-content-center">
+    <div style=" margin:75px -25px 0px 0px;">Añadir</div> <i class="fa fa-share" style="font-size:48px;color:black; margin:35px 5px 0px 0px;" ></i>
+    <div class="searchbar">
+        <input class="search_input" type="text" name="" ng-model="data.country" placeholder="País">
+        <input class="search_input" type="text" name="" ng-model="data.year" placeholder="Año">
+        <input class="search_input" type="text" name="" ng-model="data.educationExpense" placeholder="G.Educación">
+        <input class="search_input" type="text" name="" ng-model="data.educationExpensePub" placeholder="G.E. (% Pub)">
+        <input class="search_input" type="text" name="" ng-model="data.educationExpensePib" placeholder="G.E. (% Pib)">
+        <input class="search_input" type="text" name="" ng-model="data.healthExpenditurePerCapita" placeholder="G.E. Per Capita">
+        <input class="search_input" type="text" name="" ng-model="data.var_" placeholder="Var.">
+        <button type="button" class="search_icon" style="background-color: #353b48; border:hidden;" ng-click="add(data)"><i class="fa fa-plus"></i></button>
+    </div>
+    
+  </div>
+</div>
+
+
+ 
+
+      
+      
+  
+
+
+
+
+ <script type="text/ng-template" id="searchAll">
+ 
+    <div class="row justify-content-center">
+          <i class="fa fa-search" style="font-size:48px;color:#5D7ACC"></i>
+          
+      </div>
+    
+    <form ng-submit="searchAll()">
+    
+    <div class="form-group">
+      <label for="">País</label>
+      <input type="text" class="form-control" ng-model="search.country" placeholder="Buscar por país">
+    </div>
+    <div class="form-group">
+      <label for="">Año</label>
+      <input type="text" class="form-control"  ng-model="search.year" placeholder="Buscar por año">
+    </div>
+    <div class="form-group">
+      <label for="">Gasto Educación</label>
+      <input type="text" class="form-control"  ng-model="search.educationExpense" placeholder="Buscar por G.Educación">
+    </div>
+    
+    <div class="form-group">
+      <label for="">G.E. (% Pub)</label>
+      <input type="text" class="form-control" ng-model="search.educationExpensePub" placeholder="Buscar por G.E. (% Pub)">
+    </div>
+    <div class="form-group">
+      <label for="">G.E. (% Pib)</label>
+      <input type="text" class="form-control" ng-model="search.educationExpensePib" placeholder="Buscar por G.E. (% Pib)">
+    </div>
+    <div class="form-group">
+      <label for="">G.E. Per Capita</label>
+      <input type="text" class="form-control" ng-model= "search.healthExpenditurePerCapita" placeholder="Buscar por G.E. Per Capita">
+    </div>
+    <div class="form-group">
+      <label for="">Var</label>
+      <input type="text" class="form-control"  ng-model= "search.var_" placeholder="Buscar por Var.">
+    </div>
+    
+    <input type="submit" class="btn btn-success">
+    
+  </form>
+</script>

@@ -43,14 +43,15 @@ clientAJSM.connect(err => {
 
 //---------------------------------------Minipostman Juan Manuel Centeno -------------------------------------------
 
-app.use('/public-expenditure-educations', express.static(path.join(__dirname, "public/public-expenditure-educations/views")));
+app.use('/ui/v1/public-expenditure-educations', express.static(path.join(__dirname, "/public/public-expenditure-educations")));
+app.use('/minipostman', express.static(path.join(__dirname, "/public/public-expenditure-educations")));
 
 
 
 const uriJMCC = "mongodb+srv://test:test@sos-idqtq.mongodb.net/test?retryWrites=true";
 const clientJMCC = new MongoClient(uriJMCC, { useNewUrlParser: true });
 
-var publicExpenditureEducationsAPI = require("./publicExpenditureEducationsAPI/index.js");
+var publicExpenditureEducationsAPI = require("./publicExpenditureEducationsAPI/publicExpenditureEducationsV2.js");
 var publicExpenditureEducations;
 
 clientJMCC.connect(err => {

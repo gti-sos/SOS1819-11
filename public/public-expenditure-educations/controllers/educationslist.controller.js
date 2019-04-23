@@ -1,7 +1,7 @@
 /* global angular $scope $routeParams */
 var app = angular.module("App");
 
-app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSerializer", function ($scope,$http,$location, $httpParamSerializer,ngDialog){
+app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSerializer","ngDialog", function ($scope,$http,$location, $httpParamSerializer,ngDialog){
     
    
     

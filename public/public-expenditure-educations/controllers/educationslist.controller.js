@@ -1,7 +1,7 @@
 /* global angular $scope $routeParams */
 var app = angular.module("App");
 
-app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSerializer","ngDialog", "$routeParams", function ($scope,$http,$location, $httpParamSerializer,ngDialog, $routeParams){
+app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSerializer","ngDialog", function ($scope,$http,$location, $httpParamSerializer,ngDialog){
     
    
     
@@ -376,111 +376,7 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSer
                 });
         } 
     
-        $scope.editButton = function(){
-            
-              $http.get(url).then(function (res){
-                
-                console.log(res.data);
-                
-                $scope.getUpdate = { status: res.status,
-                                       datos:  JSON.stringify(res.data,null,2)
-                                    };
-                 console.log($scope.getUpdate.datos);
-                
-            }).catch(function(res){
-                
-                $scope.getUpdate = { status: res.status,
-                                       datos: res.data 
-                                    };
-             
-            });
-            
-            
-            ngDialog.open({
-                    template: 'editButton',
-                    className: 'ngdialog-theme-default',
-                    scope: $scope
-               
-                });
-                
-                
-          
-                
-                
-            
-        } 
-   
-   
-   
-   
-   $scope.edit = function (){
-        
-            console.log("searchAll initialized!");
-            
-            
-            /*Si le doy a enviar si nada*/
-            
-         
-         
-             if ($scope.search.country) {
-                 $routeParams.country;
-            }
-            if ($scope.search.year ) {
-                 $routeParams.year;
-            }
-            if ($scope.search.educationExpense) {
-                 $routeParams.educationExpense;
-            }
-            if ($scope.search.educationExpensePub) {
-                $routeParams.educationExpensePub;
-            }
-            if ($scope.search.educationExpensePib) {
-                 $routeParams.educationExpensePib;
-            }
-            if ($scope.search.healthExpenditurePerCapita) {
-                $routeParams.healthExpenditurePerCapita;
-            }
-            if ($scope.search.var_) {
-                 $routeParams.var_;
-            }
-            
-            var query = $httpParamSerializer($scope.search);
-            
-            
-            if((url+"?"+query) == (url+"?")){
-                
-                $scope.search = {};
-                 getList();
-                 
-            }else{
-            
-                
-                
-            
-                console.log(url+"?"+query);
-                
-                
-                $http.get(url+"?"+query).then(function (res){
-                   
-                    console.log(res);
-                    $scope.getLista = { status: res.status,
-                                           datos:  res.data  
-                    };
-                    
-                    $scope.search = {}
-                    message(res); 
-                }).catch(function(res){
-                    
-                    $scope.getLista = { status: res.status,
-                                           datos: res.data 
-                                        };
-                    message(res);
-                });
-                
-            }
-        
-    }
-   
+
    
    
    

@@ -8,7 +8,7 @@ angular.module("App", [ "ngRoute", "ngDialog"]).config(function($routeProvider,$
     
     $locationProvider.html5Mode({
        enabled: true,
-       requireBase: false
+       requireBase: true
     });
     
     

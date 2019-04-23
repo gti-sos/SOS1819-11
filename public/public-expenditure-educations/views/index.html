@@ -1,7 +1,36 @@
+<html ng-app="App">
+    <head>
+        
+        <title>App</title>
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" >
+
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/bower_components/angular/angular.min.js"></script>
+        <script src="/bower_components/angular-route/angular-route.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="/bower_components/ng-dialog/css/ngDialog.min.css">
+        <link rel="stylesheet" href="/bower_components/ng-dialog/css/ngDialog-theme-default.min.css">
+        <script type="text/javascript" src="/bower_components/ng-dialog/js/ngDialog.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        
+        <script src="/public-expenditure-educations/app.js"></script>
+        <script src="/public-expenditure-educations/controllers/minipostman.controller.js"></script>
+        <script src="/public-expenditure-educations/controllers/educationslist.controller.js"></script>
+        <script src="/public-expenditure-educations/controllers/educationsedit.controller.js"></script>
+        <link rel="stylesheet" href="/public-expenditure-educations/styles.css" type="text/css" />
+        
+        
+        
 
 
-
-<div class="container" style="margin-top: 20px;">
+    </head>
+    
+    <body ng-controller = "EducatiosListCtrl" >
+        
+        <div class="container" style="margin-top: 20px;">
   
 <div class="row justify-content-center">
     <h1 ><u>Gasto Público Educación</u></h1>
@@ -38,7 +67,6 @@
         <table class="table " style="margin-top: 20px; text-align: center; font-size:15px;">
           <thead class="thead-dark">
                 <tr ng-model="getLista">
-                  <th scope="col">#</th>
                   <th scope="col">País</th>
                   <th scope="col">Año</th>
                   <th scope="col">Gasto Educación</th>
@@ -55,8 +83,7 @@
         
                 <tr ng-repeat = "i in getLista.datos" >
                 
-                  <td>{{$index + 1}}</td>
-                  <td><a href = "/#!/ui/v1/public-expenditure-educations/{{i.country}}/{{i.year}}">{{i.country}}</a></td>
+                  <td>{{i.country}}</td>
                   <td>{{i.year}}</td>
                   <td>{{i.educationExpense}}</td>
                   <td>{{i.educationExpensePub}}</td>
@@ -65,8 +92,11 @@
                   <td>{{i.var_}}</td>
                   
       
+                   <td>
+                    
+                   <button type="button"  ng-click="editButton()" style="background-color:white; border:hidden;" ><i class="fa fa-edit" style="font-size:20px;"></i></button>
+                    
                   
-                  <td>
                     
                    <button type="button"  ng-click="deleteR(i.country,i.year)" style="background-color:white; border:hidden;" ><i class="fa fa-trash" style="font-size:20px;color:rgb(255, 45, 0  )"></i></button>
                     
@@ -145,18 +175,14 @@
     
   </div>
 </div>
-
-
- 
-
-      
-      
   
-
-
-
-
- <script type="text/ng-template" id="searchAll">
+        
+    </body>
+    
+    
+    
+    
+<script type="text/ng-template" id="searchAll">
  
     <div class="row justify-content-center">
           <i class="fa fa-search" style="font-size:48px;color:#5D7ACC"></i>
@@ -199,3 +225,51 @@
     
   </form>
 </script>
+
+
+<script type="text/ng-template" id="editButton">
+ 
+    <div class="row justify-content-center">
+          <i class="fa fa-search" style="font-size:48px;color:#5D7ACC"></i>
+          
+      </div>
+    {{getUpdate.datos.country}}
+    <form ng-submit="edit()">
+    
+    <div class="form-group">
+      <label for="">País</label>
+      <input type="text" class="form-control" ng-model="getUpdate.datos.country" placeholder="Buscar por país">
+    </div>
+    <div class="form-group">
+      <label for="">Año</label>
+      <input type="text" class="form-control"  ng-model="getUpdate.datos.year" placeholder="Buscar por año">
+    </div>
+    <div class="form-group">
+      <label for="">Gasto Educación</label>
+      <input type="text" class="form-control"  ng-model="getUpdate.datos.educationExpense" placeholder="Buscar por G.Educación">
+    </div>
+    
+    <div class="form-group">
+      <label for="">G.E. (% Pub)</label>
+      <input type="text" class="form-control" ng-model="getUpdate.datos.educationExpensePub" placeholder="Buscar por G.E. (% Pub)">
+    </div>
+    <div class="form-group">
+      <label for="">G.E. (% Pib)</label>
+      <input type="text" class="form-control" ng-model="getUpdate.datos.educationExpensePib" placeholder="Buscar por G.E. (% Pib)">
+    </div>
+    <div class="form-group">
+      <label for="">G.E. Per Capita</label>
+      <input type="text" class="form-control" ng-model= "getUpdate.datos.healthExpenditurePerCapita" placeholder="Buscar por G.E. Per Capita">
+    </div>
+    <div class="form-group">
+      <label for="">Var</label>
+      <input type="text" class="form-control"  ng-model= "getUpdate.datos.var_" placeholder="Buscar por Var.">
+    </div>
+    
+    <input type="submit" class="btn btn-success">
+    
+  </form>
+</script>
+
+</html>
+

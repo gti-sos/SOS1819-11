@@ -1,5 +1,5 @@
 /* global angular $scope $routeParams */
-var app = angular.module("MiniPostmanApp");
+var app = angular.module("App");
 
 app.controller("MainCtrl", ["$scope","$http", function ($scope,$http){
     
@@ -41,7 +41,7 @@ app.controller("MainCtrl", ["$scope","$http", function ($scope,$http){
     
     console.log("MainCtrl initialized!");
     
-    $scope.url = "/api/v1/public-expenditure-educations";
+    $scope.url = "/api/v2/public-expenditure-educations";
                 
     $scope.inicial = function (){
         

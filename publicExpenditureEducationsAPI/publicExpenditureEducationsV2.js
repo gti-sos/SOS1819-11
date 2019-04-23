@@ -1,6 +1,6 @@
 
 
-var BASE_PATH = "/api/v1/public-expenditure-educations"
+var BASE_PATH = "/api/v2/public-expenditure-educations"
 
 var apiRest = {};
 
@@ -11,7 +11,7 @@ module.exports = apiRest;
 
 apiRest.register = (app, publicExpenditureEducations) => {
 
-    app.get("/api/v1/public-expenditure-educations/docs", (req, res) => {
+    app.get("/api/v2/public-expenditure-educations/docs", (req, res) => {
     
         res.redirect("https://documenter.getpostman.com/view/4815062/S17xrkNG");
     });
@@ -20,7 +20,8 @@ apiRest.register = (app, publicExpenditureEducations) => {
     
     app.get(BASE_PATH + "/loadInitialData", (req, res) => {
     
-        var newPublicExpenditureEducations = [{
+        var newPublicExpenditureEducations = [
+        {
     
             country: "espania",
             year: 2015,
@@ -65,6 +66,98 @@ apiRest.register = (app, publicExpenditureEducations) => {
             educationExpensePib: 5.54,
             healthExpenditurePerCapita: 28,
             var_: -10.36,
+    
+        },{
+    
+            country: "austria",
+            year: 2013,
+            educationExpense: 461.5,
+            educationExpensePub: 9.77,
+            educationExpensePib: 4.28,
+            healthExpenditurePerCapita: 977,
+            var_: -3.08,
+    
+        }, {
+            country: "estonia",
+            year: 2015,
+            educationExpense: 146754.1,
+            educationExpensePub: 10.98,
+            educationExpensePib: 4.81,
+            healthExpenditurePerCapita: 1975,
+            var_: -16.16,
+    
+        }, {
+            country: "filandia",
+            year: 2013,
+            educationExpense: 3190.4,
+            educationExpensePub: 3.91,
+            educationExpensePib: 5.54,
+            healthExpenditurePerCapita: 2028,
+            var_: -1.36,
+    
+        }, {
+            country: "eslovenia",
+            year: 2017,
+            educationExpense: 33.4,
+            educationExpensePub: 32.91,
+            educationExpensePib: 5.54,
+            healthExpenditurePerCapita: 28,
+            var_: -5.36,
+    
+        }, {
+            country: "chipre",
+            year: 2016,
+            educationExpense: 13.4,
+            educationExpensePub: 3.91,
+            educationExpensePib: 7.54,
+            healthExpenditurePerCapita: 28,
+            var_: -43.36,
+    
+        },{
+    
+            country: "espania",
+            year: 2016,
+            educationExpense: 6241.5,
+            educationExpensePub: 19.77,
+            educationExpensePib: 24.28,
+            healthExpenditurePerCapita: 77,
+            var_: -13.08,
+    
+        }, {
+            country: "alemania",
+            year: 2016,
+            educationExpense: 754.1,
+            educationExpensePub: 20.98,
+            educationExpensePib: 14.81,
+            healthExpenditurePerCapita: 1975,
+            var_: -6.16,
+    
+        }, {
+            country: "reino unido",
+            year: 2015,
+            educationExpense: 130.4,
+            educationExpensePub: 3.91,
+            educationExpensePib: 4.54,
+            healthExpenditurePerCapita: 28,
+            var_: -16.36,
+    
+        }, {
+            country: "portugal",
+            year: 2017,
+            educationExpense: 33.4,
+            educationExpensePub: 13.91,
+            educationExpensePib: 5.54,
+            healthExpenditurePerCapita: 228,
+            var_: -1.36,
+    
+        }, {
+            country: "belgica",
+            year: 2015,
+            educationExpense: 133.4,
+            educationExpensePub: 23.91,
+            educationExpensePib: 7.54,
+            healthExpenditurePerCapita: 28,
+            var_: -2.36,
     
         }];
     
@@ -176,12 +269,19 @@ apiRest.register = (app, publicExpenditureEducations) => {
     
                 }
                 else {
-    
-                    res.status(200).send(publicExpenditureEducation.map((c) => {
-                        delete c._id;
-                        return c;
-    
-                    }));
+                    
+                    if( publicExpenditureEducation.length  == 0 ){
+                                    
+                        res.sendStatus(404);
+                                    
+                    }else{
+                
+                        res.status(200).send(publicExpenditureEducation.map((c) => {
+                            delete c._id;
+                            return c;
+                    
+                        }));
+                    }
     
                 }
             });
@@ -199,11 +299,14 @@ apiRest.register = (app, publicExpenditureEducations) => {
                 }
                 else {
     
-                    res.status(200).send(publicExpenditureEducation.map((c) => {
-                        delete c._id;
-                        return c;
-    
-                    }));
+                  
+                
+                        res.status(200).send(publicExpenditureEducation.map((c) => {
+                            delete c._id;
+                            return c;
+                    
+                        }));
+                    
     
                 }
             });
@@ -220,13 +323,18 @@ apiRest.register = (app, publicExpenditureEducations) => {
                 }
                 else {
     
-                    res.status(200).send(publicExpenditureEducation.map((c) => {
-                        delete c._id;
-                        
-                        return c;
-    
-                    }));
+                    if(publicExpenditureEducation.length  == 0 ){
+                                    
+                            res.sendStatus(404);
+                                    
+                    }else{
+                
+                            res.status(200).send(publicExpenditureEducation.map((c) => {
+                                delete c._id;
+                                return c;
                     
+                            }));
+                    }
                    
     
                 }
@@ -246,7 +354,7 @@ apiRest.register = (app, publicExpenditureEducations) => {
                             }
                             else {
                                 
-                                if(!publicExpenditureEducation.length ){
+                                if(publicExpenditureEducation.length ==0 ){
                                     
                                     res.sendStatus(404);
                                     
@@ -325,7 +433,7 @@ apiRest.register = (app, publicExpenditureEducations) => {
     
         }else{
     
-            publicExpenditureEducations.find({ "country": data["country"] }).toArray((err, newPEE) => {
+            publicExpenditureEducations.find({ "country": data["country"],   "year": data["year"]}).toArray((err, newPEE) => {
         
                 if (err) { //Error interno del servidor
         
@@ -335,30 +443,13 @@ apiRest.register = (app, publicExpenditureEducations) => {
                     // Si existe el pais, pues se comprueba si el pais y eño es el mismo
                     //si es el año y pais iguales pues se envia un 409
                     // sino pues se crea
+                    
                     if(newPEE.length > 0){
                     
-                        if (data["country"] == newPEE[0].country && data["year"] == newPEE[0].year) { // Ya existe el recurso
-            
+
+  
                             res.sendStatus(409);
             
-                        }else{
-                            
-                           publicExpenditureEducations.insert(data, (err, newPEE) => {
-        
-                             if (err) {
-        
-                                    res.sendStatus(500);
-        
-                                }else {
-        
-                                    res.sendStatus(201);
-        
-                                }
-        
-                            }); 
-                            
-                        }
-                    
                     
                    }else {
                         
@@ -675,7 +766,7 @@ apiRest.register = (app, publicExpenditureEducations) => {
     
     //   -------------------------------------------- POST /api/v1/public-expenditure-educations (ERROR)   --------------------------------------------
     
-    app.post( BASE_PATH + "/:country/:year", (req, res) => {
+    app.post( BASE_PATH + "/:country", (req, res) => {
     
         res.sendStatus(405);
     
@@ -683,7 +774,7 @@ apiRest.register = (app, publicExpenditureEducations) => {
     
     
     //   -------------------------------------------- GET /api/v1/secute/public-expenditure-educations -------------------------------------------
-    app.get("/api/v1/secure/public-expenditure-educations", (req, res) => {
+    app.get("/api/v2/secure/public-expenditure-educations", (req, res) => {
     
         var user = req.headers.user;
         var pass = req.headers.pass;

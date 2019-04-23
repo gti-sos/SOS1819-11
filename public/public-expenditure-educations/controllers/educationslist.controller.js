@@ -188,7 +188,7 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ng
                                 };
             
             message(res);
-            getList();
+            
             
         });
         

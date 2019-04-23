@@ -1,7 +1,7 @@
 /* global angular $scope $routeParams */
 var app = angular.module("App");
 
-app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSerializer","ngDialog", function ($scope,$http,$location, $httpParamSerializer,ngDialog){
+app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSerializer", function ($scope,$http,$location, $httpParamSerializer){
     
    
     
@@ -75,44 +75,7 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSer
             /*--------------------Function message status------------------------*/
     
     
-     function message(res){
-            
-            
-			switch (res.status) {
-			    
-			    
-			    
-				case 200:
-				    $scope.message = {msg: "La operación se ha completado con éxito", type: "success"};
-					break;
-				case 201:
-					$scope.message  = {msg: "La operación se ha completado con éxito", type: "success"};
-					break;
-				case 400:
-					$scope.message  = {msg: "Datos inválidos", type: "warning"};
-					break;
-				case 404:
-					$scope.message  = {msg: "No se encuentra el recurso", type: "warning"};
-					break;
-				case 405:
-					$scope.message  = {msg: "Operación no permitida", type: "danger"};
-					break;
-				case 409:
-					$scope.message  = {msg: "El recurso ya existe", type: "warning"};
-					break;
-				default:
-					$scope.message  = {msg: "La operación se ha completado con éxito", type: "success"};
-			}
-			
-			
-			 ngDialog.open({
-                    template: '/public-expenditure-educations/views/messageList.html',
-                    className: 'ngdialog-theme-default',
-                    scope:$scope
-                });    
-            
-            
-        }
+     
     
     
     
@@ -128,7 +91,7 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSer
                                    datos:  JSON.stringify(res.data ,null,2)   
                                 };
                                 
-            message(res); 
+
             getList();
             
         }).catch(function(res){
@@ -137,7 +100,7 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSer
                                    datos:  JSON.stringify(res.data,null,2)   
                                 };
                                 
-            message(res); 
+
             
         });
         
@@ -152,12 +115,12 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSer
            
             
             getList();
-            message(res); 
+
             
             
         }).catch(function(res){
             
-            message(res);
+
            
             
         });
@@ -181,7 +144,7 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSer
             $scope.postRespuesta = { status: JSON.stringify(res.status,null,2),
                                    datos:  JSON.stringify(res.data ,null,2)   
                                 };
-            message(res);               
+             
             
             getList();
             
@@ -191,7 +154,7 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSer
                                    datos:  JSON.stringify(res.data,null,2)   
                                 };
             
-            message(res);
+
             getList();
             
         });
@@ -231,7 +194,7 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSer
                                    datos:  res.data  
                                 };
            
-            message(res); 
+
             
             
         }).catch(function(res){
@@ -239,7 +202,7 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSer
             $scope.getLista = { status: res.status,
                                    datos: res.data 
                                 };
-            message(res); 
+
             
         });
         
@@ -352,13 +315,13 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSer
                     };
                     
                     $scope.search = {}
-                    message(res); 
+
                 }).catch(function(res){
                     
                     $scope.getLista = { status: res.status,
                                            datos: res.data 
                                         };
-                    message(res);
+                   
                 });
                 
             }
@@ -367,14 +330,6 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSer
             
             
         
-        $scope.button = function(){
-            ngDialog.open({
-                    template: 'searchAll',
-                    className: 'ngdialog-theme-default',
-                    scope: $scope,
-               
-                });
-        } 
     
 
    

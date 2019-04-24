@@ -2,10 +2,9 @@
 
 var app = angular.module("App");
 
-app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ngDialog", "$routeParams", function ($scope,$http, $httpParamSerializer,ngDialog, $routeParams){
+app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ngDialog", function ($scope,$http, $httpParamSerializer,ngDialog){
     
-    var api = "/api/v2/public-expenditure-educations/" + $routeParams.country +"/"+ $routeParams.year ;
-    console.log(api)
+
         
     var pag=0;
 
@@ -374,30 +373,55 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ng
                 });
         }
         
-        
-        $scope.edit = function(){
-            
-            
-            $http.get(url).then(function(res) {
-                
-                 $scope.update = { status: JSON.stringify(res.status,null,2),
-                                   datos:  JSON.stringify(res.data ,null,2)   
-                                };
-                
-            }).catch(function(res){
-                    
-                    $scope.update = { status: res.status,
-                                           datos: res.data 
-                                        };
-                    message(res);
-            });
-            
+        $scope.editB = function(){
             ngDialog.open({
                     template: 'edit',
                     className: 'ngdialog-theme-default',
                     scope: $scope,
                
                 });
+        }
+        
+        
+        $scope.edit = function(){
+            
+             if ($scope.search.country) {
+                $scope.search.country;
+            }
+            if ($scope.search.year ) {
+                $scope.search.year;
+            }
+            if ($scope.search.educationExpense) {
+                $scope.search.educationExpense;
+            }
+            if ($scope.search.educationExpensePub) {
+                $scope.search.educationExpensePub;
+            }
+            if ($scope.search.educationExpensePib) {
+                $scope.search.educationExpensePib;
+            }
+            if ($scope.search.healthExpenditurePerCapita) {
+                $scope.search.healthExpenditurePerCapita;
+            }
+            if ($scope.search.var_) {
+                $scope.search.var_;
+            }
+            
+            
+            $http.put(url+"/"+ $scope.search.country+"/"+ $scope.search.year,$scope.search ).then(function(res) {
+                
+                $scope.getLista = { status: res.status,
+                                       datos:  res.data  
+                                    };
+                
+            }).catch(function(res){
+                    
+                    $scope.getLista = { status: res.status,
+                                       datos:  res.data  
+                                    };
+            });
+            
+          
         } 
     
    

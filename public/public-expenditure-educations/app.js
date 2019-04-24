@@ -6,10 +6,7 @@ angular.module("App", [ "ngRoute", "ngDialog"]).config(function($routeProvider,$
     /* for delete /#!*/
     
     
-    $locationProvider.html5Mode({
-       enabled: true,
-       requireBase: true
-    });
+  
     
     
     $routeProvider.

@@ -1,10 +1,10 @@
 /* global angular $scope $routeParams */
+
 var app = angular.module("App");
 
-app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSerializer","ngDialog", "$routeParams", function ($scope,$http,$location, $httpParamSerializer,ngDialog, $routeParams){
+app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ngDialog", function ($scope,$http, $httpParamSerializer,ngDialog){
     
-   
-    
+
         
     var pag=0;
 
@@ -42,9 +42,6 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSer
              
             });
     }
-    
-    
-    
     
     
     
@@ -192,7 +189,7 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSer
                                 };
             
             message(res);
-            getList();
+            
             
         });
         
@@ -374,118 +371,76 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSer
                     scope: $scope,
                
                 });
-        } 
-    
-        $scope.editButton = function(){
-            
-              $http.get(url).then(function (res){
-                
-                console.log(res.data);
-                
-                $scope.getUpdate = { status: res.status,
-                                       datos:  JSON.stringify(res.data,null,2)
-                                    };
-                 console.log($scope.getUpdate.datos);
-                
-            }).catch(function(res){
-                
-                $scope.getUpdate = { status: res.status,
-                                       datos: res.data 
-                                    };
-             
-            });
-            
-            
+        }
+        
+        $scope.editB = function(){
             ngDialog.open({
-                    template: 'editButton',
+                    template: 'edit',
                     className: 'ngdialog-theme-default',
-                    scope: $scope
+                    scope: $scope,
                
                 });
-                
-                
-          
-                
-                
-            
-        } 
-   
-   
-   
-   
-   $scope.edit = function (){
+        }
         
-            console.log("searchAll initialized!");
+        
+        $scope.edit = function(){
             
-            
-            /*Si le doy a enviar si nada*/
-            
-         
-         
-             if ($scope.search.country) {
-                 $routeParams.country;
+            if ($scope.search.country) {
+                $scope.search.country;
             }
             if ($scope.search.year ) {
-                 $routeParams.year;
+                $scope.search.year;
             }
             if ($scope.search.educationExpense) {
-                 $routeParams.educationExpense;
+                $scope.search.educationExpense;
             }
             if ($scope.search.educationExpensePub) {
-                $routeParams.educationExpensePub;
+                $scope.search.educationExpensePub;
             }
             if ($scope.search.educationExpensePib) {
-                 $routeParams.educationExpensePib;
+                $scope.search.educationExpensePib;
             }
             if ($scope.search.healthExpenditurePerCapita) {
-                $routeParams.healthExpenditurePerCapita;
+                $scope.search.healthExpenditurePerCapita;
             }
             if ($scope.search.var_) {
-                 $routeParams.var_;
+                $scope.search.var_;
             }
             
-            var query = $httpParamSerializer($scope.search);
+            var body ={
+               country: $scope.search.country,
+                year: $scope.search.year,
+                educationExpense: $scope.search.educationExpense,
+                educationExpensePub: $scope.search.educationExpensePub,
+                educationExpensePib:  $scope.search.educationExpensePib,
+                healthExpenditurePerCapita:  $scope.search.healthExpenditurePerCapita,
+                var_: $scope.search.var_,
+            };
             
+            console.log(body)
             
-            if((url+"?"+query) == (url+"?")){
+            $http.put(url+"/"+ body.country+"/"+ body.year, body ).then(function(res) {
                 
-                $scope.search = {};
-                 getList();
-                 
-            }else{
-            
+                $scope.getLista = { status: res.status,
+                                       datos:  res.data  
                 
-                
-            
-                console.log(url+"?"+query);
-                
-                
-                $http.get(url+"?"+query).then(function (res){
-                   
-                    console.log(res);
-                    $scope.getLista = { status: res.status,
-                                           datos:  res.data  
-                    };
-                    
-                    $scope.search = {}
-                    message(res); 
-                }).catch(function(res){
+                  
+                  };
+                message(res);
+               getList();
+            }).catch(function(res){
                     
                     $scope.getLista = { status: res.status,
-                                           datos: res.data 
-                                        };
-                    message(res);
-                });
-                
-            }
-        
-    }
-   
-   
-   
-   
-   
-   
+                                       datos:  res.data  
+                                    };
+                message(res);
+               getList();
+               
+            });
+            
+          
+        } 
+    
    
     
    

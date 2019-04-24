@@ -569,11 +569,13 @@ apiRest.register = (app, publicExpenditureEducations) => {
         
         var params = {
             country: req.params.country,
-            year: Number(req.params.year)
+            year: req.params.year
             
         } 
+        
+        console.log(params);
     
-        publicExpenditureEducations.find(params).toArray((err, publicExpenditureEducation) => {
+        publicExpenditureEducations.find(params).toArray((err, pEE) => {
     
             if (err) {
     
@@ -581,8 +583,10 @@ apiRest.register = (app, publicExpenditureEducations) => {
     
             }
             else {
+                
+            
     
-                if (publicExpenditureEducation.length < 1) {
+                if (pEE.length == 0) {
     
                     res.sendStatus(404);
     
@@ -590,8 +594,8 @@ apiRest.register = (app, publicExpenditureEducations) => {
                 else {
     
                
-                    delete publicExpenditureEducation[0]._id;
-                    res.status(200).send(publicExpenditureEducation[0]);
+                    delete pEE[0]._id;
+                    res.status(200).send(pEE[0]);
                                     
                 
     
@@ -609,7 +613,7 @@ apiRest.register = (app, publicExpenditureEducations) => {
     
         var params = {
             country: req.params.country,
-            year: Number(req.params.year)
+            year: req.params.year
             
         } 
         

@@ -1,9 +1,11 @@
+/* global angular $scope $routeParams */
+
 var app = angular.module("App");
 
-app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ngDialog", function ($scope,$http, $httpParamSerializer,ngDialog){
+app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ngDialog", "$routeParams", function ($scope,$http, $httpParamSerializer,ngDialog, $routeParams){
     
-   
-    
+    var api = "/api/v2/public-expenditure-educations/" + $routeParams.country +"/"+ $routeParams.year ;
+    console.log(api)
         
     var pag=0;
 
@@ -366,6 +368,32 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ng
         $scope.button = function(){
             ngDialog.open({
                     template: 'searchAll',
+                    className: 'ngdialog-theme-default',
+                    scope: $scope,
+               
+                });
+        }
+        
+        
+        $scope.edit = function(){
+            
+            
+            $http.get(url).then(function(res) {
+                
+                 $scope.update = { status: JSON.stringify(res.status,null,2),
+                                   datos:  JSON.stringify(res.data ,null,2)   
+                                };
+                
+            }).catch(function(res){
+                    
+                    $scope.update = { status: res.status,
+                                           datos: res.data 
+                                        };
+                    message(res);
+            });
+            
+            ngDialog.open({
+                    template: 'edit',
                     className: 'ngdialog-theme-default',
                     scope: $scope,
                

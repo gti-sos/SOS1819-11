@@ -558,13 +558,13 @@ api.register = (app, publicHealthExpenses) => {
         else {
             newPHE = {
                 country: req.body.country,
-                year: Number(req.body.year),
-                publicHealthExpense: Number(req.body.publicHealthExpense),
-                healthExpense: Number(req.body.healthExpense),
-                totalPublicExpense: Number(req.body.totalPublicExpense),
-                healthExpensePib: Number(req.body.healthExpensePib),
-                healthExpenditurePerCapita: Number(req.body.healthExpenditurePerCapita),
-                var_: Number(req.body.var_)
+                year: Number.parseFloat(req.body.year),
+                publicHealthExpense: Number.parseFloat(req.body.publicHealthExpense),
+                healthExpense: Number.parseFloat(req.body.healthExpense),
+                totalPublicExpense: Number.parseFloat(req.body.totalPublicExpense),
+                healthExpensePib: Number.parseFloat(req.body.healthExpensePib),
+                healthExpenditurePerCapita: Number.parseFloat(req.body.healthExpenditurePerCapita),
+                var_: Number.parseFloat(req.body.var_)
             };
             publicHealthExpenses.find({ "country": newPHE["country"], "year": newPHE["year"] }).toArray((error, result) => {
                 if (error) {

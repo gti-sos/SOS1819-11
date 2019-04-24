@@ -17,12 +17,12 @@ app.use('/', express.static(path.join(__dirname, "public")));
 
 //----------------------------> Mini-Postman Antonio Jesús
 
-app.use('/general-public-expenses', express.static(path.join(__dirname, "public/general-public-expenses/minipostman/views")));  // Redirige a esa ruta cuando haces un get a general-public-expense
+app.use('/general-public-expenses', express.static(path.join(__dirname, "public/general-public-expenses/views")));  // Redirige a esa ruta cuando haces un get a general-public-expense
 
 //------------------------------
 //----------------------------> UI Front-end Antonio Jesús
 
-app.use('/ui/v1/general-public-expenses', express.static(path.join(__dirname, "public/general-public-expenses/frontend/views")));  // Redirige a esa ruta cuando haces un get a general-public-expense
+app.use('/ui/v1/general-public-expenses', express.static(path.join(__dirname, "public/general-public-expenses-app/views")));  // Redirige a esa ruta cuando haces un get a general-public-expense
 
 //------------------------------
 

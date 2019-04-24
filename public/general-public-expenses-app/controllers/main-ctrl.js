@@ -3,7 +3,7 @@ var app = angular.module("GeneralPublicExpensesApp");
 
 app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                 console.log("MainCtrl initialized");
-                $scope.url = "https://sos1819-11.herokuapp.com/api/v1/general-public-expenses";
+                $scope.url = "/api/v1/general-public-expenses";
                 
                 refresh();
                 

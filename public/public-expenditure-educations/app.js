@@ -22,7 +22,7 @@ angular.module("App", [ "ngRoute", "ngDialog"]).config(function($routeProvider,$
         templateUrl: "/public-expenditure-educations/views/educationsEdit.html",
         controller: "EducatiosEditCtrl"
        
-    });
+    }).when('/', {redirectTo: "/ui/v1/public-expenditure-educations"});;
     
 });
 

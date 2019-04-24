@@ -43,7 +43,7 @@ clientAJSM.connect(err => {
 
 //---------------------------------------Minipostman Juan Manuel Centeno -------------------------------------------
 
-app.use('/ui/v1/public-expenditure-educations', express.static(path.join(__dirname, "/public/public-expenditure-educations/views")));
+app.use('/#!/ui/v1/public-expenditure-educations/', express.static(path.join(__dirname, "/public/public-expenditure-educations/views")));
 
 
 

@@ -13,11 +13,16 @@ angular.module("App", [ "ngRoute", "ngDialog"]).config(function($routeProvider,$
     
     
     $routeProvider.
+    when("/ui/v1/public-expenditure-educations", {
+        templateUrl: "/public-expenditure-educations/views/index.html",
+        controller: "EducatiosListCtrl"
+       
+    }).
     when("/ui/v1/public-expenditure-educations/:country/:year", {
         templateUrl: "/public-expenditure-educations/views/educationsEdit.html",
         controller: "EducatiosEditCtrl"
        
-    }).when('/', {redirectTo: "/ui/v1/public-expenditure-educations"});;
+    });
     
 });
 

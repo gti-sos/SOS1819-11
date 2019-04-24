@@ -407,6 +407,7 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ng
                 $scope.search.var_;
             }
             
+            console.log($scope.search)
             
             $http.put(url+"/"+ $scope.search.country+"/"+ $scope.search.year,$scope.search ).then(function(res) {
                 

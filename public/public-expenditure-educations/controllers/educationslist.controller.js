@@ -2,10 +2,9 @@
 
 var app = angular.module("App");
 
-app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ngDialog", "$routeParams", function ($scope,$http, $httpParamSerializer,ngDialog, $routeParams){
+app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ngDialog", function ($scope,$http, $httpParamSerializer,ngDialog){
     
-    var api = "/api/v2/public-expenditure-educations/" + $routeParams.country +"/"+ $routeParams.year ;
-    console.log(api)
+  
         
     var pag=0;
 

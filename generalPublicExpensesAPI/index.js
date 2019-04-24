@@ -36,7 +36,7 @@ apiRest.register = (app, generalPublicExpenses) => {
                     healthExpense: 21.36,
                     defenseSpending: 2.73,
                     publicSpendingPib: 43.90,
-                    _var: 0
+                    _var: 1.78
 
                 },
                 {

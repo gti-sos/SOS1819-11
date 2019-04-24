@@ -20,6 +20,11 @@ app.use('/', express.static(path.join(__dirname, "public")));
 app.use('/general-public-expenses', express.static(path.join(__dirname, "public/general-public-expenses/views"))); // Redirige a esa ruta cuando haces un get a general-public-expense
 
 //------------------------------
+//----------------------------> UI Front-end Antonio Jesús
+
+app.use('/ui/v1/general-public-expenses', express.static(path.join(__dirname, "public/general-public-expenses-app/views")));  // Redirige a esa ruta cuando haces un get a general-public-expense
+
+//------------------------------
 
 //Conexión a base de datos Mongodb
 const uriAJSM = "mongodb+srv://test:test@sos-project-enqlt.mongodb.net/test?retryWrites=true";

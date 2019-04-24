@@ -407,9 +407,18 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ng
                 $scope.search.var_;
             }
             
-            console.log($scope.search)
+            var body ={
+               country: $scope.search.country,
+                year: $scope.search.year,
+                educationExpense: $scope.search.educationExpense,
+                educationExpensePub: $scope.search.educationExpensePub,
+                educationExpensePib:  $scope.search.educationExpensePib,
+                healthExpenditurePerCapita:  $scope.search.healthExpenditurePerCapita,
+                var_: $scope.search.var_,
+            };
+            console.log(body)
             
-            $http.put(url+"/"+ $scope.search.country+"/"+ $scope.search.year,$scope.search ).then(function(res) {
+            $http.put(url+"/"+ $scope.search.country+"/"+ $scope.search.year, body ).then(function(res) {
                 
                 $scope.getLista = { status: res.status,
                                        datos:  res.data  

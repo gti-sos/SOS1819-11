@@ -23,7 +23,9 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                             refresh();
                         }).catch(function (response) {
 			            	$scope.statusInfo = JSON.stringify(response.status, null, 2);
-			            	
+			            	if(response.status==409){
+			            	    alert("Error: Los datos iniciales ya existen.");
+			            	}
 			            });
 			            
                 };

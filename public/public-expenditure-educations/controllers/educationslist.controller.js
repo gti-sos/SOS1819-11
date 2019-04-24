@@ -385,7 +385,7 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ng
         
         $scope.edit = function(){
             
-             if ($scope.search.country) {
+            if ($scope.search.country) {
                 $scope.search.country;
             }
             if ($scope.search.year ) {
@@ -416,19 +416,24 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ng
                 healthExpenditurePerCapita:  $scope.search.healthExpenditurePerCapita,
                 var_: $scope.search.var_,
             };
+            
             console.log(body)
             
-            $http.put(url+"/"+ $scope.search.country+"/"+ $scope.search.year, body ).then(function(res) {
+            $http.put(url+"/"+ body.country+"/"+ body.year, body ).then(function(res) {
                 
                 $scope.getLista = { status: res.status,
                                        datos:  res.data  
-                                    };
                 
+                  
+                  };
+               getList();
             }).catch(function(res){
                     
                     $scope.getLista = { status: res.status,
                                        datos:  res.data  
                                     };
+                
+               
             });
             
           

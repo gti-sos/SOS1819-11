@@ -93,11 +93,8 @@
                   
       
                    <td>
-                    
-                   <button type="button"  ng-click="editB()" style="background-color:white; border:hidden;" ><i class="fa fa-edit" style="font-size:20px;"></i></button>
-                    
-                  
-                    
+                
+                
                    <button type="button"  ng-click="deleteR(i.country,i.year)" style="background-color:white; border:hidden;" ><i class="fa fa-trash" style="font-size:20px;color:rgb(255, 45, 0  )"></i></button>
                     
                   </td>
@@ -140,6 +137,7 @@
               <div class="col" style = "padding : 0px;">
                 
                 <div class="btn-group" role="group" aria-label="Basic example"  style = "padding-left : 260px;">
+                   <button type="button"  ng-click="editB()" style="background-color:white; border:hidden;" ><i class="fa fa-edit" style="font-size:48px;"></i></button>
                   <button type="button" style="background-color:white; border:hidden;" ng-click="loadInitialData()" class="btn"><i class="fa fa-check-square-o" style="font-size:48px;color:#18B929"></i></button>
                   <button type="button" ng-click="deleteAll()" class="btn"  style="background-color:white; border:hidden;"><i class="fa fa-trash" style="font-size:48px;color:red; margin-bottom: 5px;"></i></button>
                   
@@ -229,33 +227,37 @@
 
 
 <script type="text/ng-template" id="edit">
+
+    <div class="row justify-content-center">
+      <h1 ><u>Actualizar</u></h1>
+    </div>
     
     <form ng-submit="edit()">
     
     <div class="form-group">
       <label for="">País</label>
-      <input type="text" class="form-control" ng-model="search.country" placeholder="Buscar por país">
+      <input type="text" class="form-control" ng-model="search.country" placeholder="Introduzca país">
     </div>
     <div class="form-group">
       <label for="">Año</label>
-      <input type="text" class="form-control"  ng-model="search.year" placeholder="Buscar por año">
+      <input type="text" class="form-control"  ng-model="search.year" placeholder="Introduzca año">
     </div>
     <div class="form-group">
       <label for="">Gasto Educación</label>
-      <input type="text" class="form-control"  ng-model="search.educationExpense" placeholder="Buscar por G.Educación">
+      <input type="text" class="form-control"  ng-model="search.educationExpense" placeholder="Introduzca G.Educación">
     </div>
     
     <div class="form-group">
       <label for="">G.E. (% Pub)</label>
-      <input type="text" class="form-control" ng-model="search.educationExpensePub" placeholder="Buscar por G.E. (% Pub)">
+      <input type="text" class="form-control" ng-model="search.educationExpensePub" placeholder="Introduzca G.E. (% Pub)">
     </div>
     <div class="form-group">
       <label for="">G.E. (% Pib)</label>
-      <input type="text" class="form-control" ng-model="search.educationExpensePib" placeholder="Buscar por G.E. (% Pib)">
+      <input type="text" class="form-control" ng-model="search.educationExpensePib" placeholder="Introduzca G.E. (% Pib)">
     </div>
     <div class="form-group">
       <label for="">G.E. Per Capita</label>
-      <input type="text" class="form-control" ng-model= "search.healthExpenditurePerCapita" placeholder="Buscar por G.E. Per Capita">
+      <input type="text" class="form-control" ng-model= "search.healthExpenditurePerCapita" placeholder="Introduzca G.E. Per Capita">
     </div>
     <div class="form-group">
       <label for="">Var</label>

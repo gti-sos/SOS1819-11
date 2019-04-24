@@ -569,7 +569,7 @@ apiRest.register = (app, publicExpenditureEducations) => {
         
         var params = {
             country: req.params.country,
-            year: req.params.year
+            year: parseInt(req.params.year)
             
         } 
         
@@ -613,7 +613,7 @@ apiRest.register = (app, publicExpenditureEducations) => {
     
         var params = {
             country: req.params.country,
-            year: req.params.year
+            year: parseInt(req.params.year)
             
         } 
         

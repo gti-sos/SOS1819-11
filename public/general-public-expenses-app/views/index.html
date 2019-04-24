@@ -7,7 +7,7 @@
         <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="/bower_components/angular/angular.min.js"></script>
         
-        <script src="app.js"></script>
+        <script src="/general-public-expenses-app/app.js"></script>
         <script src="/general-public-expenses-app/controllers/main-ctrl.js"></script>
 
     </head>
@@ -37,7 +37,7 @@
                     <td>{{ generalPublicExpenses.defenseSpending }}</td>
                     <td>{{ generalPublicExpenses.publicSpendingPib }}</td>
                     <td>{{ generalPublicExpenses.var_ }}</td>
-                    <td><button class="btn btn-danger" ng-click="deleteGeneralPublicExpenses(generalPublicExpenses.title)">Eliminar</button></td>
+                    <td><button class="btn btn-danger" ng-click="deleteGeneralPublicExpenses(generalPublicExpenses.country)">Eliminar</button></td>
                 </tr>
                 <tr>
                     <td>

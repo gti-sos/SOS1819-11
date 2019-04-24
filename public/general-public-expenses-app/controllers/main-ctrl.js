@@ -30,7 +30,7 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                     var newGeneralPublicExpenses = $scope.newGeneralPublicExpenses;
                     console.log("Adding a new earning inter stat: " + JSON.stringify(newGeneralPublicExpenses,null,2)); 
                     $http.post($scope.url,newGeneralPublicExpenses).then(function (response){
-                        alert("El dato  " + JSON.stringify(newGeneralPublicExpenses.title,null,2) + " se ha añadido correctamente.");
+                        alert("El dato  " + JSON.stringify(newGeneralPublicExpenses.country,null,2) + " se ha añadido correctamente.");
                         console.log("POST Response: " + response.status + " " + response.data);
                         refresh();
                     }, function (error){
@@ -38,14 +38,14 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                             alert("Error: Debe rellenar todos los campos.");
                         }
                         else if(error.status==409) {
-                            alert("Error: El dato " + JSON.stringify(newGeneralPublicExpenses.title,null,2) + " ya existe.");
+                            alert("Error: El dato " + JSON.stringify(newGeneralPublicExpenses.country,null,2) + " ya existe.");
                         }
                     });
                 };
 
-                $scope.deleteGeneralPublicExpenses = function(title) {
-                    console.log("Deleting general public expenses with title: " + title); 
-                    $http.delete($scope.url + "/" + title).then(function (response){
+                $scope.deleteGeneralPublicExpenses = function(country) {
+                    console.log("Deleting general public expenses with country: " + country); 
+                    $http.delete($scope.url + "/" + country).then(function (response){
                         alert("El dato se ha eliminado correctamente.");
                         console.log("DELETE Response: " + response.status + " " + response.data);
                         refresh();
@@ -104,8 +104,8 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                 $scope.updateGeneralPublicExpenses = function(){
                     var newGeneralPublicExpenses = $scope.newGeneralPublicExpenses;
                     console.log("Updating general public expenses: " + JSON.stringify(newGeneralPublicExpenses, null, 2));
-                    $http.put($scope.url+"/"+newGeneralPublicExpenses.title, newGeneralPublicExpenses).then(function(response) {
-                        alert("El dato " + JSON.stringify(newGeneralPublicExpenses.title,null,2) + " se ha modificado correctamente.");
+                    $http.put($scope.url+"/"+newGeneralPublicExpenses.country, newGeneralPublicExpenses).then(function(response) {
+                        alert("El dato " + JSON.stringify(newGeneralPublicExpenses.country,null,2) + " se ha modificado correctamente.");
                         console.log("PUT Response: " + response.status + " " + response.statusText);
                         refresh();
                     }, function (error){
@@ -113,7 +113,7 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                             alert("Error: Debe rellenar todos los campos.");
                         }
                         else if(error.status==404) {
-                            alert("Error: El dato  " + JSON.stringify(newGeneralPublicExpenses.title,null,2) + " no existe.");
+                            alert("Error: El dato  " + JSON.stringify(newGeneralPublicExpenses.country,null,2) + " no existe.");
                         }
                     });
                 };

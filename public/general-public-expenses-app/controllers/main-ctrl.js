@@ -106,7 +106,7 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                 $scope.updateGeneralPublicExpenses = function(){
                     var newGeneralPublicExpenses = $scope.newGeneralPublicExpenses;
                     console.log("Updating general public expenses: " + JSON.stringify(newGeneralPublicExpenses, null, 2));
-                    $http.put($scope.url+"/"+newGeneralPublicExpenses.country, newGeneralPublicExpenses).then(function(response) {
+                    $http.put($scope.url+"/"+newGeneralPublicExpenses.country+"/"+newGeneralPublicExpenses.year, newGeneralPublicExpenses).then(function(response) {
                         alert("El dato " + JSON.stringify(newGeneralPublicExpenses.country,null,2) + " se ha modificado correctamente.");
                         console.log("PUT Response: " + response.status + " " + response.statusText);
                         refresh();

@@ -14,7 +14,7 @@ angular.module("App", [ "ngRoute", "ngDialog"]).config(function($routeProvider,$
     
     $routeProvider.
     when("/ui/v1/public-expenditure-educations", {
-        templateUrl: "/public-expenditure-educations/views/educationsList.html",
+        templateUrl: "/public-expenditure-educations/views/index.html",
         controller: "EducatiosListCtrl"
        
     }).

@@ -426,13 +426,15 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ng
                 
                   
                   };
+                message(res);
                getList();
             }).catch(function(res){
                     
                     $scope.getLista = { status: res.status,
                                        datos:  res.data  
                                     };
-                
+                message(res);
+               getList();
                
             });
             

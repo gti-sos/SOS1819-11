@@ -434,7 +434,7 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ng
                                        datos:  res.data  
                                     };
                 message(res);
-               getList();
+               
                
             });
             

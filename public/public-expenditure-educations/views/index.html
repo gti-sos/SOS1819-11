@@ -52,10 +52,10 @@
        
         <div class="input-group  ">
             
-            <input type="text" class="form-control" ng-model = "search.from" placeholder="From">
-            <input type="text" class="form-control" ng-model = "search.to" placeholder="To">
+            <input type="text" class="form-control" ng-model = "search.from" placeholder="Desde">
+            <input type="text" class="form-control" ng-model = "search.to" placeholder="Hasta">
             <div class="input-group-append">
-              <button class="btn btn-success" ng-click = "search()">Go</button> 
+              <button class="btn btn-success" ng-click = "search()">Ir</button> 
             </div>
             
              
@@ -83,7 +83,7 @@
         
                 <tr ng-repeat = "i in getLista.datos" >
                 
-                  <td><a href = "/ui/v1/public-expenditure-educations/{{i.country}}/{{i.year}}">{{i.country}}</a></td>
+                  <td>{{i.country}}</td>
                   <td>{{i.year}}</td>
                   <td>{{i.educationExpense}}</td>
                   <td>{{i.educationExpensePub}}</td>

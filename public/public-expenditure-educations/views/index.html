@@ -10,7 +10,7 @@
 
         <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="/bower_components/angular/angular.min.js"></script>
-        
+        <script src="/bower_components/angular-route/angular-route.min.js"></script>
         
         
         
@@ -94,7 +94,7 @@
       
                    <td>
                     
-                   <button type="button"  ng-click="editButton()" style="background-color:white; border:hidden;" ><i class="fa fa-edit" style="font-size:20px;"></i></button>
+                   <button type="button"  ng-click="edit()" style="background-color:white; border:hidden;" ><i class="fa fa-edit" style="font-size:20px;"></i></button>
                     
                   
                     
@@ -224,6 +224,19 @@
     <input type="submit" class="btn btn-success">
     
   </form>
+</script>
+
+
+
+<script type="text/ng-template" id="edit">
+    
+    <div class="form-group">
+      <label for="">País</label>
+      <input type="text" class="form-control" ng-model="update.datos.country" placeholder="Buscar por país">
+    </div>
+  
+    
+    {{update.datos}}
 </script>
 
 

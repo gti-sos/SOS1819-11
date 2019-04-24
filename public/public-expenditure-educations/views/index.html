@@ -162,7 +162,7 @@
     <div style=" margin:75px -25px 0px 0px;">Añadir</div> <i class="fa fa-share" style="font-size:48px;color:black; margin:35px 5px 0px 0px;" ></i>
     <div class="searchbar">
         <input class="search_input" type="text" name="" ng-model="data.country" placeholder="País">
-        <input class="search_input" type="text" name="" ng-model="data.year" placeholder="Año">
+        <input class="search_input" type="number" name="" ng-model="data.year" placeholder="Año">
         <input class="search_input" type="text" name="" ng-model="data.educationExpense" placeholder="G.Educación">
         <input class="search_input" type="text" name="" ng-model="data.educationExpensePub" placeholder="G.E. (% Pub)">
         <input class="search_input" type="text" name="" ng-model="data.educationExpensePib" placeholder="G.E. (% Pib)">
@@ -240,7 +240,7 @@
     </div>
     <div class="form-group">
       <label for="">Año</label>
-      <input type="text" class="form-control"  ng-model="search.year" placeholder="Introduzca año">
+      <input type="number" class="form-control"  ng-model="search.year" placeholder="Introduzca año">
     </div>
     <div class="form-group">
       <label for="">Gasto Educación</label>
@@ -261,7 +261,7 @@
     </div>
     <div class="form-group">
       <label for="">Var</label>
-      <input type="text" class="form-control"  ng-model= "search.var_" placeholder="Buscar por Var.">
+      <input type="text" class="form-control"  ng-model= "search.var_" placeholder="Introduzca Var.">
     </div>
     
     <input type="submit" class="btn btn-success">

@@ -17,7 +17,7 @@ app.use('/', express.static(path.join(__dirname, "public")));
 
 //----------------------------> Mini-Postman Antonio Jesús
 
-app.use('/general-public-expenses', express.static(path.join(__dirname, "public/general-public-expenses/views")));  // Redirige a esa ruta cuando haces un get a general-public-expense
+app.use('/general-public-expenses', express.static(path.join(__dirname, "public/general-public-expenses/views"))); // Redirige a esa ruta cuando haces un get a general-public-expense
 
 //------------------------------
 
@@ -65,7 +65,7 @@ clientJMCC.connect(err => {
 
 // -------------------API REST Joaquín Morillo Capitán------------------------
 
-app.use("/public-health-expenses", express.static(path.join(__dirname, "public/public-health-expenses/views")));
+app.use("/ui/v1/public-health-expenses", express.static(path.join(__dirname, "public/public-health-expenses/views")));
 // const MongoClient = require("mongodb").MongoClient;
 const uriJMC = "mongodb+srv://test:test@sos-xfza6.mongodb.net/test?retryWrites=true";
 const clientJMC = new MongoClient(uriJMC, { useNewUrlParser: true });

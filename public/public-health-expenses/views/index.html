@@ -2,7 +2,7 @@
 <html ng-app="MiniPostmanApp">
 
 <head>
-    <title>Mini Postman</title>
+    <title>My minipostman</title>
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
@@ -11,90 +11,75 @@
 </head>
 
 <body ng-controller="MainCtrl">
-    <h1 class="text-center">My minipostman</h1>
+    <!-- cabecera -->
+    <h1 class="text-center">Gastos públicos de salud</h1>
 
     <!-- separador -->
-    <hr width="50%" />
+    <hr width="100%" />
 
     <!-- contenedor general -->
     <div class="container">
 
-        <!-- fila GET -->
-        <div class="row">
+        <!-- fila -->
+        <div class="row" align="center">
 
-            <!-- columna de envío -->
+            <!-- columna -->
             <div class="col-sm">
 
                 <form>
 
                     <div class="form-group">
 
-                        <label>GET /api/v1/public-health-expenses<input type="text" class="form-control" ng-model="query"/></label>
+                        <input id="searchCountry" type="text" class="form-control" placeholder="País" />
 
                     </div>
-
-                    <button class="btn btn-primary" ng-click="get(query)">Send</button>
 
                 </form>
 
             </div>
 
-            <!-- columna de devolución -->
-            <div class="col-sm" ng-model="getResponse">
-
-                <div class="alert alert-warning">
-
-                    Status: {{getResponse.state}}
-
-                </div>
-
-                <div class="alert alert-secondary">
-
-                    Response: {{getResponse.data}}
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- separador -->
-        <hr width="100%" />
-
-        <!-- fila DELETE -->
-        <div class="row">
-
-            <!-- columna de envío -->
+            <!-- columna -->
             <div class="col-sm">
 
                 <form>
 
                     <div class="form-group">
 
-                        <label>DELETE /api/v1/public-health-expenses<input type="text" class="form-control" ng-model="query"/></label>
+                        <input id="searchFrom" type="text" class="form-control" placeholder="Desde" />
 
                     </div>
-
-                    <button class="btn btn-danger" ng-click="delete(query)">Send</button>
 
                 </form>
 
             </div>
 
-            <!-- columna de devolución -->
-            <div class="col-sm" ng-model="deleteResponse">
+            <!-- columna -->
+            <div class="col-sm">
 
-                <div class="alert alert-warning">
+                <form>
 
-                    Status: {{deleteResponse.state}}
+                    <div class="form-group">
 
-                </div>
+                        <input id="searchTo" type="text" class="form-control" placeholder="Hasta" />
 
-                <div class="alert alert-secondary">
+                    </div>
 
-                    Response: {{deleteResponse.data}}
+                </form>
 
-                </div>
+            </div>
+
+            <!-- columna -->
+            <div class="col-sm">
+
+                <form>
+
+                    <div class="form-group">
+
+                        <button class="btn btn-primary" ng-click="get(null)">CONSULTAR</button>
+
+                    </div>
+
+                </form>
 
             </div>
 
@@ -103,96 +88,79 @@
         <!-- separador -->
         <hr width="100%" />
 
-        <!-- fila POST -->
-        <div class="row">
+        <table class="table table-striped table-sm table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="align-middle text-center">PAÍS</th>
+                    <th class="align-middle text-center">AÑO</th>
+                    <th class="align-middle text-center">GASTOS EN SALUD PÚBLICA</th>
+                    <th class="align-middle text-center">GASTOS EN SALUD</th>
+                    <th class="align-middle text-center">GASTOS PÚBLICOS TOTALES</th>
+                    <th class="align-middle text-center">GASTOS EN SALUD (PIB)</th>
+                    <th class="align-middle text-center">GASTOS EN SALUD PER CÁPITA</th>
+                    <th class="align-middle text-center">VAR</th>
+                    <th class="align-middle text-center">ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in getData">
+                    <td class="align-middle text-center">{{ data.country }}</td>
+                    <td class="align-middle text-center">{{ data.year }}</td>
+                    <td class="align-middle text-center">{{ data.publicHealthExpense }}</td>
+                    <td class="align-middle text-center">{{ data.healthExpense }}</td>
+                    <td class="align-middle text-center">{{ data.totalPublicExpense }}</td>
+                    <td class="align-middle text-center">{{ data.healthExpensePib }}</td>
+                    <td class="align-middle text-center">{{ data.healthExpenditurePerCapita }}</td>
+                    <td class="align-middle text-center">{{ data.var_ }}</td>
+                    <td align="center"><button class="align-middle btn btn-danger btn-sm" ng-click="delete(data.country,data.year)">BORRAR</button></td>
+                </tr>
+                <tr>
+                    <td class="align-middle"><input class="form-control" ng-model="newData.country" /></td>
+                    <td class="align-middle"><input class="form-control" ng-model="newData.year" /></td>
+                    <td class="align-middle"><input class="form-control" ng-model="newData.publicHealthExpense" /></td>
+                    <td class="align-middle"><input class="form-control" ng-model="newData.healthExpense" /></td>
+                    <td class="align-middle"><input class="form-control" ng-model="newData.totalPublicExpense" /></td>
+                    <td class="align-middle"><input class="form-control" ng-model="newData.healthExpensePib" /></td>
+                    <td class="align-middle"><input class="form-control" ng-model="newData.healthExpenditurePerCapita" /></td>
+                    <td class="align-middle"><input class="form-control" ng-model="newData.var_" /></td>
+                    <td align="center">
+                        <button class="btn btn-success btn-sm" ng-click="post()">AÑADIR</button>
+                        <button class="btn btn-secondary btn-sm" ng-click="put()">ACTUALIZAR</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-            <!-- columna de envío -->
+        <!-- fila -->
+        <div class="row" align="center">
+
+            <!-- columna -->
             <div class="col-sm">
 
-                <form ng-model="send">
+                <form>
 
                     <div class="form-group">
 
-                        <label>POST /api/v1/public-health-expenses<input type="text" class="form-control" ng-model="query"/></label>
+                        <button id="btnPrevious" class="btn btn-dark" ng-click="get(false)">Anterior</button>
 
                     </div>
-
-                    <div class="form-group">
-
-                        <label>country</label>
-                        <input type="text" class="form-control" placeholder="france" ng-model="send.country" />
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>year</label>
-                        <input type="text" class="form-control" placeholder="2017" ng-model="send.year" />
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>publicHealthExpense</label>
-                        <input type="text" class="form-control" placeholder="82.99" ng-model="send.publicHealthExpense" />
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>healthExpense</label>
-                        <input type="text" class="form-control" placeholder="217528.3" ng-model="send.healthExpense" />
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>totalPublicExpense</label>
-                        <input type="text" class="form-control" placeholder="16.97" ng-model="send.totalPublicExpense" />
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>healthExpensePib</label>
-                        <input type="text" class="form-control" placeholder="9.51" ng-model="send.healthExpensePib" />
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>healthExpenditurePerCapita</label>
-                        <input type="text" class="form-control" placeholder="3247" ng-model="send.healthExpenditurePerCapita" />
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>var_</label>
-                        <input type="text" class="form-control" placeholder="3.80" ng-model="send.var_" />
-
-                    </div>
-
-                    <button class="btn btn-success" ng-click="post(query,send)">Send</button>
 
                 </form>
 
             </div>
 
-            <!-- columna de devolución -->
-            <div class="col-sm" ng-model="postResponse">
+            <!-- columna -->
+            <div class="col-sm">
 
-                <div class="alert alert-warning">
+                <form>
 
-                    Status: {{postResponse.state}}
+                    <div class="form-group">
 
-                </div>
+                        <button id="btnNext" class="btn btn-dark" ng-click="get(true)">Siguiente</button>
 
-                <div class="alert alert-secondary">
+                    </div>
 
-                    Response: {{postResponse.data}}
-
-                </div>
+                </form>
 
             </div>
 
@@ -201,96 +169,33 @@
         <!-- separador -->
         <hr width="100%" />
 
-        <!-- fila PUT -->
         <div class="row">
 
-            <!-- columna de envío -->
             <div class="col-sm">
 
-                <form ng-model="send">
+                <div class="alert alert-info">
 
-                    <div class="form-group">
+                    {{response}}
 
-                        <label>PUT /api/v1/public-health-expenses<input type="text" class="form-control" ng-model="query"/></label>
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>country</label>
-                        <input type="text" class="form-control" placeholder="france" ng-model="send.country" />
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>year</label>
-                        <input type="text" class="form-control" placeholder="2017" ng-model="send.year" />
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>publicHealthExpense</label>
-                        <input type="text" class="form-control" placeholder="82.99" ng-model="send.publicHealthExpense" />
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>healthExpense</label>
-                        <input type="text" class="form-control" placeholder="217528.3" ng-model="send.healthExpense" />
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>totalPublicExpense</label>
-                        <input type="text" class="form-control" placeholder="16.97" ng-model="send.totalPublicExpense" />
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>healthExpensePib</label>
-                        <input type="text" class="form-control" placeholder="9.51" ng-model="send.healthExpensePib" />
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>healthExpenditurePerCapita</label>
-                        <input type="text" class="form-control" placeholder="3247" ng-model="send.healthExpenditurePerCapita" />
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>var_</label>
-                        <input type="text" class="form-control" placeholder="3.80" ng-model="send.var_" />
-
-                    </div>
-
-                    <button class="btn btn-success" ng-click="put(query,send)">Send</button>
-
-                </form>
+                </div>
 
             </div>
 
-            <!-- columna de devolución -->
-            <div class="col-sm" ng-model="putResponse">
+        </div>
 
-                <div class="alert alert-warning">
+        <div class="row" align="center">
 
-                    Status: {{putResponse.state}}
+            <div class="col-sm">
 
-                </div>
+                <form>
 
-                <div class="alert alert-secondary">
+                    <div class="form-group">
 
-                    Response: {{putResponse.data}}
+                        <button class="btn btn-danger" ng-click="delete(null,null)">BORRAR TODO</button>
 
-                </div>
+                    </div>
+
+                </form>
 
             </div>
 

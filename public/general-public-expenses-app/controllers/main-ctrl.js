@@ -20,10 +20,12 @@ app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
                             alert("Base de datos inicializada.");
                             $scope.data = JSON.stringify(response.data,null,2);
                             $scope.statusInfo = JSON.stringify(response.status, null, 2);
+                            refresh();
                         }).catch(function (response) {
 			            	$scope.statusInfo = JSON.stringify(response.status, null, 2);
+			            	
 			            });
-			            refresh();
+			            
                 };
                 
                 $scope.addGeneralPublicExpenses = function() {

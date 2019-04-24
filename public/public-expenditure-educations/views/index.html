@@ -83,7 +83,7 @@
         
                 <tr ng-repeat = "i in getLista.datos" >
                 
-                  <td>{{i.country}}</td>
+                  <td><a href = "/ui/v1/public-expenditure-educations/{{i.country}}/{{i.year}}">{{i.country}}</a></td>
                   <td>{{i.year}}</td>
                   <td>{{i.educationExpense}}</td>
                   <td>{{i.educationExpensePub}}</td>

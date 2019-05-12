@@ -5,7 +5,7 @@
 .searchbar{
     margin-top: 2%;
     height: 60px;
-    background-color: #392828;
+    background-color: #343a40;;
     border-radius: 30px;
     padding: 10px;
 }
@@ -22,7 +22,7 @@
 
 .searchbar:hover > .search_input{
     padding: 0 10px;
-    width: 135px;
+    width: 134px;
     transition: width 0.4s linear;
 }
 

@@ -427,7 +427,9 @@ apiRest.register = (app, publicExpenditureEducations) => {
             isNaN(data["healthExpenditurePerCapita"])|| isNaN(data["var_"]) ||
             !data.hasOwnProperty("country") || !data.hasOwnProperty("year") || !data.hasOwnProperty("educationExpense")
             || !data.hasOwnProperty("educationExpensePub") || !data.hasOwnProperty("educationExpensePib")
-            || !data.hasOwnProperty("healthExpenditurePerCapita") || !data.hasOwnProperty("var_")) {
+            || !data.hasOwnProperty("healthExpenditurePerCapita") || !data.hasOwnProperty("var_") || data["educationExpense"] == 0
+             || data["educationExpensePub"] == 0 || data["educationExpensePib"] == 0 || data["healthExpenditurePerCapita"] == 0
+              || data["var_"] == 0) {
                             
             res.sendStatus(400); // //Miramos si existe algún error (ej: solicitud malformada, sintaxis errónea, etc)
     
@@ -640,7 +642,9 @@ apiRest.register = (app, publicExpenditureEducations) => {
                         || isNaN(updateData.educationExpensePib) || isNaN(updateData.healthExpenditurePerCapita)|| isNaN(updateData.var_)||
                         !updateData.hasOwnProperty("country") || !updateData.hasOwnProperty("year") || !updateData.hasOwnProperty("educationExpense")
                         || !updateData.hasOwnProperty("educationExpensePub") || !updateData.hasOwnProperty("educationExpensePib")
-                        || !updateData.hasOwnProperty("healthExpenditurePerCapita") || !updateData.hasOwnProperty("var_") ){
+                        || !updateData.hasOwnProperty("healthExpenditurePerCapita") || !updateData.hasOwnProperty("var_")
+                        || updateData.educationExpense == "" || updateData.educationExpensePub == "" || updateData.educationExpensePib == "" 
+                        || updateData.healthExpenditurePerCapita == "" || updateData.var_ == "" ){
                             
                         
                         res.sendStatus(400);
@@ -770,7 +774,7 @@ apiRest.register = (app, publicExpenditureEducations) => {
     
     //   -------------------------------------------- POST /api/v1/public-expenditure-educations (ERROR)   --------------------------------------------
     
-    app.post( BASE_PATH + "/:country", (req, res) => {
+    app.post( BASE_PATH + "/:country/:year", (req, res) => {
     
         res.sendStatus(405);
     

@@ -1,10 +1,10 @@
 /* global angular $scope $routeParams */
-
 var app = angular.module("App");
 
-app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ngDialog", function ($scope,$http, $httpParamSerializer,ngDialog){
+app.controller("EducatiosListCtrl", ["$scope","$http","$location","$httpParamSerializer","$routeParams","ngDialog", function ($scope,$http,$location, $httpParamSerializer,$routeParams,ngDialog){
     
-
+    
+    
         
     var pag=0;
 
@@ -30,15 +30,13 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ng
         
         $http.get(url+"?limit="+10+"&offset="+pag).then(function (res){
                 
-                $scope.getLista = { status: res.status,
-                                       datos:  res.data  
-                                    };
+                $scope.getLista = res.data  
+                                    
                 
             }).catch(function(res){
                 
-                $scope.getLista = { status: res.status,
-                                       datos: res.data 
-                                    };
+                $scope.getLista = res.data 
+                                
              
             });
     }
@@ -189,7 +187,7 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ng
                                 };
             
             message(res);
-            
+            getList();
             
         });
         
@@ -224,18 +222,16 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ng
         $http.get(url+"?limit="+10+"&offset="+pag+"&"+query).then(function (res){
            
             
-            $scope.getLista = { status: res.status,
-                                   datos:  res.data  
-                                };
+            $scope.getLista = res.data;  
+                                
            
             message(res); 
             
             
         }).catch(function(res){
             
-            $scope.getLista = { status: res.status,
-                                   datos: res.data 
-                                };
+            $scope.getLista =  res.data; 
+                                
             message(res); 
             
         });
@@ -344,17 +340,15 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ng
                 $http.get(url+"?"+query).then(function (res){
                    
                     console.log(res);
-                    $scope.getLista = { status: res.status,
-                                           datos:  res.data  
-                    };
+                    $scope.getLista = res.data;  
+                    
                     
                     $scope.search = {}
                     message(res); 
                 }).catch(function(res){
                     
-                    $scope.getLista = { status: res.status,
-                                           datos: res.data 
-                                        };
+                    $scope.getLista =  res.data; 
+                                        
                     message(res);
                 });
                 
@@ -371,74 +365,6 @@ app.controller("EducatiosListCtrl", ["$scope","$http","$httpParamSerializer","ng
                     scope: $scope,
                
                 });
-        }
-        
-        $scope.editB = function(){
-            ngDialog.open({
-                    template: 'edit',
-                    className: 'ngdialog-theme-default',
-                    scope: $scope,
-               
-                });
-        }
-        
-        
-        $scope.edit = function(){
-            
-            if ($scope.search.country) {
-                $scope.search.country;
-            }
-            if ($scope.search.year ) {
-                $scope.search.year;
-            }
-            if ($scope.search.educationExpense) {
-                $scope.search.educationExpense;
-            }
-            if ($scope.search.educationExpensePub) {
-                $scope.search.educationExpensePub;
-            }
-            if ($scope.search.educationExpensePib) {
-                $scope.search.educationExpensePib;
-            }
-            if ($scope.search.healthExpenditurePerCapita) {
-                $scope.search.healthExpenditurePerCapita;
-            }
-            if ($scope.search.var_) {
-                $scope.search.var_;
-            }
-            
-            var body ={
-               country: $scope.search.country,
-                year: $scope.search.year,
-                educationExpense: $scope.search.educationExpense,
-                educationExpensePub: $scope.search.educationExpensePub,
-                educationExpensePib:  $scope.search.educationExpensePib,
-                healthExpenditurePerCapita:  $scope.search.healthExpenditurePerCapita,
-                var_: $scope.search.var_,
-            };
-            
-            console.log(body)
-            
-            $http.put(url+"/"+ body.country+"/"+ body.year, body ).then(function(res) {
-                
-                $scope.getLista = { status: res.status,
-                                       datos:  res.data  
-                
-                  
-                  };
-                message(res);
-               getList();
-            }).catch(function(res){
-                    
-                    $scope.getLista = { status: res.status,
-                                       datos:  res.data  
-                                    };
-                message(res);
-               
-               
-            });
-            
-          
         } 
     
    

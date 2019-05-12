@@ -3,7 +3,6 @@
 angular.module("App", [ "ngRoute", "ngDialog"]).config(function($routeProvider) {
     
     
-    /* for delete /#!*/
     
     $routeProvider.
     when("/", {

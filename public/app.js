@@ -1,6 +1,6 @@
 /*global angular*/
 
-angular.module("App", [ "ngRoute", "ngDialog"]).config(function($routeProvider,$locationProvider) {
+angular.module("App", [ "ngRoute", "ngDialog"]).config(function($routeProvider) {
     
     
     /* for delete /#!*/

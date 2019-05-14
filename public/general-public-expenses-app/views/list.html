@@ -14,7 +14,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="generalPublicExpenses in generalPublicExpenses">
-                    <td><a href="#!/edit/{{generalPublicExpenses.country}}">{{ generalPublicExpenses.country }}</a></td>
+                    <td><a href="#!/ui/v1/general-public-expenses/edit/{{generalPublicExpenses.country}}/{{generalPublicExpenses.year}}">{{ generalPublicExpenses.country }}</a></td>
                     <td>{{ generalPublicExpenses.year }}</td>
                     <td>{{ generalPublicExpenses.publicSpending }}</td>
                     <td>{{ generalPublicExpenses.educationExpense }}</td>

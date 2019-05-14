@@ -14,28 +14,29 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ generalPublicExpenses.country }} </td>
-                    <td>{{ generalPublicExpenses.year }}</td>
+                    <td style="vertical-align: middle;">{{ generalPublicExpenses.country }} </td>
+                    <td style="vertical-align: middle;">{{ generalPublicExpenses.year }}</td>
                     <td>
-                        <input class="form-control" ng-model="newGeneralPublicExpenses.publicSpending" value="new publicSpending"/>
+                        <input class="form-control" ng-model="generalPublicExpenses.publicSpending" value="new publicSpending"/>
                     </td>
                     <td>
-                        <input class="form-control" ng-model="newGeneralPublicExpenses.educationExpense" value="new educationExpense"/>
+                        <input class="form-control" ng-model="generalPublicExpenses.educationExpense" value="new educationExpense"/>
                     </td>
                     <td>
-                        <input class="form-control" ng-model="newGeneralPublicExpenses.healthExpense" value="new healthExpense"/>
+                        <input class="form-control" ng-model="generalPublicExpenses.healthExpense" value="new healthExpense"/>
                     </td>
                     <td>
-                        <input class="form-control" ng-model="newGeneralPublicExpenses.defenseSpending" value="new defenseSpending"/>
+                        <input class="form-control" ng-model="generalPublicExpenses.defenseSpending" value="new defenseSpending"/>
                     </td>
                     <td>
-                        <input class="form-control" ng-model="newGeneralPublicExpenses.publicSpendingPib" value="new publicSpendingPib"/>
+                        <input class="form-control" ng-model="generalPublicExpenses.publicSpendingPib" value="new publicSpendingPib"/>
                     </td>
                     <td>
-                        <input class="form-control" ng-model="newGeneralPublicExpenses.var_" value="new var_"/>
+                        <input class="form-control" ng-model="generalPublicExpenses.var_" value="new var_"/>
                     </td>
                     
-                    <td><button class="btn btn-outline-primary" ng-click="updateGeneralPublicExpenses(generalPublicExpenses.country)">Actualizar</button></td>
+                    <td><button class="btn btn-outline-primary" ng-click="updateGeneralPublicExpenses()"
+                    >Actualizar</button></td>
                 </tr>
                    
                 

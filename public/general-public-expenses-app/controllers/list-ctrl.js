@@ -1,12 +1,12 @@
 /* global angular */
-var app = angular.module("GeneralPublicExpensesApp");
+var app = angular.module("App");
 
 app.controller("GeneralListCtrl", ["$scope", "$http", function ($scope,$http){
                 console.log("GeneralListCtrl initialized");
                 $scope.url = "/api/v1/general-public-expenses";
                 
                 refresh();
-                
+        
                 function refresh() {
                     console.log("Requesting earnings inter stats to <"+$scope.url+">...");
                     $http.get($scope.url).then(function (response){
@@ -105,7 +105,7 @@ app.controller("GeneralListCtrl", ["$scope", "$http", function ($scope,$http){
                     });
                 };
                 
-                $scope.updateGeneralPublicExpenses = function(){
+               /* $scope.updateGeneralPublicExpenses = function(){
                     var newGeneralPublicExpenses = $scope.newGeneralPublicExpenses;
                     console.log("Updating general public expenses: " + JSON.stringify(newGeneralPublicExpenses, null, 2));
                     $http.put($scope.url+"/"+newGeneralPublicExpenses.country+"/"+newGeneralPublicExpenses.year, newGeneralPublicExpenses).then(function(response) {
@@ -120,5 +120,5 @@ app.controller("GeneralListCtrl", ["$scope", "$http", function ($scope,$http){
                             alert("Error: El dato  " + JSON.stringify(newGeneralPublicExpenses.country,null,2) + " no existe.");
                         }
                     });
-                };
+                };*/
 }]);

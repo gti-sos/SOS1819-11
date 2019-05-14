@@ -1,6 +1,10 @@
 describe("Check if data is loaded: ",function () {
     it("List shows more than 3 items", function (){
+        
         browser.get("https://sos1819-11.herokuapp.com/#!/ui/v1/public-expenditure-educations");
+        
+        element(by.id('loadInitialData')).click();
+        
         var getLista = element.all(by.repeater("i in getLista"));
         expect(getLista.count()).toBeGreaterThan(3);
 

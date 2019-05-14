@@ -595,7 +595,16 @@ apiRest.register = (app, generalPublicExpenses) => {
             
         } 
         
-        var updateData = req.body;
+            var updateData ={
+                country: req.body.country,
+                year: Number(req.body.year),
+                publicSpending: Number(req.body.publicSpending),
+                educationExpense: Number(req.body.educationExpense),
+                healthExpense: Number(req.body.healthExpense),
+                defenseSpending: Number(req.body.defenseSpending),
+                publicSpendingPib: Number(req.body.publicSpendingPib),
+                var_: Number(req.body.var_)
+        };
     
         generalPublicExpenses.find(params).toArray((err, findGeneralPublicExpenses) => {
     

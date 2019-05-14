@@ -14,14 +14,14 @@
             </thead>
             <tbody>
                 <tr ng-repeat="generalPublicExpenses in generalPublicExpenses">
-                    <td><a href="#!/ui/v1/general-public-expenses/edit/{{generalPublicExpenses.country}}/{{generalPublicExpenses.year}}">{{ generalPublicExpenses.country }}</a></td>
-                    <td>{{ generalPublicExpenses.year }}</td>
-                    <td>{{ generalPublicExpenses.publicSpending }}</td>
-                    <td>{{ generalPublicExpenses.educationExpense }}</td>
-                    <td>{{ generalPublicExpenses.healthExpense }}</td>
-                    <td>{{ generalPublicExpenses.defenseSpending }}</td>
-                    <td>{{ generalPublicExpenses.publicSpendingPib }}</td>
-                    <td>{{ generalPublicExpenses.var_ }}</td>
+                    <td style="vertical-align: middle;"><a href="#!/ui/v1/general-public-expenses/edit/{{generalPublicExpenses.country}}/{{generalPublicExpenses.year}}">{{ generalPublicExpenses.country }}</a></td>
+                    <td style="vertical-align: middle;">{{ generalPublicExpenses.year }}</td>
+                    <td style="vertical-align: middle;">{{ generalPublicExpenses.publicSpending }}</td>
+                    <td style="vertical-align: middle;">{{ generalPublicExpenses.educationExpense }}</td>
+                    <td style="vertical-align: middle;">{{ generalPublicExpenses.healthExpense }}</td>
+                    <td style="vertical-align: middle;">{{ generalPublicExpenses.defenseSpending }}</td>
+                    <td style="vertical-align: middle;">{{ generalPublicExpenses.publicSpendingPib }}</td>
+                    <td style="vertical-align: middle;">{{ generalPublicExpenses.var_ }}</td>
                     <td><button class="btn btn-outline-danger" ng-click="deleteGeneralPublicExpenses(generalPublicExpenses.country)">Eliminar</button></td>
                 </tr>
                 <tr>
@@ -52,9 +52,9 @@
                     <td>
                         <button class="btn btn-outline-primary" ng-click="addGeneralPublicExpenses()">Crear</button>
                     </td>
-                    <td>
+                   <!-- <td>
                         <button class="btn btn-outline-secondary" ng-click="updateGeneralPublicExpenses()">Modificar</button>
-                    </td>
+                    </td> -->
                 </tr>
                 <tr>
                     <td><button class="btn btn-outline-danger" ng-click="deleteAll()">Eliminar todo</button></td>

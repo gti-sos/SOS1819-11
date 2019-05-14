@@ -29,6 +29,30 @@ apiRest.register = (app, generalPublicExpenses) => {
 
                 },
                 {
+
+                    country: "espania",
+                    year: 2016,
+                    publicSpending: 563726.0,
+                    educationExpense: 15.77,
+                    healthExpense: 5.14,
+                    defenseSpending: 9.99,
+                    publicSpendingPib: 50.00,
+                    var_: -0.20
+
+                },
+                {
+
+                    country: "espania",
+                    year: 2015,
+                    publicSpending: 89566.0,
+                    educationExpense: 5.77,
+                    healthExpense: 10.14,
+                    defenseSpending: 19.99,
+                    publicSpendingPib: 80.00,
+                    var_: -8.20
+
+                },
+                {
                     country: "alemania",
                     year: 2017,
                     publicSpending: 1439839.0,
@@ -40,8 +64,74 @@ apiRest.register = (app, generalPublicExpenses) => {
 
                 },
                 {
+                    country: "alemania",
+                    year: 2016,
+                    publicSpending: 4984839.0,
+                    educationExpense: 18.98,
+                    healthExpense: 1.36,
+                    defenseSpending: 8.73,
+                    publicSpendingPib: 63.90,
+                    var_: 4.78
+
+                },
+                {
+                    country: "alemania",
+                    year: 2015,
+                    publicSpending: 457862.0,
+                    educationExpense: 65.98,
+                    healthExpense: 12.36,
+                    defenseSpending: 8.73,
+                    publicSpendingPib: 69.90,
+                    var_: 7.78
+
+                },
+                {
+                    country: "alemania",
+                    year: 2014,
+                    publicSpending: 36542.0,
+                    educationExpense: 23.98,
+                    healthExpense: 1.36,
+                    defenseSpending: 20.73,
+                    publicSpendingPib: 4.90,
+                    var_: 1.78
+
+                },
+                {
                     country: "francia",
                     year: 2017,
+                    publicSpending: 1291948.0,
+                    educationExpense: 9.66,
+                    healthExpense: 16.97,
+                    defenseSpending: 4.01,
+                    publicSpendingPib: 56.50,
+                    var_: -0.10
+
+                },
+                {
+                    country: "francia",
+                    year: 2016,
+                    publicSpending: 1291948.0,
+                    educationExpense: 9.66,
+                    healthExpense: 16.97,
+                    defenseSpending: 4.01,
+                    publicSpendingPib: 56.50,
+                    var_: -0.10
+
+                },
+                {
+                    country: "francia",
+                    year: 2015,
+                    publicSpending: 1291948.0,
+                    educationExpense: 9.66,
+                    healthExpense: 16.97,
+                    defenseSpending: 4.01,
+                    publicSpendingPib: 56.50,
+                    var_: -0.10
+
+                },
+                {
+                    country: "francia",
+                    year: 2014,
                     publicSpending: 1291948.0,
                     educationExpense: 9.66,
                     healthExpense: 16.97,
@@ -172,18 +262,23 @@ apiRest.register = (app, generalPublicExpenses) => {
             generalPublicExpenses.find({ "year": { $gte: startY, $lte: endY } }).skip(offset).limit(limit).toArray((err, generalPublicExpenses) => {
     
                 if (err) {
-    
+                    console.log("Error: " + err);
                     res.sendStatus(500);
     
                 }
                 else {
+                    
+                    if (generalPublicExpenses.length == 0){
+                        
+                        res.sendStatus(404);
+                    }else{
+                        res.status(200).send(generalPublicExpenses.map((c) => {
+                            console.log("Paginación y búsqueda  from,  to");
+                            delete c._id;
+                            return c;
     
-                    res.status(200).send(generalPublicExpenses.map((c) => {
-                        delete c._id;
-                        return c;
-    
-                    }));
-    
+                        }));
+                    }
                 }
             });
     
@@ -220,15 +315,21 @@ apiRest.register = (app, generalPublicExpenses) => {
     
                 }
                 else {
-    
-                    res.status(200).send(generalPublicExpenses.map((c) => {
-                        delete c._id;
-                        
-                        return c;
-    
-                    }));
                     
-                   
+                    if(generalPublicExpenses.length == 0){
+                        
+                        res.sendStatus(404);
+                        
+                    }else{
+    
+                        res.status(200).send(generalPublicExpenses.map((c) => {
+                            delete c._id;
+                        
+                            return c;
+    
+                        }));
+                    
+                    }
     
                 }
             });
@@ -313,7 +414,7 @@ apiRest.register = (app, generalPublicExpenses) => {
         
         if (data["country"] == ""|| !isNaN(data["country"]) || isNaN(data["year"]) || isNaN(data["publicSpending"]) ||
             isNaN(data["educationExpense"]) || isNaN(data["healthExpense"]) || 
-            isNaN(data["defenseSpending"])|| isNaN(data["publicSpendingPib"])|| isNaN(data["var_"]) ||
+            isNaN(data["defenseSpending"]) || isNaN(data["publicSpendingPib"])|| isNaN(data["var_"]) ||
             !data.hasOwnProperty("country") || !data.hasOwnProperty("year") || !data.hasOwnProperty("publicSpending")
             || !data.hasOwnProperty("educationExpense") || !data.hasOwnProperty("healthExpense")
             || !data.hasOwnProperty("defenseSpending") || !data.hasOwnProperty("publicSpendingPib") || !data.hasOwnProperty("var_")) {
@@ -322,10 +423,10 @@ apiRest.register = (app, generalPublicExpenses) => {
     
         }else{
     
-            generalPublicExpenses.find({ "country": data["country"] }).toArray((err, newGPP) => {
+            generalPublicExpenses.find({ "country": data["country"], "year": data["year"]}).toArray((err, newGPP) => {
         
                 if (err) { //Error interno del servidor
-        
+                    console.log("Error: " + err);
                     res.sendStatus(500);
         
                 }else {
@@ -334,11 +435,9 @@ apiRest.register = (app, generalPublicExpenses) => {
                     // sino pues se crea
                     if(newGPP.length > 0){
                     
-                        if (data["country"] == newGPP[0].country && data["year"] == newGPP[0].year) { // Ya existe el recurso
+                        res.sendStatus(409);
             
-                            res.sendStatus(409);
-            
-                        }else{
+                    }else{
                             
                            generalPublicExpenses.insert(data, (err, newGPP) => {
         
@@ -357,32 +456,13 @@ apiRest.register = (app, generalPublicExpenses) => {
                         }
                     
                     
-                   }else {
-                        
-        
-                        generalPublicExpenses.insert(data, (err, newGPP) => {
-        
-                             if (err) {
-        
-                                    res.sendStatus(500);
-        
-                                }else {
-        
-                                    res.sendStatus(201);
-        
-                                }
-        
-                            });
-        
-                 
-                    } 
+                     }
                     
-                    
-                } 
-            });
-        }    
+                });
+            
+             }
         
-    });
+        });
     
     //------------------------------------------------ DELETE /api/v1/general-public-expenses --------------------------------
 
@@ -472,7 +552,7 @@ apiRest.register = (app, generalPublicExpenses) => {
             
         } 
     
-        generalPublicExpenses.find(params).toArray((err, generalPublicExpenses) => {
+        generalPublicExpenses.find(params).toArray((err, GPP) => {
     
             if (err) {
     
@@ -481,7 +561,7 @@ apiRest.register = (app, generalPublicExpenses) => {
             }
             else {
     
-                if (generalPublicExpenses == 0) {
+                if (GPP.length == 0) {
     
                     res.sendStatus(404);
     
@@ -489,8 +569,8 @@ apiRest.register = (app, generalPublicExpenses) => {
                 else {
     
                
-                    delete generalPublicExpenses[0]._id;
-                    res.status(200).send(generalPublicExpenses[0]);
+                    delete GPP[0]._id;
+                    res.status(200).send(GPP[0]);
                                     
                 
     
@@ -509,7 +589,7 @@ apiRest.register = (app, generalPublicExpenses) => {
     
         var params = {
             country: req.params.country,
-            year: Number(req.params.year)
+            year: parseInt(req.params.year)
             
         } 
         
@@ -548,7 +628,7 @@ apiRest.register = (app, generalPublicExpenses) => {
     
                             if (err) {
     
-                                res.sendStatus(500);
+                            res.sendStatus(500);
     
                             }
                             else {

@@ -1,8 +1,8 @@
 /* global angular */
 var app = angular.module("GeneralPublicExpensesApp");
 
-app.controller("MainCtrl", ["$scope", "$http", function ($scope,$http){
-                console.log("MainCtrl initialized");
+app.controller("GeneralListCtrl", ["$scope", "$http", function ($scope,$http){
+                console.log("GeneralListCtrl initialized");
                 $scope.url = "/api/v1/general-public-expenses";
                 
                 refresh();

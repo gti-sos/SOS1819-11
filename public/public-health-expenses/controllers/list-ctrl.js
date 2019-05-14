@@ -1,7 +1,7 @@
 /* global angular */
 var app = angular.module("App");
 
-app.controller("ListCtrl", ["$scope", "$http", "$routeParams", "$location", function($scope, $http, $routeParams, $location) {
+app.controller("ListCtrl", ["$scope", "$http", function($scope, $http) {
 
     console.log("ListCtrl initialized!");
 

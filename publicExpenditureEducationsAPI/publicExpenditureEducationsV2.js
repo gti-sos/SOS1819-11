@@ -619,7 +619,15 @@ apiRest.register = (app, publicExpenditureEducations) => {
             
         } 
         
-        var updateData = req.body;
+        var updateData ={
+            country: req.body.country,
+            year: Number(req.body.year),
+            educationExpense: Number(req.body.educationExpense),
+            educationExpensePub: Number(req.body.educationExpensePub),
+            educationExpensePib: Number(req.body.educationExpensePib),
+            healthExpenditurePerCapita: Number(req.body.healthExpenditurePerCapita),
+            var_: Number(req.body.var_)
+        };
     
         publicExpenditureEducations.find(params).toArray((err, findPublicExpenditureEducation) => {
     
@@ -637,14 +645,14 @@ apiRest.register = (app, publicExpenditureEducations) => {
                 }
                 else {
                     //Miramos si existe algún error (ej: solicitud malformada, sintaxis errónea, etc)
-                    if (updateData.country != req.params.country || updateData.year != params["year"] || !isNaN(updateData.country) 
-                        ||  isNaN(updateData.year) || isNaN(updateData.educationExpense) || isNaN(updateData.educationExpensePub) 
-                        || isNaN(updateData.educationExpensePib) || isNaN(updateData.healthExpenditurePerCapita)|| isNaN(updateData.var_)||
+                    if (updateData["country"] != req.params.country || updateData["year"] != params["year"] || !isNaN(updateData["country"]) 
+                        ||  isNaN(updateData["year"]) || isNaN(updateData["educationExpense"]) || isNaN(updateData["educationExpensePub"]) 
+                        || isNaN(updateData["educationExpensePib"]) || isNaN(updateData["healthExpenditurePerCapita"])|| isNaN(updateData["var_"])||
                         !updateData.hasOwnProperty("country") || !updateData.hasOwnProperty("year") || !updateData.hasOwnProperty("educationExpense")
                         || !updateData.hasOwnProperty("educationExpensePub") || !updateData.hasOwnProperty("educationExpensePib")
                         || !updateData.hasOwnProperty("healthExpenditurePerCapita") || !updateData.hasOwnProperty("var_")
-                        || updateData.educationExpense == "" || updateData.educationExpensePub == "" || updateData.educationExpensePib == "" 
-                        || updateData.healthExpenditurePerCapita == "" || updateData.var_ == "" ){
+                        || updateData["educationExpense"] == "" || updateData["educationExpensePub"] == "" || updateData["educationExpensePib"] == "" 
+                        || updateData["healthExpenditurePerCapita"] == "" || updateData["var_"] == "" ){
                             
                         
                         res.sendStatus(400);

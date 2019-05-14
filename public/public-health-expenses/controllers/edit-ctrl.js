@@ -36,7 +36,7 @@ app.controller("EditCtrl", ["$scope", "$http", "$routeParams", "$location", func
         $http.put($scope.url + "/" + country + "/" + year, updatedData).then(function(response) {
             console.log("PUT response: " + response.status + " " + response.data);
             $scope.response = "El dato se ha actualizado correctamente.";
-            $location.path("/");
+            $location.path("/ui/v1/public-health-expenses");
         }).catch(function(response) {
             console.log("PUT response: " + response.status + " " + response.data);
             var state = response.status;

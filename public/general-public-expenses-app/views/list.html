@@ -22,7 +22,7 @@
                     <td style="vertical-align: middle;">{{ generalPublicExpenses.defenseSpending }}</td>
                     <td style="vertical-align: middle;">{{ generalPublicExpenses.publicSpendingPib }}</td>
                     <td style="vertical-align: middle;">{{ generalPublicExpenses.var_ }}</td>
-                    <td><button class="btn btn-outline-danger" ng-click="deleteGeneralPublicExpenses(generalPublicExpenses.country)">Eliminar</button></td>
+                    <td><button type="button" id = "delete" class="btn btn-outline-danger" ng-click="deleteGeneralPublicExpenses(generalPublicExpenses.country)">Eliminar</button></td>
                 </tr>
                 <tr>
                     <td>
@@ -50,7 +50,7 @@
                         <input class="form-control" ng-model="newGeneralPublicExpenses.var_" value="new var_"/>
                     </td>
                     <td>
-                        <button class="btn btn-outline-primary" ng-click="addGeneralPublicExpenses()">Crear</button>
+                        <button type="button" id="add" class="btn btn-outline-primary" ng-click="addGeneralPublicExpenses()">Crear</button>
                     </td>
                    <!-- <td>
                         <button class="btn btn-outline-secondary" ng-click="updateGeneralPublicExpenses()">Modificar</button>

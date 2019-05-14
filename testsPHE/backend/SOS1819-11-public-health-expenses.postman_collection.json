@@ -1,0 +1,2126 @@
+{
+	"info": {
+		"_postman_id": "eba86a03-38be-4fd8-9d87-e4f0d770aa70",
+		"name": "SOS1819-11-public-health-expenses",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": ".../public-health-expenses/ FIRST DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6650c6ea-6eea-4818-9ceb-7c32744fc992",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": 2022,\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.23\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/loadInitialData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "81863371-b03a-450b-9910-673fbf49bde3",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"china\",\n    \"year\": 2060,\n    \"publicHealthExpense\": 82.99,\n    \"healthExpense\": 217528.3,\n    \"totalPublicExpense\": 16.97,\n    \"healthExpensePib\": 9.51,\n    \"healthExpenditurePerCapita\": 3247,\n    \"var_\": 3.0\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/loadInitialData?",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						"loadInitialData"
+					],
+					"query": [
+						{
+							"key": "var_",
+							"value": "7.24",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "china",
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": "2017",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "4",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/loadInitialData CONFLICT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "001d1ee3-d245-44f1-ba19-244251bd60eb",
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"china\",\n    \"year\": 2060,\n    \"publicHealthExpense\": 82.99,\n    \"healthExpense\": 217528.3,\n    \"totalPublicExpense\": 16.97,\n    \"healthExpensePib\": 9.51,\n    \"healthExpenditurePerCapita\": 3247,\n    \"var_\": 3.0\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/loadInitialData?",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						"loadInitialData"
+					],
+					"query": [
+						{
+							"key": "var_",
+							"value": "7.24",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "china",
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": "2017",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "4",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "514b1aef-61e9-4a88-9049-6fabf1f3e5e0",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"GET resources\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length>0).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"china\",\n    \"year\": 2060,\n    \"publicHealthExpense\": 82.99,\n    \"healthExpense\": 217528.3,\n    \"totalPublicExpense\": 16.97,\n    \"healthExpensePib\": 9.51,\n    \"healthExpenditurePerCapita\": 3247,\n    \"var_\": 3.0\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/?",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						""
+					],
+					"query": [
+						{
+							"key": "var_",
+							"value": "7.24",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "china",
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": "2017",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "4",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/spain/2017",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a8433fc0-7246-414d-90dc-74f6cde834b4",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"china\",\n    \"year\": 2060,\n    \"publicHealthExpense\": 82.99,\n    \"healthExpense\": 217528.3,\n    \"totalPublicExpense\": 16.97,\n    \"healthExpensePib\": 9.51,\n    \"healthExpenditurePerCapita\": 3247,\n    \"var_\": 3.0\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/spain/2017?",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						"spain",
+						"2017"
+					],
+					"query": [
+						{
+							"key": "var_",
+							"value": "7.24",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "china",
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": "2017",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "4",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/?year=2017",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b3aaa0eb-771b-4a84-bd2e-805cccd73edc",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"GET resources\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length>0).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"china\",\n    \"year\": 2060,\n    \"publicHealthExpense\": 82.99,\n    \"healthExpense\": 217528.3,\n    \"totalPublicExpense\": 16.97,\n    \"healthExpensePib\": 9.51,\n    \"healthExpenditurePerCapita\": 3247,\n    \"var_\": 3.0\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/?year=2017",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						""
+					],
+					"query": [
+						{
+							"key": "var_",
+							"value": "7.24",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": "2017"
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "4",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/?country=france&year=2017",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cba22067-49e2-4ea1-ac0b-608d88673578",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"china\",\n    \"year\": 2060,\n    \"publicHealthExpense\": 82.99,\n    \"healthExpense\": 217528.3,\n    \"totalPublicExpense\": 16.97,\n    \"healthExpensePib\": 9.51,\n    \"healthExpenditurePerCapita\": 3247,\n    \"var_\": 3.0\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/?country=france&year=2017",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						""
+					],
+					"query": [
+						{
+							"key": "var_",
+							"value": "7.24",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "france"
+						},
+						{
+							"key": "year",
+							"value": "2017"
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "4",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/?var_=7.24&year=2017",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2ebdc353-26dc-4bf4-9f06-18714f7f58fe",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"china\",\n    \"year\": 2060,\n    \"publicHealthExpense\": 82.99,\n    \"healthExpense\": 217528.3,\n    \"totalPublicExpense\": 16.97,\n    \"healthExpensePib\": 9.51,\n    \"healthExpenditurePerCapita\": 3247,\n    \"var_\": 3.0\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/?var_=7.24&year=2017",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						""
+					],
+					"query": [
+						{
+							"key": "var_",
+							"value": "7.24"
+						},
+						{
+							"key": "country",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": "2017"
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "4",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/?var_=7.24&country=germany&year=2017",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "424fcec3-0fcd-4039-8489-9566e6ac54ab",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"china\",\n    \"year\": 2060,\n    \"publicHealthExpense\": 82.99,\n    \"healthExpense\": 217528.3,\n    \"totalPublicExpense\": 16.97,\n    \"healthExpensePib\": 9.51,\n    \"healthExpenditurePerCapita\": 3247,\n    \"var_\": 3.0\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/?var_=7.24&country=germany&year=2017",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						""
+					],
+					"query": [
+						{
+							"key": "var_",
+							"value": "7.24"
+						},
+						{
+							"key": "country",
+							"value": "germany"
+						},
+						{
+							"key": "year",
+							"value": "2017"
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "4",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/france/2017 405",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "055286f7-bccf-40e9-a3ea-178401c7ad3b",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"portugal\",\n        \"year\": 2020,\n        \"publicHealthExpense\": 78.71,\n        \"healthExpense\": 176435,\n        \"totalPublicExpense\": 18.88,\n        \"healthExpensePib\": 7.59,\n        \"healthExpenditurePerCapita\": 2681,\n        \"var_\": -9.18\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/france/2017?",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						"france",
+						"2017"
+					],
+					"query": [
+						{
+							"key": "var_",
+							"value": "7.24",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "germany",
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": "2017",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "4",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/ 405",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dd7f645a-a76e-45c0-8b1c-7d26fecaae50",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"china\",\n    \"year\": 2020,\n    \"publicHealthExpense\": 78.71,\n    \"healthExpense\": 176435,\n    \"totalPublicExpense\": 18.88,\n    \"healthExpensePib\": 7.59,\n    \"healthExpenditurePerCapita\": 2681,\n    \"var_\": -9.18\n}"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/?",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						""
+					],
+					"query": [
+						{
+							"key": "var_",
+							"value": "7.24",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "germany",
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": "2017",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "4",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6778126c-f47d-4c09-a2ea-2af64bc7625f",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"portugal\",\n        \"year\": 2017,\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 3.8\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/portugal/2017",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7ade1997-40eb-4360-ad64-ecb09ebda029",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"portugal\",\n        \"year\": 2017,\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.23\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/portugal/2017",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						"portugal",
+						"2017"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/portugal/2017",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dd50ad1e-6dbe-437e-aee3-e5c8e8e8dd43",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"portugal\",\n        \"year\": 2017,\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.23\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/portugal/2017",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						"portugal",
+						"2017"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/spain/2017",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ce7e906-b176-479d-831f-efe6c7fe9622",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": 2017,\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.233\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/spain/2017",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						"spain",
+						"2017"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/?year=2017",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "08cd45e4-c6cd-4d02-9aad-fd0934c7314b",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": 2022,\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.23\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/?year=2017",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						""
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2017"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6650c6ea-6eea-4818-9ceb-7c32744fc992",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": 2022,\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.23\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/loadInitialData x2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cbae068f-5839-4652-9a5c-fec60919ca1e",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": 2022,\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.23\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/loadInitialData",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../secure/public-health-expenses/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f1ccfe62-f90b-4877-9443-3f628e814da4",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"GET resources\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length>0).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text"
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": 2022,\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.23\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/secure/public-health-expenses/",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"secure",
+						"public-health-expenses",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/?limit=2&offset=2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "76abfbc9-1525-40c8-bce0-b6079627fbbf",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"GET resources\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length>0).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": 2022,\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.23\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/?limit=2&offset=2",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "offset",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/?country=china 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9e79ed19-c254-4d8d-9bd8-44c09c0d0aea",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": 2022,\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.23\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/?country=china",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "china"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/ 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bf174a64-4ab6-4f1b-896e-a0b70255f4a4",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"\",\n        \"year\": 2022,\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.23\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "china",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/spain/2017 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "757f0dec-1d07-43b1-bf5c-9d36103bb57c",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": \"error\",\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.23\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/spain/2017",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						"spain",
+						"2017"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "china",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/?healthExpense=113131",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "37243447-ad0f-41b4-8b9f-28ef72e79664",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": \"error\",\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.23\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/?healthExpense=113131",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "china",
+							"disabled": true
+						},
+						{
+							"key": "healthExpense",
+							"value": "113131"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/?healthExpense=113130 NOT FOUND",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1605b4c9-99e4-460a-9451-cc2fee2236a6",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": \"error\",\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.23\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/?healthExpense=113130",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "china",
+							"disabled": true
+						},
+						{
+							"key": "healthExpense",
+							"value": "113130"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/portugal/2017 NOT FOUND",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a58b9f31-4268-4dfb-92e8-cc1647e89ed0",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": \"error\",\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.23\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/portugal/2017",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						"portugal",
+						"2017"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "portugal",
+							"disabled": true
+						},
+						{
+							"key": "healthExpense",
+							"value": "113130",
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": "2017",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../secure/public-health-expenses/ 401",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "202b91b0-a9ab-4244-a7fe-62a2d8cc6534",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": \"error\",\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.23\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/secure/public-health-expenses/",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"secure",
+						"public-health-expenses",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "portugal",
+							"disabled": true
+						},
+						{
+							"key": "healthExpense",
+							"value": "113130",
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": "2017",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ".../public-health-expenses/ x2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1dd9e33-6d4f-48c0-8cdf-e99977786dd9",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "user",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "pass",
+						"value": "jmc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"spain\",\n        \"year\": \"error\",\n        \"publicHealthExpense\": 82.99,\n        \"healthExpense\": 217528.3,\n        \"totalPublicExpense\": 16.97,\n        \"healthExpensePib\": 9.51,\n        \"healthExpenditurePerCapita\": 3247,\n        \"var_\": 5.23\n    }"
+				},
+				"url": {
+					"raw": "https://sos1819-11.herokuapp.com/api/v2/public-health-expenses/",
+					"protocol": "https",
+					"host": [
+						"sos1819-11",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"public-health-expenses",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "healthExpense",
+							"value": "113130",
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": "2017",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "france",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

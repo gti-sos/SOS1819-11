@@ -797,7 +797,7 @@ api.register = (app, publicHealthExpenses) => {
 
     // GET /api/v1/secure/public-health-expenses
 
-    app.get("/api/v1/secure/public-health-expenses", (req, res) => {
+    app.get("/api/v2/secure/public-health-expenses", (req, res) => {
 
         var user = req.headers.user;
         var password = req.headers.pass;

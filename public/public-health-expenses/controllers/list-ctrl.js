@@ -1,9 +1,9 @@
 /* global angular */
-var app = angular.module("MiniPostmanApp");
+var app = angular.module("App");
 
-app.controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
+app.controller("ListCtrl", ["$scope", "$http", function($scope, $http) {
 
-    console.log("MainCtrl initialized!");
+    console.log("ListCtrl initialized!");
 
     $scope.url = "/api/v2/public-health-expenses";
 
@@ -12,68 +12,6 @@ app.controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
     var limit = 10;
     var pagination;
     var totalData;
-
-    /*
-    // Cargar los datos
-    refresh(null);
-
-    function refresh(parameter) {
-
-        if (parameter == true) {
-            offset = offset + limit;
-        }
-        else if (parameter == false) {
-            offset = offset - limit;
-        }
-        else {
-            offset = 0;
-        }
-
-        pagination = "/?offset=" + offset + "&limit=" + limit;
-        console.log("Requesting data to <" + $scope.url + ">...");
-        $http.get($scope.url + pagination).then(function(response) {
-            console.log("State: " + response.status);
-            console.log("Data: " + JSON.stringify(response.data, null, 2));
-            totalData = response.data.length;
-            console.log("Número de objetos devueltos <" + totalData + ">");
-            console.log("Paginación <" + pagination + ">");
-
-            if (offset == 0) {
-                // Deshabilitar el botón 'Anterior'
-                document.getElementById("btnPrevious").disabled = true;
-                if (totalData < limit) {
-                    // Deshabilitar el botón 'Siguiente'
-                    document.getElementById("btnNext").disabled = true;
-                }
-                else {
-                    // Habilitar el botón 'Siguiente'
-                    document.getElementById("btnNext").disabled = false;
-                }
-            }
-            else if (totalData < limit) {
-                // Habilitar el botón 'Anterior'
-                document.getElementById("btnPrevious").disabled = false;
-                // Deshabilitar el botón 'Siguiente'
-                document.getElementById("btnNext").disabled = true;
-            }
-            else {
-                // Habilitar el botón 'Anterior'
-                document.getElementById("btnPrevious").disabled = false;
-                // Habilitar el botón 'Siguiente'
-                document.getElementById("btnNext").disabled = false;
-            }
-
-            $scope.getData = response.data;
-        }).catch(function(response) {
-            console.log("State: " + response.status);
-            console.log("Data: " + JSON.stringify(response.data, null, 2));
-        });
-    }
-
-    $scope.refresh = function(parameter) {
-        refresh(parameter);
-    };
-    */
 
     getQuery(null);
 
@@ -118,7 +56,6 @@ app.controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
             // /?country=spain&from=2017&to=2017
             url = "/?country=" + country + "&from=" + from + "&to=" + to;
         }
-        /***************************/
         if (parameter == true) {
             offset = offset + limit;
         }
@@ -136,12 +73,10 @@ app.controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
             pagination = "&offset=" + offset + "&limit=" + limit;
         }
         url = url + pagination;
-        /***************************/
         console.log("URL: " + url);
         console.log("Requesting data to <" + $scope.url + url + ">...");
         $http.get($scope.url + url).then(function(response) {
             $scope.response = "Consulta realizada satisfactoriamente.";
-            /*********************************/
             totalData = response.data.length;
             console.log("Número de objetos devueltos <" + totalData + ">");
             console.log("Paginación <" + pagination + ">");
@@ -170,7 +105,6 @@ app.controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
                 // Habilitar el botón 'Siguiente'
                 document.getElementById("btnNext").disabled = false;
             }
-            /*********************************/
             $scope.getData = response.data;
         }).catch(function(response) {
             console.log("GET response: " + response.status);
@@ -185,11 +119,9 @@ app.controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
         });
     }
 
-    /***************************/
     $scope.get = function(parameter) {
         getQuery(parameter);
     };
-    /***************************/
 
     $scope.delete = function(country, year) {
         var url;
@@ -249,39 +181,6 @@ app.controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
             }
             else {
                 $scope.response = "No se ha podido añadir el dato: ha ocurrido un error interno en el servidor.";
-            }
-        });
-    };
-
-    $scope.put = function() {
-        var country = $scope.newData.country;
-        var year = parseInt($scope.newData.year, 10);
-        var updatedData = {
-            country: country,
-            year: year,
-            publicHealthExpense: Number.parseFloat($scope.newData.publicHealthExpense),
-            healthExpense: Number.parseFloat($scope.newData.healthExpense),
-            totalPublicExpense: Number.parseFloat($scope.newData.totalPublicExpense),
-            healthExpensePib: Number.parseFloat($scope.newData.healthExpensePib),
-            healthExpenditurePerCapita: Number.parseFloat($scope.newData.healthExpenditurePerCapita),
-            var_: Number.parseFloat($scope.newData.var_)
-        };
-        $http.put($scope.url + "/" + country + "/" + year, updatedData).then(function(response) {
-            console.log("PUT response: " + response.status + " " + response.data);
-            $scope.response = "El dato se ha actualizado correctamente.";
-            // refresh(null);
-            getQuery(null);
-        }).catch(function(response) {
-            console.log("PUT response: " + response.status + " " + response.data);
-            var state = response.status;
-            if (state == 400) {
-                $scope.response = "No se ha podido actualizar el dato: es necesario introducir todos los atributos.";
-            }
-            else if (state == 404) {
-                $scope.response = "No se ha podido actualizar el dato: no existe un dato referente a ese país y año.";
-            }
-            else {
-                $scope.response = "No se ha podido actualizar el dato: ha ocurrido un error interno en el servidor.";
             }
         });
     };

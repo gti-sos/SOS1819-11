@@ -16,9 +16,9 @@
   "scripts": {
     "start": "node index.js",
     "pretest": "tests/runPhantom.sh",
-    "test": "protractor testsPHE/tests.js && newman run testsPHE/backend/SOS1819-11-public-health-expenses.postman_collection.json; newman run https://www.getpostman.com/collections/e3711b07f370903a2787; newman run https://www.getpostman.com/collections/1821c572780c632dbeab",
+    "test": "protractor testsPHE/tests.js && newman run testsPHE/backend/SOS1819-11-public-health-expenses.postman_collection.json; newman run https://www.getpostman.com/collections/e3711b07f370903a2787 && protractor tests/tests.js; newman run https://www.getpostman.com/collections/ed02aba36f63580c7f99; newman run https://www.getpostman.com/collections/1821c572780c632dbeab && protractor tests-gpe/tests.js",
     "test-publicExpenditureEducationsAPI": "newman run https://www.getpostman.com/collections/e3711b07f370903a2787 && protractor tests/tests.js",
-    "test-generalPublicExpensesAPI": "newman run https://www.getpostman.com/collections/1821c572780c632dbeab",
+    "test-generalPublicExpensesAPI": "newman run https://www.getpostman.com/collections/1821c572780c632dbeab && protractor tests-gpe/tests.js",
     "test-public-health-expenses": "protractor testsPHE/tests.js && newman run testsPHE/backend/SOS1819-11-public-health-expenses.postman_collection.json",
     "posttest": "killall phantomjs"
   },

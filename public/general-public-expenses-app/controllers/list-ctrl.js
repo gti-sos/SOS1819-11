@@ -47,9 +47,9 @@ app.controller("GeneralListCtrl", ["$scope", "$http", function ($scope,$http){
                     });
                 };
 
-                $scope.deleteGeneralPublicExpenses = function(country) {
+                $scope.deleteGeneralPublicExpenses = function(country, year) {
                     console.log("Deleting general public expenses with country: " + country); 
-                    $http.delete($scope.url + "/" + country).then(function (response){
+                    $http.delete($scope.url + "/" + country +"/"+year).then(function (response){
                         alert("El dato se ha eliminado correctamente.");
                         console.log("DELETE Response: " + response.status + " " + response.data);
                         refresh();

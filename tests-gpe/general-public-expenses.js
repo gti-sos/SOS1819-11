@@ -34,7 +34,7 @@ describe("Check if data is loaded: ",function () {
         browser.
         get("https://sos1819-11.herokuapp.com/#!/ui/v1/general-public-expenses");
         element.all(by.repeater('generalPublicExpenses in generalPublicExpenses')).then(function(getLista) {
-            var d = element(by.model('delete(espania,2017)'));
+            var d = element(by.model('delete(espania)'));
             element(by.id('delete')).click();
         });
     });

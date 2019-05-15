@@ -1,6 +1,6 @@
 describe("Check if a new data can be created", function() {
     it("List should grow after the data creation", function() {
-        browser.get("http://localhost:8080/ui/v1/public-health-expenses/#!/");
+        browser.get("http://sos1819-11.herokuapp.com/#!/ui/v1/public-health-expenses");
         element.all(by.repeater("data in getData")).then(function(initialData) {
 
             element(by.model('newData.country')).sendKeys('spain');

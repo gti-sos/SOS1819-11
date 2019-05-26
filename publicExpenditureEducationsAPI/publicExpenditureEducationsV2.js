@@ -23,141 +23,78 @@ apiRest.register = (app, publicExpenditureEducations) => {
         var newPublicExpenditureEducations = [
         {
     
-            country: "espania",
-            year: 2015,
-            educationExpense: 46241.5,
-            educationExpensePub: 9.77,
-            educationExpensePib: 4.28,
-            healthExpenditurePerCapita: 977,
-            var_: -13.08,
+            country: "spain", year: 2015, educationExpense: 46241.5, educationExpensePub: 9.77, educationExpensePib: 4.28, healthExpenditurePerCapita: 977, var_: -13.08,
     
         }, {
-            country: "alemania",
-            year: 2015,
-            educationExpense: 146754.1,
-            educationExpensePub: 10.98,
-            educationExpensePib: 4.81,
-            healthExpenditurePerCapita: 1975,
-            var_: -16.16,
+            country: "germany", year: 2015, educationExpense: 146754.1, educationExpensePub: 10.98, educationExpensePib: 4.81, healthExpenditurePerCapita: 1975,  var_: -16.16,
     
         }, {
-            country: "reino unido",
-            year: 2013,
-            educationExpense: 133190.4,
-            educationExpensePub: 13.91,
-            educationExpensePib: 5.54,
-            healthExpenditurePerCapita: 2028,
-            var_: -10.36,
+            country: "united kingdom", year: 2015, educationExpense: 73190.4, educationExpensePub: 13.91, educationExpensePib: 5.54, healthExpenditurePerCapita: 2028, var_: -10.36,
     
         }, {
-            country: "portugal",
-            year: 2018,
-            educationExpense: 133.4,
-            educationExpensePub: 132.91,
-            educationExpensePib: 52.54,
-            healthExpenditurePerCapita: 228,
-            var_: -10.36,
+            country: "portugal",  year: 2015, educationExpense: 133.4, educationExpensePub: 132.91, educationExpensePib: 52.54, healthExpenditurePerCapita: 228, var_: -10.36,
     
         }, {
-            country: "belgica",
-            year: 2016,
-            educationExpense: 13313.4,
-            educationExpensePub: 13.91,
-            educationExpensePib: 5.54,
-            healthExpenditurePerCapita: 28,
-            var_: -10.36,
+            country: "belgium", year: 2016, educationExpense: 13313.4, educationExpensePub: 13.91, educationExpensePib: 5.54,  healthExpenditurePerCapita: 28, var_: -10.36,
     
         },{
     
-            country: "austria",
-            year: 2013,
-            educationExpense: 461.5,
-            educationExpensePub: 9.77,
-            educationExpensePib: 4.28,
-            healthExpenditurePerCapita: 977,
-            var_: -3.08,
+            country: "austria", year: 2013, educationExpense: 461.5,  educationExpensePub: 9.77, educationExpensePib: 4.28, healthExpenditurePerCapita: 977, var_: -3.08,
     
         }, {
-            country: "estonia",
-            year: 2015,
-            educationExpense: 146754.1,
-            educationExpensePub: 10.98,
-            educationExpensePib: 4.81,
-            healthExpenditurePerCapita: 1975,
-            var_: -16.16,
+            country: "estonia", year: 2015, educationExpense: 16754.1, educationExpensePub: 10.98, educationExpensePib: 4.81, healthExpenditurePerCapita: 1975, var_: -16.16,
     
         }, {
-            country: "filandia",
-            year: 2013,
-            educationExpense: 3190.4,
-            educationExpensePub: 3.91,
-            educationExpensePib: 5.54,
-            healthExpenditurePerCapita: 2028,
-            var_: -1.36,
+            country: "thailand", year: 2016,  educationExpense: 3190.4, educationExpensePub: 3.91, educationExpensePib: 5.54, healthExpenditurePerCapita: 2028,var_: -1.36,
     
         }, {
-            country: "eslovenia",
-            year: 2017,
-            educationExpense: 33.4,
-            educationExpensePub: 32.91,
-            educationExpensePib: 5.54,
-            healthExpenditurePerCapita: 28,
-            var_: -5.36,
+            country: "slovenia", year: 2017, educationExpense: 233.4,  educationExpensePub: 32.91, educationExpensePib: 5.54, healthExpenditurePerCapita: 28, var_: -5.36,
     
         }, {
-            country: "chipre",
-            year: 2016,
-            educationExpense: 13.4,
-            educationExpensePub: 3.91,
-            educationExpensePib: 7.54,
-            healthExpenditurePerCapita: 28,
-            var_: -43.36,
+            country: "cyprus", year: 2015, educationExpense: 113.4, educationExpensePub: 3.91, educationExpensePib: 7.54, healthExpenditurePerCapita: 28, var_: -43.36,
     
         },{
     
-            country: "espania",
-            year: 2016,
-            educationExpense: 6241.5,
-            educationExpensePub: 19.77,
-            educationExpensePib: 24.28,
-            healthExpenditurePerCapita: 77,
-            var_: -13.08,
+            country: "spain", year: 2016, educationExpense: 6241.5, educationExpensePub: 19.77, educationExpensePib: 24.28, healthExpenditurePerCapita: 77, var_: -13.08,
     
         }, {
-            country: "alemania",
-            year: 2016,
-            educationExpense: 754.1,
-            educationExpensePub: 20.98,
-            educationExpensePib: 14.81,
-            healthExpenditurePerCapita: 1975,
-            var_: -6.16,
+            country: "germany", year: 2016, educationExpense: 754.1, educationExpensePub: 20.98, educationExpensePib: 14.81, healthExpenditurePerCapita: 1975, var_: -6.16,
     
         }, {
-            country: "reino unido",
-            year: 2015,
-            educationExpense: 130.4,
-            educationExpensePub: 3.91,
-            educationExpensePib: 4.54,
-            healthExpenditurePerCapita: 28,
-            var_: -16.36,
+            country: "united kingdom", year: 2015, educationExpense: 2130.4, educationExpensePub: 3.91, educationExpensePib: 4.54, healthExpenditurePerCapita: 28, var_: -16.36,
     
         }, {
-            country: "portugal",
-            year: 2017,
-            educationExpense: 33.4,
-            educationExpensePub: 13.91,
-            educationExpensePib: 5.54,
-            healthExpenditurePerCapita: 228,
-            var_: -1.36,
+            country: "portugal", year: 2017, educationExpense: 33.4, educationExpensePub: 13.91, educationExpensePib: 5.54, healthExpenditurePerCapita: 228,var_: -1.36,
     
         }, {
-            country: "belgica",
-            year: 2015,
-            educationExpense: 133.4,
-            educationExpensePub: 23.91,
-            educationExpensePib: 7.54,
-            healthExpenditurePerCapita: 28,
-            var_: -2.36,
+            country: "belgium", year: 2015, educationExpense: 133.4, educationExpensePub: 23.91, educationExpensePib: 7.54, healthExpenditurePerCapita: 28, var_: -2.36,
+    
+        }, {
+            country: "china", year: 2015, educationExpense: 1433.4, educationExpensePub: 63.91, educationExpensePib: 3.54, healthExpenditurePerCapita: 668, var_: 9.36,
+    
+        }, {
+            country: "china", year: 2016, educationExpense: 733.4, educationExpensePub: 5.91, educationExpensePib: 3.54, healthExpenditurePerCapita: 668, var_: -4.36,
+    
+        }, {
+            country: "china", year: 2013, educationExpense: 833.4, educationExpensePub: 3.91, educationExpensePib: 2.54, healthExpenditurePerCapita: 968, var_: 2.36,
+    
+        }, {
+            country: "china", year: 2014, educationExpense: 9436.4, educationExpensePub: 13.21, educationExpensePib: 3.54, healthExpenditurePerCapita: 668, var_: 5.36,
+    
+        }, {
+            country: "germany", year: 2011, educationExpense: 555.1, educationExpensePub: 9.98, educationExpensePib: 14.81, healthExpenditurePerCapita: 875, var_: -6.16,
+    
+        }, {
+            country: "germany", year: 2012, educationExpense: 67754.1, educationExpensePub: 20.98, educationExpensePib: 4.81, healthExpenditurePerCapita: 1975, var_: -0.16,
+    
+        }, {
+            country: "germany", year: 2007, educationExpense: 9754.1, educationExpensePub: 27.98, educationExpensePib: 14.81, healthExpenditurePerCapita: 195, var_: -2.16,
+    
+        }, {
+            country: "germany", year: 2008, educationExpense: 724.1, educationExpensePub: 20.98, educationExpensePib: 24.81, healthExpenditurePerCapita: 1975, var_: -3.16,
+    
+        }, {
+            country: "russia", year: 2015, educationExpense: 123724.1, educationExpensePub: 9.98, educationExpensePib: 14.81, healthExpenditurePerCapita: 175, var_: 1.16,
     
         }];
     

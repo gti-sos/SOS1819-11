@@ -34,6 +34,11 @@ angular.module("App", ["ngRoute", "ngDialog"]).config(function($routeProvider) {
         controller: "EducatiosEditCtrl"
 
     }).
+    when("/views/educations", {
+        templateUrl: "/public-expenditure-educations/views/educationsViews.html",
+        controller: "EducationsViews"
+
+    }).
 
     //------------------------------------------------- General-Public-Expenses------------------------------------------------        
     when("/ui/v1/general-public-expenses", {

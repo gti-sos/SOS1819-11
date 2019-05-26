@@ -29,9 +29,6 @@ apiRest.register = (app, publicExpenditureEducations) => {
             country: "germany", year: 2015, educationExpense: 146754.1, educationExpensePub: 10.98, educationExpensePib: 4.81, healthExpenditurePerCapita: 1975,  var_: -16.16,
     
         }, {
-            country: "united kingdom", year: 2015, educationExpense: 73190.4, educationExpensePub: 13.91, educationExpensePib: 5.54, healthExpenditurePerCapita: 2028, var_: -10.36,
-    
-        }, {
             country: "portugal",  year: 2015, educationExpense: 133.4, educationExpensePub: 132.91, educationExpensePib: 52.54, healthExpenditurePerCapita: 228, var_: -10.36,
     
         }, {
@@ -73,12 +70,6 @@ apiRest.register = (app, publicExpenditureEducations) => {
             country: "china", year: 2015, educationExpense: 1433.4, educationExpensePub: 63.91, educationExpensePib: 3.54, healthExpenditurePerCapita: 668, var_: 9.36,
     
         }, {
-            country: "china", year: 2016, educationExpense: 733.4, educationExpensePub: 5.91, educationExpensePib: 3.54, healthExpenditurePerCapita: 668, var_: -4.36,
-    
-        }, {
-            country: "china", year: 2013, educationExpense: 833.4, educationExpensePub: 3.91, educationExpensePib: 2.54, healthExpenditurePerCapita: 968, var_: 2.36,
-    
-        }, {
             country: "china", year: 2014, educationExpense: 9436.4, educationExpensePub: 13.21, educationExpensePib: 3.54, healthExpenditurePerCapita: 668, var_: 5.36,
     
         }, {
@@ -86,12 +77,6 @@ apiRest.register = (app, publicExpenditureEducations) => {
     
         }, {
             country: "germany", year: 2012, educationExpense: 67754.1, educationExpensePub: 20.98, educationExpensePib: 4.81, healthExpenditurePerCapita: 1975, var_: -0.16,
-    
-        }, {
-            country: "germany", year: 2007, educationExpense: 9754.1, educationExpensePub: 27.98, educationExpensePib: 14.81, healthExpenditurePerCapita: 195, var_: -2.16,
-    
-        }, {
-            country: "germany", year: 2008, educationExpense: 724.1, educationExpensePub: 20.98, educationExpensePib: 24.81, healthExpenditurePerCapita: 1975, var_: -3.16,
     
         }, {
             country: "russia", year: 2015, educationExpense: 123724.1, educationExpensePub: 9.98, educationExpensePib: 14.81, healthExpenditurePerCapita: 175, var_: 1.16,

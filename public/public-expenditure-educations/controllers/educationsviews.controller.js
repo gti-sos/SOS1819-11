@@ -120,7 +120,7 @@ app.controller("EducationsViews", ["$scope", "$http", "$httpParamSerializer", fu
           type: "hbar",
           title: {
             align: "center",
-            text: "Divorces, breaks and nullity for province in years",
+            text: "Var., Education Expense Pub and Education Expense Pib for country in years",
             fontColor: "#555",
             fontSize: 30,
             fontFamily: "Roboto",

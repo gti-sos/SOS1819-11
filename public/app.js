@@ -115,7 +115,18 @@ angular.module("App", ["ngRoute", "ngDialog"]).config(function($routeProvider) {
         templateUrl: "/general-public-expenses-app/views/edit.html"
 
 
-    });
+    })
+    
+     //------------------------------------------------- analytics TODO EL GRUPO------------------------------------------------ 
+    .
+    when("/analytics", {
+        controller: "AnalyticsCtrl",
+        templateUrl: "analytics.html"
+
+
+    });   
+   
+    
 
 
 });

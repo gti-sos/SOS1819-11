@@ -54,7 +54,7 @@ app.controller("AnalyticsCtrl", ["$scope", "$http", "$httpParamSerializer", func
                 spacingBottom: 30
             },
             title: {
-                text: 'Relation between employments,unemployments and expeditures'
+                text: 'GLOBAL'
             },
            
             legend: {

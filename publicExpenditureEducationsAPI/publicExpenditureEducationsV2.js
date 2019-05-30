@@ -9,7 +9,7 @@ module.exports = apiRest;
 
 
 
-apiRest.register = (app, publicExpenditureEducations) => {
+apiRest.register = (app, publicExpenditureEducations, request, jwt) => {
 
     app.get("/api/v2/public-expenditure-educations/docs", (req, res) => {
     
@@ -22,37 +22,34 @@ apiRest.register = (app, publicExpenditureEducations) => {
     
         var newPublicExpenditureEducations = [
         {
-    
-            country: "spain", year: 2015, educationExpense: 46241.5, educationExpensePub: 9.77, educationExpensePib: 4.28, healthExpenditurePerCapita: 977, var_: -13.08,
+            country: "spain", year: 2015, educationExpense: 46241.5, educationExpensePub: 9.77, educationExpensePib: 4.28, healthExpenditurePerCapita: 1977, var_: -13.08,
     
         }, {
             country: "germany", year: 2015, educationExpense: 146754.1, educationExpensePub: 10.98, educationExpensePib: 4.81, healthExpenditurePerCapita: 1975,  var_: -16.16,
     
         }, {
-            country: "portugal",  year: 2015, educationExpense: 133.4, educationExpensePub: 132.91, educationExpensePib: 52.54, healthExpenditurePerCapita: 228, var_: -10.36,
+            country: "portugal",  year: 2015, educationExpense: 133.4, educationExpensePub: 132.91, educationExpensePib: 52.54, healthExpenditurePerCapita: 2228, var_: -10.36,
     
         }, {
             country: "belgium", year: 2016, educationExpense: 13313.4, educationExpensePub: 13.91, educationExpensePib: 5.54,  healthExpenditurePerCapita: 28, var_: -10.36,
     
         },{
-    
-            country: "austria", year: 2013, educationExpense: 461.5,  educationExpensePub: 9.77, educationExpensePib: 4.28, healthExpenditurePerCapita: 977, var_: -3.08,
+            country: "austria", year: 2013, educationExpense: 461.5,  educationExpensePub: 9.77, educationExpensePib: 4.28, healthExpenditurePerCapita: 92277, var_: -3.08,
     
         }, {
             country: "estonia", year: 2015, educationExpense: 16754.1, educationExpensePub: 10.98, educationExpensePib: 4.81, healthExpenditurePerCapita: 1975, var_: -16.16,
     
         }, {
-            country: "thailand", year: 2016,  educationExpense: 3190.4, educationExpensePub: 3.91, educationExpensePib: 5.54, healthExpenditurePerCapita: 2028,var_: -1.36,
+            country: "thailand", year: 2016,  educationExpense: 3190.4, educationExpensePub: 3.91, educationExpensePib: 5.54, healthExpenditurePerCapita: 12028,var_: -1.36,
     
         }, {
-            country: "slovenia", year: 2017, educationExpense: 233.4,  educationExpensePub: 32.91, educationExpensePib: 5.54, healthExpenditurePerCapita: 28, var_: -5.36,
+            country: "slovenia", year: 2017, educationExpense: 233.4,  educationExpensePub: 32.91, educationExpensePib: 5.54, healthExpenditurePerCapita: 2228, var_: -5.36,
     
         }, {
             country: "cyprus", year: 2015, educationExpense: 113.4, educationExpensePub: 3.91, educationExpensePib: 7.54, healthExpenditurePerCapita: 28, var_: -43.36,
     
         },{
-    
-            country: "spain", year: 2016, educationExpense: 6241.5, educationExpensePub: 19.77, educationExpensePib: 24.28, healthExpenditurePerCapita: 77, var_: -13.08,
+            country: "spain", year: 2016, educationExpense: 6241.5, educationExpensePub: 19.77, educationExpensePib: 24.28, healthExpenditurePerCapita: 1177, var_: -13.08,
     
         }, {
             country: "germany", year: 2016, educationExpense: 754.1, educationExpensePub: 20.98, educationExpensePib: 14.81, healthExpenditurePerCapita: 1975, var_: -6.16,
@@ -118,6 +115,78 @@ apiRest.register = (app, publicExpenditureEducations) => {
     
     });
     
+    //---------------------------------Proxy---------------------------
+    
+    app.use("/proxySOS03", function(req, res) {
+        var proxySOS03 = "https://sos1819-03.herokuapp.com";
+        var url = proxySOS03 + req.url;
+        req.pipe(request(url)).pipe(res);
+    });
+  
+    app.use("/proxySOS02", function(req, res) {
+        var proxySOS02 = "https://sos1819-09.herokuapp.com";
+        var url = proxySOS02 + req.url;
+        req.pipe(request(url)).pipe(res);
+    });
+    
+    app.use("/proxySOS06", function(req, res) {
+        var proxySOS06 = "https://sos1819-06.herokuapp.com";
+        var url = proxySOS06 + req.url;
+        req.pipe(request(url)).pipe(res);
+    });
+    //------------------------------JWT------------
+    
+    app.post(BASE_PATH +'/logeate', (req, res) => {
+        
+         var username = req.body.user
+         var password = req.body.password
+      
+        if( !(username === 'c' && password === '1')){
+            res.status(401).send({
+                error: 'usuario o contraseña inválidos'
+            })
+            return
+        }
+        
+        var tokenData = {
+         username: username
+         // ANY DATA
+         }
+        
+        var token = jwt.sign(tokenData, 'Secret Password', {
+         expiresIn: 60 * 60 * 24 // expires in 24 hours
+         })
+        
+         res.send({
+         token
+         
+         })
+         
+    });
+    
+    app.get(BASE_PATH +'/secure', (req, res) => {
+        var token = req.headers['authorization']
+        if(!token){
+            res.status(401).send({
+              error: "Es necesario el token de autenticación"
+            })
+            return
+        }
+     
+        token = token.replace('Bearer ', '')
+     
+        jwt.verify(token, 'Secret Password', function(err, user) {
+          if (err) {
+            res.status(401).send({
+              error: 'Token inválido'
+            })
+          } else {
+            res.send({
+              message: 'Awwwww yeah!!!!'
+            })
+          }
+        })
+    })
     
     
     // --------------------------------------------   GET /api/v1/public-expenditure-educations -----------------------------------------------------
@@ -276,7 +345,7 @@ apiRest.register = (app, publicExpenditureEducations) => {
                             }
                             else {
                                 
-                                if(publicExpenditureEducation.length ==0 ){
+                                if(publicExpenditureEducation.length == 0 ){
                                     
                                     res.sendStatus(404);
                                     

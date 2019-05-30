@@ -21,12 +21,23 @@
 
     <!-- -------------------------------------------------- Public-expenditure-educations----------------------------------------------- -->
     
-
     
     <script src="/public-expenditure-educations/controllers/minipostman.controller.js"></script>
     <script src="/public-expenditure-educations/controllers/educationslist.controller.js"></script>
     <script src="/public-expenditure-educations/controllers/educationsedit.controller.js"></script>
     <script src="/public-expenditure-educations/controllers/educationsviews.controller.js"></script>
+    
+    <!--APIS-->
+    <script src="/public-expenditure-educations/controllers/apiProxySOS03.controller.js"></script>
+    <script src="/public-expenditure-educations/controllers/apiSOS02.controllers.js"></script>
+    <script src="/public-expenditure-educations/controllers/apiSOS04.controllers.js"></script>
+    <script src="/public-expenditure-educations/controllers/apiSOS08.controller.js"></script>
+    <script src="/public-expenditure-educations/controllers/apiSOS09.controller.js"></script>
+    <script src="/public-expenditure-educations/controllers/apiSOS07.controller.js"></script>
+    <script src="/public-expenditure-educations/controllers/apiSOS11.controller.js"></script>
+    <script src="/public-expenditure-educations/controllers/apiSOS06.controller.js"></script>
+    <script src="/public-expenditure-educations/controllers/apiNFLArrest.controller.js"></script>
+    <script src="/public-expenditure-educations/controllers/apiEarthguakeIceland.controller.js"></script>
     
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -43,9 +54,44 @@
             height: 800px;
         }
     </style>
+    
+    <!--APIs -->
+    <!--amCharts -> 3D Column Chart -->
+    <style>
+        #chartdiv {
+          width: 100%;
+          height: 500px;
+        }
+    </style>
+    
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+    
+    <!-- CanvasJS -> Bubble chart wint zoom and pan -->
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
+    <!-- rgraph -> A customised SVG Pie chart -->
+    <script src="/public-expenditure-educations/extends/RGraph/libraries/RGraph.common.core.js"></script>
+    <script src="/public-expenditure-educations/extends/RGraph/libraries/RGraph.pie.js"></script>
+    
+    <script src="/public-expenditure-educations/extends/RGraph/libraries/RGraph.svg.common.core.js"></script>
+    <script src="/public-expenditure-educations/extends/RGraph/libraries/RGraph.svg.bar.js"></script>
+    <script src="/public-expenditure-educations/extends/RGraph/libraries/RGraph.svg.line.js"></script>
 
-
+    <!-- MorrisJS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
+    
+    <!-- Plotly-->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  
+    
     <link rel="stylesheet" href="/public-expenditure-educations/styles.css" type="text/css" />
 
     <!--  -------------------------------------------------- General-public-expenses----------------------------------------------------- -->
@@ -53,7 +99,7 @@
     <script src="/general-public-expenses-app/controllers/list-ctrl.js"></script>
     <script src="/general-public-expenses-app/controllers/edit-ctrl.js"></script>
 
-
+    
 
 
 

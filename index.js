@@ -2,10 +2,15 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 const MongoClient = require('mongodb').MongoClient;
+var request = require("request");
 var cors = require("cors");
 var app = express();
 var port = process.env.PORT || 8080;
 
+var jwt = require('jsonwebtoken');
+
+
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
 app.use("/", express.static(path.join(__dirname + "/public")));
 
@@ -63,7 +68,7 @@ var publicExpenditureEducations;
 clientJMCC.connect(err => {
     publicExpenditureEducations = clientJMCC.db("sos1819").collection("public-expenditure-educations");
 
-    publicExpenditureEducationsAPI.register(app, publicExpenditureEducations);
+    publicExpenditureEducationsAPI.register(app, publicExpenditureEducations, request, jwt);
     console.log("Connected!");
 });
 

@@ -8,6 +8,10 @@ angular.module("App", ["ngRoute", "ngDialog"]).config(function($routeProvider) {
         templateUrl: "info.html",
 
     }).
+    when("/integrations", {
+        templateUrl: "integrations.html",
+
+    }).
 
     // -------------------------------------------------- PUBLIC-HEALTH-EXPENSES ------------------------------------------------------
     when("/ui/v1/public-health-expenses", {
@@ -39,7 +43,66 @@ angular.module("App", ["ngRoute", "ngDialog"]).config(function($routeProvider) {
         controller: "EducationsViews"
 
     }).
+    when("/integrations/sos03proxy", {
+        templateUrl: "/public-expenditure-educations/views/apiProxySOS03.html",
+        controller: "ApiProxySOS03"
 
+    })
+    .
+    when("/integrations/sos02", {
+        templateUrl: "/public-expenditure-educations/views/apiSOS02.html",
+        controller: "ApiSOS02"
+
+    })
+    .
+    when("/integrations/sos04", {
+        templateUrl: "/public-expenditure-educations/views/apiSOS04.html",
+        controller: "ApiSOS04"
+
+    })
+    .
+    when("/integrations/sos08", {
+        templateUrl: "/public-expenditure-educations/views/apiSOS08.html",
+        controller: "ApiSOS08"
+
+    })
+    .
+    when("/integrations/sos09", {
+        templateUrl: "/public-expenditure-educations/views/apiSOS09.html",
+        controller: "ApiSOS09"
+
+    })
+    .
+    when("/integrations/sos07", {
+        templateUrl: "/public-expenditure-educations/views/apiSOS07.html",
+        controller: "ApiSOS07"
+
+    })
+    .
+    when("/integrations/sos11", {
+        templateUrl: "/public-expenditure-educations/views/apiSOS11.html",
+        controller: "ApiSOS11"
+
+    })
+    .
+    when("/integrations/sos06", {
+        templateUrl: "/public-expenditure-educations/views/apiSOS06.html",
+        controller: "ApiSOS06"
+
+    })
+    .
+    when("/integrations/apiNFLArrest", {
+        templateUrl: "/public-expenditure-educations/views/apiNFLArrest.html",
+        controller: "ApiNFLArrest"
+
+    }).
+    when("/integrations/apiEarthguakeIceland", {
+        templateUrl: "/public-expenditure-educations/views/apiEarthguakeIceland.html",
+        controller: "ApiEarthguakeIceland"
+
+    }).
+    
+    
     //------------------------------------------------- General-Public-Expenses------------------------------------------------        
     when("/ui/v1/general-public-expenses", {
         controller: "GeneralListCtrl",

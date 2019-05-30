@@ -26,7 +26,7 @@ app.controller("ApiNFLArrest", ["$scope", "$http", "$httpParamSerializer", funct
          
         }
         
-        
+   console.log(names)     
     new RGraph.Pie({
         id: 'cvs',
         data: arrest_count,

@@ -91,7 +91,7 @@ angular.module("App", ["ngRoute", "ngDialog"]).config(function($routeProvider) {
 
     })
     .
-    when("/integrations/apiNFLArrest", {
+    when("/integrations/apiNFLArres", {
         templateUrl: "/public-expenditure-educations/views/apiNFLArrest.html",
         controller: "ApiNFLArrest"
 

@@ -12,3 +12,5 @@
     - [https://sos1819-11.herokuapp.com/api/v1/public-health-expenses/docs](https://sos1819-11.herokuapp.com/api/v1/public-health-expenses/docs) (developed by [Joaquín Morillo Capitán](https://github.com/joamorcap))
     - [https://sos1819-11.herokuapp.com/api/v1/public-expenditure-educations/docs](https://sos1819-11.herokuapp.com/api/v1/public-expenditure-educations/docs) (developed by [Juan Manuel Centeno Caballero](https://github.com/centca))
 
+  **Docker**:
+    - [docker run -p 8080:8080 -d centca/sos1819-11]

@@ -18,7 +18,7 @@ apiRest.register = (app, generalPublicExpenses) => {
 
             var newGeneralPublicExpenses = [{
 
-                    country: "espania",
+                    country: "spain",
                     year: 2017,
                     publicSpending: 478126.0,
                     educationExpense: 9.77,
@@ -30,7 +30,7 @@ apiRest.register = (app, generalPublicExpenses) => {
                 },
                 {
 
-                    country: "espania",
+                    country: "spain",
                     year: 2016,
                     publicSpending: 563726.0,
                     educationExpense: 15.77,
@@ -42,7 +42,7 @@ apiRest.register = (app, generalPublicExpenses) => {
                 },
                 {
 
-                    country: "espania",
+                    country: "spain",
                     year: 2015,
                     publicSpending: 89566.0,
                     educationExpense: 5.77,
@@ -53,7 +53,7 @@ apiRest.register = (app, generalPublicExpenses) => {
 
                 },
                 {
-                    country: "alemania",
+                    country: "germany",
                     year: 2017,
                     publicSpending: 1439839.0,
                     educationExpense: 10.98,
@@ -64,7 +64,7 @@ apiRest.register = (app, generalPublicExpenses) => {
 
                 },
                 {
-                    country: "alemania",
+                    country: "germany",
                     year: 2016,
                     publicSpending: 4984839.0,
                     educationExpense: 18.98,
@@ -75,7 +75,7 @@ apiRest.register = (app, generalPublicExpenses) => {
 
                 },
                 {
-                    country: "alemania",
+                    country: "germany",
                     year: 2015,
                     publicSpending: 457862.0,
                     educationExpense: 65.98,
@@ -86,7 +86,7 @@ apiRest.register = (app, generalPublicExpenses) => {
 
                 },
                 {
-                    country: "alemania",
+                    country: "germany",
                     year: 2014,
                     publicSpending: 36542.0,
                     educationExpense: 23.98,
@@ -97,7 +97,7 @@ apiRest.register = (app, generalPublicExpenses) => {
 
                 },
                 {
-                    country: "francia",
+                    country: "france",
                     year: 2017,
                     publicSpending: 1291948.0,
                     educationExpense: 9.66,
@@ -108,7 +108,7 @@ apiRest.register = (app, generalPublicExpenses) => {
 
                 },
                 {
-                    country: "francia",
+                    country: "france",
                     year: 2016,
                     publicSpending: 1291948.0,
                     educationExpense: 9.66,
@@ -119,7 +119,7 @@ apiRest.register = (app, generalPublicExpenses) => {
 
                 },
                 {
-                    country: "francia",
+                    country: "france",
                     year: 2015,
                     publicSpending: 1291948.0,
                     educationExpense: 9.66,
@@ -130,7 +130,7 @@ apiRest.register = (app, generalPublicExpenses) => {
 
                 },
                 {
-                    country: "francia",
+                    country: "france",
                     year: 2014,
                     publicSpending: 1291948.0,
                     educationExpense: 9.66,
@@ -141,7 +141,7 @@ apiRest.register = (app, generalPublicExpenses) => {
 
                 },
                 {
-                    country: "italia",
+                    country: "italy",
                     year: 2017,
                     publicSpending: 840763.0,
                     educationExpense: 8.11,
@@ -152,7 +152,7 @@ apiRest.register = (app, generalPublicExpenses) => {
 
                 },
                 {
-                    country: "reino unido",
+                    country: "united kingdom",
                     year: 2017,
                     publicSpending: 954262.1,
                     educationExpense: 13.91,

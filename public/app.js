@@ -113,10 +113,52 @@ angular.module("App", ["ngRoute", "ngDialog"]).config(function($routeProvider) {
     when("/ui/v1/general-public-expenses/edit/:country/:year", {
         controller: "GeneralEditCtrl",
         templateUrl: "/general-public-expenses-app/views/edit.html"
-
-
-    })
+    }).
     
+    when("/integrations/api-sos08", {
+    templateUrl: "/general-public-expenses-app/views/SOS08.html",
+    controller: "Api-sos08"
+    }).
+    
+    when("/integrations/api-sos09", {
+    templateUrl: "/general-public-expenses-app/views/SOS09.html",
+    controller: "Api-sos09"
+    }).
+    
+    when("/integrations/api-sos14", {
+    templateUrl: "/general-public-expenses-app/views/SOS14.html",
+    controller: "Api-sos14"
+    }).
+    
+    when("/integrations/api-sos11", {
+    templateUrl: "/general-public-expenses-app/views/SOS11.html",
+    controller: "Api-sos11"
+    }).
+    
+    when("/integrations/api-sos04", {
+    templateUrl: "/general-public-expenses-app/views/SOS04.html",
+    controller: "Api-sos04"
+    }).
+    
+    when("/integrations/api-sos10", {
+    templateUrl: "/general-public-expenses-app/views/SOS10.html",
+    controller: "Api-sos10"
+    }).
+    
+    when("/integrations/api-sos06", {
+    templateUrl: "/general-public-expenses-app/views/SOS06.html",
+    controller: "Api-sos06"
+    }).
+    
+    when("/integrations/api-sos02", {
+    templateUrl: "/general-public-expenses-app/views/SOS02.html",
+    controller: "Api-sos02"
+    }).
+    
+    when("/integrations/api-sos", {
+    templateUrl: "/general-public-expenses-app/views/SOS.html",
+    controller: "Api-sos"
+    })
      //------------------------------------------------- analytics TODO EL GRUPO------------------------------------------------ 
     .
     when("/analytics", {

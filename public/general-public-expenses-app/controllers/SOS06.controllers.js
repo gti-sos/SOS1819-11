@@ -4,25 +4,25 @@ var app = angular.module("App");
 app.controller("Api-sos06", ["$scope", "$http", "$httpParamSerializer", function($scope, $http, $httpParamSerializer) {
 
 var year = []
-var touristDeparture = []
+var moneyspent = []
 var publicSpending = []
 
     $http.get("https://sos1819-11.herokuapp.com/api/v1/general-public-expenses").then(function(response) {
 
         for (var i = 0; i < response.data.length; i++) {
 
-            year.push(response.data[i].year);
-            touristDeparture.push(0);
-            publicSpending.push(response.data[i].publicSpending);
+            //year.push(response.data[i].year);
+            moneyspent.push(0);
+            publicSpending.push(response.data[i].publicSpending/1000);
 
         }
         
-        $http.get("https://sos1819-08.herokuapp.com/API/v1/tourists-by-countries").then(function(response) {
+        $http.get("https://sos1819-06.herokuapp.com/api/v1/transfer-stats/").then(function(response) {
 
         for (var i = 0; i < response.data.length; i++) {
 
-            year.push(response.data[i].year);
-            touristDeparture.push(response.data[i].touristDeparture*100); //Multiplico por factor de 100 para que los valores se vean mejor en la gráfica
+            //year.push(response.data[i].year);
+            moneyspent.push(response.data[i].moneyspent*1); //Multiplico por factor de 100 para que los valores se vean mejor en la gráfica
             publicSpending.push(0);
 
         }
@@ -32,28 +32,18 @@ var publicSpending = []
 
         
 
+  ///var data = [30, 86, 168, 281, 303, 365];
+  //var data1 = [60, 26, 18, 281, 303, 365];
+  var concat = publicSpending.concat(moneyspent);
 
+d3.select(".chart")
+  .selectAll("div")
+  .data(concat)
+    .enter()
+    .append("div")
+    .style("width", function(d) { return d + "px"; })
+    .text(function(d) { return d; });
 
-        // var data = {
-        //     // A labels array that can contain any sort of values
-        //     labels: year,
-        //     // Our series array that contains series objects or in this case series data arrays
-        //     series: [
-        //         publicSpending,
-        //         touristDeparture
-        //     ]
-        // };
-
-        // var options = {
-        //     //width: 300,
-        //     height: 500
-        // };
-
-
-        // // Create a new line chart object where as first parameter we pass in a selector
-        // // that is resolving to our chart container element. The Second parameter
-        // // is the actual data object.
-        // new Chartist.Line('.ct-chart', data, options);
         
     });
     

@@ -1,15 +1,27 @@
 /*************************API REST Joaquín Morillo Capitán**************************/
-
+/*global request*/
 const BASE_PATH = "/api/v2/public-health-expenses";
 
 var api = {};
 
 module.exports = api;
 
-api.register = (app, publicHealthExpenses) => {
+api.register = (app, publicHealthExpenses, request) => {
 
     app.get(BASE_PATH + "/docs", (req, res) => {
         res.redirect("https://documenter.getpostman.com/view/6914253/S17ozAXZ");
+    });
+
+    app.use("/proxySOS-G05", function(req, res) {
+        var proxySOS05 = "https://sos1819-05.herokuapp.com";
+        var url = proxySOS05 + req.url;
+        req.pipe(request(url)).pipe(res);
+    });
+
+    app.use("/proxySOS-G06", function(req, res) {
+        var proxySOS05 = "https://sos1819-06.herokuapp.com";
+        var url = proxySOS05 + req.url;
+        req.pipe(request(url)).pipe(res);
     });
 
     app.get(BASE_PATH + "/loadInitialData", (req, res) => {

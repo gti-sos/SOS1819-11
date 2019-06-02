@@ -10,7 +10,7 @@ var port = process.env.PORT || 8080;
 var jwt = require('jsonwebtoken');
 
 
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use("/", express.static(path.join(__dirname + "/public")));
 
@@ -88,7 +88,7 @@ var publicHealthExpenses;
 clientJMC.connect(error => {
     publicHealthExpenses = clientJMC.db("SOS1819").collection("public-health-expenses");
     console.log("Connected with public-health-expenses!");
-    api.register(app, publicHealthExpenses);
+    api.register(app, publicHealthExpenses, request);
     console.log("Connected!");
 });
 

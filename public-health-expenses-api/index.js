@@ -13,14 +13,38 @@ api.register = (app, publicHealthExpenses, request) => {
     });
 
     app.use("/proxySOS-G05", function(req, res) {
-        var proxySOS05 = "https://sos1819-05.herokuapp.com";
-        var url = proxySOS05 + req.url;
+        var proxySOS = "https://sos1819-05.herokuapp.com";
+        var url = proxySOS + req.url;
         req.pipe(request(url)).pipe(res);
     });
 
     app.use("/proxySOS-G06", function(req, res) {
-        var proxySOS05 = "https://sos1819-06.herokuapp.com";
+        var proxySOS = "https://sos1819-06.herokuapp.com";
+        var url = proxySOS + req.url;
+        req.pipe(request(url)).pipe(res);
+    });
+
+    app.use("/proxySOS-G04", function(req, res) {
+        var proxySOS = "https://sos1819-04.herokuapp.com";
+        var url = proxySOS + req.url;
+        req.pipe(request(url)).pipe(res);
+    });
+
+    app.use("/proxySOS-G07", function(req, res) {
+        var proxySOS = "https://sos1819-07.herokuapp.com";
+        var url = proxySOS + req.url;
+        req.pipe(request(url)).pipe(res);
+    });
+
+    app.use("/proxySOS-G10", function(req, res) {
+        var proxySOS05 = "https://sos1819-10.herokuapp.com";
         var url = proxySOS05 + req.url;
+        req.pipe(request(url)).pipe(res);
+    });
+
+    app.use("/proxySOS-G02", function(req, res) {
+        var proxySOS = "https://sos1819-02.herokuapp.com";
+        var url = proxySOS + req.url;
         req.pipe(request(url)).pipe(res);
     });
 

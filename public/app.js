@@ -34,6 +34,22 @@ angular.module("App", ["ngRoute", "ngDialog"]).config(function($routeProvider) {
         controller: "apiSOS-G11",
         templateUrl: "/public-health-expenses/views/apiSOS-G11.html"
     }).
+    when("/integrations/sos-g04", {
+        controller: "apiSOS-G04",
+        templateUrl: "/public-health-expenses/views/apiSOS-G04.html"
+    }).
+    when("/integrations/sos-g07", {
+        controller: "apiSOS-G07",
+        templateUrl: "/public-health-expenses/views/apiSOS-G07.html"
+    }).
+    when("/integrations/sos-g10", {
+        controller: "apiSOS-G10",
+        templateUrl: "/public-health-expenses/views/apiSOS-G10.html"
+    }).
+    when("/integrations/sos-g02", {
+        controller: "apiSOS-G02",
+        templateUrl: "/public-health-expenses/views/apiSOS-G02.html"
+    }).
 
     // ----------------------------------------------- Public-expenditure-educations----------------------------------   
     when("/minipostman", {

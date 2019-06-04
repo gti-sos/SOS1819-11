@@ -45,7 +45,7 @@ var generalPublicExpenses;
 //Conexion con el server
 clientAJSM.connect(err => {
     generalPublicExpenses = clientAJSM.db("sos1819").collection("general-public-expenses");
-    generalPublicExpensesAPI.register(app, generalPublicExpenses);
+    generalPublicExpensesAPI.register(app, generalPublicExpenses, request);
 
     console.log("Connected! server general-public-expenses");
 });

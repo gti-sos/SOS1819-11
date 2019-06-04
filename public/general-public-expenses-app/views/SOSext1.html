@@ -1,62 +1,12 @@
-<table class="table table-hover table-dark">
-    
-    <thead>
-        <tr>
-            <th colspan="6" class="text-center">TABLA DE RECURSOS</th>
-        </tr>
-        
-        <tr>
-            <th colspan="2" scope="col" class="text-center">IDENTIFICADORES (ID)</th>
-            <th colspan="6" scope="col" class="text-center">PROPIEDADES SECUNDARIAS</th>
-        </tr>
-        
-        <tr>
-            <th scope="col" class="text-center">País</th>
-            <th scope="col" class="text-center">Año</th>
-            <th scope="col" class="text-center">Gasto Público</th>
-            <th scope="col" class="text-center">G. Educación (% Pib)</th>
-            <th scope="col" class="text-center">G. Salud (% Pib)</th>
-            <th scope="col" class="text-center">G. Defensa (% Pib)</th>
-            <th scope="col" class="text-center">G. Público  (% Pib)</th>
-            <th scope="col" class="text-center">Var.</th>
-        </tr>
-    </thead>
-    
-    <tbody>
-        
-        <tr ng-repeat="general_public_expense in general_public_expenses">
-            <td class="text-center"> 
-                {{ general_public_expense.country }}
-            </td>
-            
-            <td class="text-center"> 
-                {{ general_public_expense.year }}
-            </td>
-            
-            <td class="text-center"> 
-                {{ general_public_expense.publicSpending }}
-            </td>
-            
-            <td class="text-center"> 
-                {{ general_public_expense.educationExpense }}
-            </td>
-            
-            <td class="text-center"> 
-                {{ general_public_expense.healthExpense }}
-            </td>
-            
-            <td class="text-center"> 
-                {{ general_public_expense.defenseSpending }}
-            </td>
-            
-            <td class="text-center"> 
-                {{ general_public_expense.publicSpendingPib }}
-            </td>
-            
-            <td class="text-center"> 
-                {{ general_public_expense.var_ }}
-            </td>
-        </tr>
-        
-    </tbody>
-</table>
+<!-- Styles -->
+<style>
+#container-LES {
+  width: 100%;
+  height: 500px;
+}
+</style>
+  <h3>latitude</h3>
+    <div class="barras"></div>
+    <div class="barras1"></div>
+    <div id = "container-LES"></div>
+    <div id="go_div" style="width: 900px; height: 500px;"></div>

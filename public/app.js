@@ -1,6 +1,6 @@
 /*global angular*/
 
-angular.module("App", ["ngRoute", "ngDialog",'chart.js']).config(function($routeProvider) {
+angular.module("App", ['chart.js',"ngRoute", "ngDialog"]).config(function($routeProvider) {
 
 
     $routeProvider.
@@ -203,6 +203,11 @@ angular.module("App", ["ngRoute", "ngDialog",'chart.js']).config(function($route
     when("/integrations/api-sos", {
             templateUrl: "/general-public-expenses-app/views/SOS.html",
             controller: "Api-sos"
+        }).
+
+    when("/integrations/api-sos-ext1", {
+            templateUrl: "/general-public-expenses-app/views/SOSext1.html",
+            controller: "Api-sos-ext1"
         })
         //------------------------------------------------- analytics TODO EL GRUPO------------------------------------------------ 
         .

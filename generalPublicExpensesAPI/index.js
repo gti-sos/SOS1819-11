@@ -5,9 +5,11 @@ var apiRest = {};
 
 module.exports = apiRest;
 
-apiRest.register = (app, generalPublicExpenses) => {
+apiRest.register = (app, generalPublicExpenses, request) => {
         
         // Al hacer un get a la ruta /api/v1/general-public-expenses/docs redirijo a "https://documenter.getpostman.com/view/6869292/S17tRo7p"
+        
+        
         app.get("/api/v1/general-public-expenses/docs", (req, res) => {
 
             res.redirect("https://documenter.getpostman.com/view/6869292/S17tRo7p");
@@ -253,6 +255,17 @@ apiRest.register = (app, generalPublicExpenses) => {
             
              queries.var_ = Number(req.query.var_);
         }
+       
+       // proxy
+       
+       app.use("/proxy09", function(req, res) {
+        var proxy09 = "https://sos1819-09.herokuapp.com";
+        var url = proxy09 + req.url;
+        req.pipe(request(url)).pipe(res);
+        });
+        
+       
+       
        
     
     

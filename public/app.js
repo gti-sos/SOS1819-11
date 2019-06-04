@@ -11,6 +11,10 @@ angular.module("App", ['chart.js',"ngRoute", "ngDialog"]).config(function($route
     when("/integrations", {
         templateUrl: "integrations.html",
 
+    }).when("/about", {
+        templateUrl: "about.html"
+
+
     }).
 
     // -------------------------------------------------- PUBLIC-HEALTH-EXPENSES ------------------------------------------------------

@@ -20,7 +20,7 @@ app.controller("ApiSOS04", ["$scope", "$http", "$httpParamSerializer", function(
                
             }
             
-            console.log(datos)
+
 
             var chart = new CanvasJS.Chart("chartContainer", {
             	animationEnabled: true,

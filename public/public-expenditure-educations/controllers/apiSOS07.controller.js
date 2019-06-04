@@ -28,7 +28,7 @@ app.controller("ApiSOS07", ["$scope", "$http", "$httpParamSerializer", function(
                
             }
             
-            console.log(country)
+         
 
             new RGraph.SVG.Bar({
                 id: 'chart-container',

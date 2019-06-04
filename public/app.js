@@ -1,6 +1,6 @@
 /*global angular*/
 
-angular.module("App", ["ngRoute", "ngDialog"]).config(function($routeProvider) {
+angular.module("App", ["ngRoute", "ngDialog",'chart.js']).config(function($routeProvider) {
 
 
     $routeProvider.

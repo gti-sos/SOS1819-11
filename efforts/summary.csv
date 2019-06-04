@@ -1,0 +1,30 @@
+﻿Project,Client,Title,Duration
+SOS1819-11,,#1 Registrar información en el repositorio común de la asignatura,00:33:32
+SOS1819-11,,#10 Tarea 8,01:23:04
+SOS1819-11,,#12 Tener un conjunto de pruebas de postman de la API en una colección denominada SOS1819-XX-YYYYYY lista para ser lanzada,08:23:15
+SOS1819-11,,#13 Tarea 6,03:01:27
+SOS1819-11,,#15 Añadir a la aplicación un vista ( o un conjunto de vistas) que muestren las siguientes visualizaciones de información a partir de los datos que proporciona la API desarrollada en entregables anteriores,00:01:50
+SOS1819-11,,#16 D03.C Integraciones:,06:06:58
+SOS1819-11,,#17 Cada grupo debe  tener un despliegue del proyecto completo en dockerhub nombrandolo como SOS1819-XX (siendo XX el nombre del grupo relleno con 0).,04:56:10
+SOS1819-11,,#2 Piazza,00:16:15
+SOS1819-11,,#3 Tener correctamente configurado en Toggl un proyecto llamado SOS1819-XX dentro del workspace.,00:32:30
+SOS1819-11,,#4 Tener dentro de la carpeta “public” un archivo “index.html” con la misma información que se introdujo en el archivo “Readme.md” del repositorio común.,03:06:56
+SOS1819-11,,#5 Tener un documento en Google Docs llamado SOS1819-XX-YYY y compartido con el profesor (pafmon@gmail.com) explicando la API,03:25:42
+SOS1819-11,,#6 Piazza,00:13:32
+SOS1819-11,,#7 Tarea 6,01:24:56
+SOS1819-11,,#8 Tarea 9,00:07:30
+SOS1819-11,,#9 Tarea 10,00:14:34
+SOS1819-11,,Entrega final,08:30:00
+SOS1819-11,,F01,06:00:00
+SOS1819-11,,F02,08:00:00
+SOS1819-11,,F03 #11 Haber completado la ficha del trabajo a partir de la plantilla y asegurándose que se cumplan los siguientes requisitos,08:41:16
+SOS1819-11,,F04,08:00:00
+SOS1819-11,,F05,06:30:00
+SOS1819-11,,F06,05:15:00
+SOS1819-11,,F07,08:00:00
+SOS1819-11,,F08,06:25:00
+SOS1819-11,,F09,04:45:00
+SOS1819-11,,https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings,03:40:13
+SOS1819-11,,L01,01:00:00
+SOS1819-11,,L02,06:00:00
+SOS1819-11,,Tiempo invertido en los distintos deadlines,35:55:40

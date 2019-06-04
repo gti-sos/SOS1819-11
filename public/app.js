@@ -46,10 +46,27 @@ angular.module("App", ["ngRoute", "ngDialog"]).config(function($routeProvider) {
         controller: "apiSOS-G10",
         templateUrl: "/public-health-expenses/views/apiSOS-G10.html"
     }).
-    when("/integrations/sos-g02", {
-        controller: "apiSOS-G02",
-        templateUrl: "/public-health-expenses/views/apiSOS-G02.html"
+    when("/integrations/sos-highcharts", {
+        controller: "apiSOS-highcharts",
+        templateUrl: "/public-health-expenses/views/apiSOS-highcharts.html"
     }).
+    when("/integrations/sos-geochart", {
+        controller: "apiSOS-geochart",
+        templateUrl: "/public-health-expenses/views/apiSOS-geochart.html"
+    }).
+    when("/integrations/sos-angular-chart", {
+        controller: "apiSOS-angular-chart",
+        templateUrl: "/public-health-expenses/views/apiSOS-angular-chart.html"
+    }).
+    when("/integrations/sos-ext1", {
+        controller: "apiSOS-ext1",
+        templateUrl: "/public-health-expenses/views/apiSOS-ext1.html"
+    }).
+    when("/integrations/sos-ext2", {
+        controller: "apiSOS-ext2",
+        templateUrl: "/public-health-expenses/views/apiSOS-ext2.html"
+    }).
+
 
     // ----------------------------------------------- Public-expenditure-educations----------------------------------   
     when("/minipostman", {

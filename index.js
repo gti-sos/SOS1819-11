@@ -61,10 +61,11 @@ app.use("/proxy1", function(req, res) {
   req.pipe(request(apiServerHost1)).pipe(res);
 });
 
-var paths='/proxy-ext2';
-var apiServerHost2 = 'https://www.songsterr.com/a/ra/songs.js?pattern=Marley';
+var paths ='/proxyExterno';
+var apiServerHost2 = 'https://parallelum.com.br/fipe/api/v1/carros/marcas';
 
-app.use("/proxy-ext2", function(req, res) {
+
+app.use("/proxyExterno", function(req, res) {
   //var url = apiServerHost + req.baseUrl + req.url;
   console.log('piped: '+ apiServerHost2);
   req.pipe(request(apiServerHost2)).pipe(res);

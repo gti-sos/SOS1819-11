@@ -83,7 +83,7 @@ angular.module("App", ["ngRoute", "ngDialog"]).config(function($routeProvider) {
         controller: "EducatiosEditCtrl"
 
     }).
-    when("/views/educations", {
+    when("/integrations/educations", {
         templateUrl: "/public-expenditure-educations/views/educationsViews.html",
         controller: "EducationsViews"
 

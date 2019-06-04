@@ -123,11 +123,6 @@ apiRest.register = (app, publicExpenditureEducations, request, jwt) => {
         req.pipe(request(url)).pipe(res);
     });
   
-    app.use("/proxySOS02", function(req, res) {
-        var proxySOS02 = "https://sos1819-09.herokuapp.com";
-        var url = proxySOS02 + req.url;
-        req.pipe(request(url)).pipe(res);
-    });
     
     app.use("/proxySOS06", function(req, res) {
         var proxySOS06 = "https://sos1819-06.herokuapp.com";

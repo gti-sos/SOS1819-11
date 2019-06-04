@@ -1,1 +1,40 @@
-<h1>hola</h1>
+<h1>Climate stats </h1>
+
+</div>
+      
+        <table class="table " style="margin-top: 20px; text-align: center; font-size:15px;">
+          
+          <thead class="thead-dark">
+                <tr ng-model="getLista">
+                  <th scope="col">country</th>
+                  <th scope="col">year</th>
+                  <th scope="col">gdp_growth_stats</th>
+                  <th scope="col">industry_gdp_stats</th></th>
+                  <th scope="col">gross_sav_gdp_stats</th>
+               
+               
+                  
+                 
+                </tr>
+          </thead>
+          <tbody>
+        
+                <tr ng-repeat = "i in getLista" >
+                
+                  <td>{{i.country}}</a></td>
+                  <td>{{i.year}}</td>
+                  <td>{{i.gdp_growth_stats}}</td>
+                  <td>{{i.industry_gdp_stats}}</td>
+                  <td>{{i.gross_sav_gdp_stats}}</td>
+    
+                 
+            
+                </tr>
+  
+            
+            
+          </tbody>
+          
+        </table>
+        
+</div>  

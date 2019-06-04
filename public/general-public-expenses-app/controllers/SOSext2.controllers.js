@@ -3,60 +3,71 @@ var app = angular.module("App");
 
 app.controller("Api-sos-ext1", ["$scope", "$http", "$httpParamSerializer", function($scope, $http, $httpParamSerializer) {
     
-    var apiPropia = "https://sos1819-11.herokuapp.com/api/v1/general-public-expenses";
-    var apiExt1 = "https://api.openbrewerydb.org/breweries";
+    var apiExt2 = {
+        
+        method: 'GET',
+        url: "https://api.openbrewerydb.org/breweries",
+        headers: {
+            "Accept": "application/json"
+        }
+    };
     
     
-    $http.get(apiPropia).then(function(response) {
-            $http.get(apiExt1).then(function(response1) {
+    
+    $http(apiExt2).then(function(response) {
+        
+        
 
-            var dat1 = [];
-                    for(var i=0; i<23;i++){
-                        var e = response.data.slice(i,i+1).map(function(d){return d["expectancy"]});
-                        e = e[0];
-                        dat1.push(e);
-                    }
-                    
-                    //Ancho y Altura
-                    var w = 1340;
-                    var h = 200;
-                    var barPadding = 1;
-                    //Creará un elemento SVG 
-                    var svg = d3.select(".barras")
-                            .append("svg")
-                            .attr("width", w)
-                            .attr("height", h);
-                    svg.selectAll("rect")
-                        .data(dat1)
-                        .enter()
-                        .append("rect")
-                        .attr("x", function(d, i) {
-                            return i * (w / dat1.length);
-                        }).attr("y", function(d) {
-                            return h - d;  //Altura menos el dato
-                        }).attr("width", w / dat1.length - barPadding)
-                        .attr("height", function(d) {
-                            return d*4;  //Solo el dato
-                        }).attr("fill", function(d) {
-                            return "rgb(0,123, " + (d * 10) + ")";
-                        });
-                    svg.selectAll("text").data(dat1).enter().append("text")
-                        .text(function(d){
-                            return d+" years";
-                        }).attr("text-anchor", "middle")
-                        .attr("x", function(d, i) {
-        			   		return i * (w / dat1.length) + (w / dat1.length - barPadding) / 2;
-        			   })
-        			   .attr("y", function(d) {
-        			   		return h - (d) + 14;
-        			   })
-        			   .attr("font-family", "sans-serif")
-        			   .attr("font-size", "11px")
-        			   .attr("fill", "white");
-			   
+     var touristDeparture = [];
+     var arrivalTourist = [];
+            for(var i=0; i<5;i++){
+                var e = response.data.slice(i,i+1).map(function(d){return d["incomeTourist"]});
+                e = e[0];
+                incomeTourist.push(e);
+            }
             
-            });
+            for(var i=0; i<5;i++){
+                var e = response.data.slice(i,i+1).map(function(d){return d["touristDeparture"]});
+                e = e[0];
+                touristDeparture.push(e);
+            }
+            
+           
+            
+           
+
+    d3.select(".chart") // Selecciona el identificador en donde se va a mostrar la gráfica 
+      .selectAll("div") // Selecciona todas las etiquetas div que se van a ir agregando después del identificador 
+      .data(incomeTourist) // Agregar el arreglo con los datos
+      .enter() // Crea los nuevos nodos
+      .append("div") // Crea nuevas instancias con la etiqueta div
+      .transition() // Agregar animación 
+      .duration(2000) // Duración de la animación 
+      .style("width", function(d) {
+        return d + "px"; // La función obtiene los valores del arreglo y lo retorna al width
+      })
+      .text(function(d) {
+        return d; // La función obtiene los valores del arreglo y lo retorna como texto
+      })
+     
     
-    });
+    d3.select(".chart1") // Selecciona el identificador en donde se va a mostrar la gráfica 
+      .selectAll("div") // Selecciona todas las etiquetas div que se van a ir agregando después del identificador 
+      .data(arrivalTourist) // Agregar el arreglo con los datos
+      .enter() // Crea los nuevos nodos
+      .append("div") // Crea nuevas instancias con la etiqueta div
+      .transition() // Agregar animación 
+      .duration(2000) // Duración de la animación 
+      .style("width", function(d) {
+        return d + "px"; // La función obtiene los valores del arreglo y lo retorna al width
+      })
+      .text(function(d) {
+        return d; // La función obtiene los valores del arreglo y lo retorna como texto
+      })
+      
+     
+    })
+           
+    
     
 }]);

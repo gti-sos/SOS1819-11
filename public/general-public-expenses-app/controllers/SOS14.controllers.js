@@ -12,7 +12,7 @@ app.controller("Api-sos14", ["$scope", "$http", "$httpParamSerializer", function
         for (var i = 0; i < response.data.length; i++) {
 
             //year.push(response.data[i].year*10000);
-            number.push(0);
+            //number.push(0);
             publicSpending.push(response.data[i].publicSpending);
 
         }
@@ -23,7 +23,7 @@ app.controller("Api-sos14", ["$scope", "$http", "$httpParamSerializer", function
 
                 //year.push(response.data[i].year);
                 number.push(response.data[i].number * 25000); //Multiplico por factor de 100 para que los valores se vean mejor en la gráfica
-                publicSpending.push(0);
+                //publicSpending.push(0);
 
             }
 
@@ -36,7 +36,7 @@ $(document).ready(function(){
   var line1 = publicSpending;
   var line2 = number
   var plot1 = $.jqplot('chart1', [line1, line2], {
-      title: 'Chart with Point Labels', 
+      title: 'Gastos públicos y número de fallecidos', 
       seriesDefaults: { 
         showMarker:true,
         pointLabels: { show:true } 

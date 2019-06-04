@@ -46,7 +46,7 @@ app.controller("Api-sos", ["$scope", "$http", "$httpParamSerializer", function($
                     type: 'pie'
                 },
                 title: {
-                    text: 'Recaudación internacional películas españolas, 2017'
+                    text: 'Gasto Público en países'
                 },
                 tooltip: {
                     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -77,6 +77,8 @@ app.controller("Api-sos", ["$scope", "$http", "$httpParamSerializer", function($
                 }]
             });
 });
+
+//GOOGLE
     
     $http.get(apiPropia).then(function(response){
         google.charts.load('current', {

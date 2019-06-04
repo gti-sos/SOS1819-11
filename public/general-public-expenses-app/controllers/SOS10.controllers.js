@@ -11,8 +11,7 @@ var publicSpending = []
 
         for (var i = 0; i < response.data.length; i++) {
 
-            //year.push(response.data[i].year);
-            dryNaturalGas.push(0);
+            
             publicSpending.push(response.data[i].publicSpending);
 
         }
@@ -21,9 +20,9 @@ var publicSpending = []
 
         for (var i = 0; i < response.data.length; i++) {
 
-            //year.push(response.data[i].year);
-            dryNaturalGas.push(response.data[i].dryNaturalGas*150); //Multiplico por factor de 100 para que los valores se vean mejor en la gráfica
-            publicSpending.push(0);
+            
+            dryNaturalGas.push(response.data[i].dryNaturalGas*400); //Multiplico por factor de 100 para que los valores se vean mejor en la gráfica
+            
 
         }
 
@@ -34,7 +33,7 @@ var publicSpending = []
   var line1 = publicSpending;
   var line2 = dryNaturalGas;
   var plot4 = $.jqplot('chart4', [line1, line2], {
-      title: 'Stacked Bar Chart with Cumulative Point Labels', 
+      title: 'Gasto público y gas natrual seco', 
       stackSeries: true, 
       seriesDefaults: {
           renderer: $.jqplot.BarRenderer,

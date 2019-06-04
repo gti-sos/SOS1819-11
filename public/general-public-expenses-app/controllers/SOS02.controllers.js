@@ -17,7 +17,7 @@ app.controller("Api-sos02", ["$scope", "$http", "$httpParamSerializer", function
                 chart.animation(true);
 
                 // set chart title text settings
-                chart.title('Recaudación internacional de películas españolas');
+                chart.title('Gastos en educación y películas');
 
                 // create area series with passed data
                 var series = chart.column([
@@ -36,13 +36,13 @@ app.controller("Api-sos02", ["$scope", "$http", "$httpParamSerializer", function
                     .anchor('center-bottom')
                     .offsetX(0)
                     .offsetY(5)
-                    .format('{%Value}{groupsSeparator: }€');
+                    .format('{%Value}{groupsSeparator: }%');
 
                 // set scale minimum
                 chart.yScale().minimum(0);
 
                 // set yAxis labels formatter
-                chart.yAxis().labels().format('{%Value}{groupsSeparator: }€');
+                chart.yAxis().labels().format('{%Value}{groupsSeparator: }%');
 
                 // tooltips position and interactivity settings
                 chart.tooltip().positionMode('point');
@@ -50,7 +50,7 @@ app.controller("Api-sos02", ["$scope", "$http", "$httpParamSerializer", function
 
                 // axes titles
                 chart.xAxis().title('Película');
-                chart.yAxis().title('Gasto Educación');
+                chart.yAxis().title('Gasto Educación (%)');
 
                 // set container id for the chart
                 chart.container('container_anychart');

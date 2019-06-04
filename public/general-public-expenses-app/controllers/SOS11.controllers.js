@@ -21,8 +21,8 @@ var educationExpense2 = []
 
             for (var i = 0; i < 10; i++) {
 
-                year.push(response.data[i].year);
-                educationExpense2.push(response.data[i].educationExpense*10); //Multiplico por factor de 100 para que los valores se vean mejor en la gráfica
+                //year.push(response.data[i].year);
+                educationExpense2.push(response.data[i].educationExpense); //Multiplico por factor de 100 para que los valores se vean mejor en la gráfica
                 //publicSpending.push(0);
 
             }

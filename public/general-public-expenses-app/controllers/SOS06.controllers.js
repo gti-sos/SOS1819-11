@@ -28,7 +28,7 @@ app.controller("Api-sos06", ["$scope", "$http", "$httpParamSerializer", function
                         .format('{%Value} healthExpense');
 
                     // set chart title text settings
-                    chart.title('Integración api-06');
+                    chart.title('Gastos de salud y equipos');
 
                     // set legend title text settings
                     chart.legend()

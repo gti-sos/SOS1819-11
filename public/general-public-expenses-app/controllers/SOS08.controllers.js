@@ -28,15 +28,6 @@ app.controller("Api-sos08", ["$scope", "$http", "$httpParamSerializer", function
             }
 
 
-//         console.log(year);
-
-    // var apiPropia = "https://sos1819-11.herokuapp.com/api/v1/general-public-expenses";
-    // var api08 = "https://sos1819-08.herokuapp.com/API/v1/tourists-by-countries";
-        
-
-
-    // $http.get(apiPropia).then(function(response) {
-    //     $http.get(apiPropia).then(function(response1) {
             var data = {
                 // A labels array that can contain any sort of values
                 labels: year,

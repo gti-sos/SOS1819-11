@@ -129,6 +129,12 @@ apiRest.register = (app, publicExpenditureEducations, request, jwt) => {
         var url = proxySOS06 + req.url;
         req.pipe(request(url)).pipe(res);
     });
+    
+    app.use("/proxySOS09", function(req, res) {
+        var proxySOS09 = "https://sos1819-09.herokuapp.com";
+        var url = proxySOS09 + req.url;
+        req.pipe(request(url)).pipe(res);
+    });
     //------------------------------JWT------------
     
     app.post(BASE_PATH +'/logeate', (req, res) => {

@@ -3,49 +3,47 @@ var app = angular.module("App");
 
 app.controller("Api-sos06", ["$scope", "$http", "$httpParamSerializer", function($scope, $http, $httpParamSerializer) {
 
-var year = []
-var moneyspent = []
-var publicSpending = []
-
-    $http.get("https://sos1819-11.herokuapp.com/api/v1/general-public-expenses").then(function(response) {
-
-        for (var i = 0; i < response.data.length; i++) {
-
-            //year.push(response.data[i].year);
-            moneyspent.push(0);
-            publicSpending.push(response.data[i].publicSpending/1000);
-
-        }
-        
-        $http.get("https://sos1819-06.herokuapp.com/api/v1/transfer-stats/").then(function(response) {
-
-        for (var i = 0; i < response.data.length; i++) {
-
-            //year.push(response.data[i].year);
-            moneyspent.push(response.data[i].moneyspent*1); //Multiplico por factor de 100 para que los valores se vean mejor en la gráfica
-            publicSpending.push(0);
-
-        }
+    var apiPropia = "https://sos1819-11.herokuapp.com/api/v1/general-public-expenses";
+    var api06 = "https://sos1819-06.herokuapp.com/api/v1/transfer-stats";
 
 
-        console.log(year);
+    $http.get(api06).then(function(response1) {
+            $http.get(apiPropia).then(function(response2) {
+                anychart.onDocumentReady(function() {
+                    // create pie chart with passed data
+                    var data = anychart.data.set([
+                        [response1.data[0].team, response2.data[0].healthExpense],
+                        [response1.data[1].team, response2.data[1].healthExpense],
+                        [response1.data[2].team, response2.data[2].healthExpense],
+                        [response1.data[3].team, response2.data[3].healthExpense],
+                        [response1.data[4].team, response2.data[4].healthExpense]
+                    ]);
 
-        
+                    var wealth = data.mapAs({ 'x': 0, 'value': 1 });
 
-  ///var data = [30, 86, 168, 281, 303, 365];
-  //var data1 = [60, 26, 18, 281, 303, 365];
-  var concat = publicSpending.concat(moneyspent);
+                    var chart = anychart.pie(wealth);
+                    chart.labels()
+                        .hAlign('center')
+                        .position('outside')
+                        .format('{%Value} healthExpense');
 
-d3.select(".chart")
-  .selectAll("div")
-  .data(concat)
-    .enter()
-    .append("div")
-    .style("width", function(d) { return d + "px"; })
-    .text(function(d) { return d; });
+                    // set chart title text settings
+                    chart.title('Integración api-06');
 
-        
+                    // set legend title text settings
+                    chart.legend()
+                        // set legend position and items layout
+                        .position('center-bottom')
+                        .itemsLayout('horizontal')
+                        .align('center');
+
+                    // set container id for the chart
+                    chart.container('container_anychart');
+                    // initiate chart drawing
+                    chart.draw();
+                });
+            });
     });
-    
-    });
+
+
 }]);

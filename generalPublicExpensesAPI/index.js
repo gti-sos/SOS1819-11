@@ -19,103 +19,103 @@ apiRest.register = (app, generalPublicExpenses) => {
             var newGeneralPublicExpenses = [{
 
                     country: "spain",
-                    year: 2017,
-                    publicSpending: 478126.0,
+                    year: 2018,
+                    publicSpending: 499520.0,
                     educationExpense: 9.77,
                     healthExpense: 15.14,
                     defenseSpending: 2.99,
-                    publicSpendingPib: 41.00,
-                    var_: -1.20
+                    publicSpendingPib: 41.30,
+                    var_: 0.30
 
                 },
                 {
 
-                    country: "spain",
-                    year: 2016,
-                    publicSpending: 563726.0,
-                    educationExpense: 15.77,
-                    healthExpense: 5.14,
-                    defenseSpending: 9.99,
-                    publicSpendingPib: 50.00,
-                    var_: -0.20
-
-                },
-                {
-
-                    country: "spain",
-                    year: 2015,
-                    publicSpending: 89566.0,
-                    educationExpense: 5.77,
-                    healthExpense: 10.14,
-                    defenseSpending: 19.99,
-                    publicSpendingPib: 80.00,
-                    var_: -8.20
-
-                },
-                {
                     country: "germany",
-                    year: 2017,
-                    publicSpending: 1439839.0,
+                    year: 2018,
+                    publicSpending: 1485549.0,
                     educationExpense: 10.98,
                     healthExpense: 21.36,
                     defenseSpending: 2.73,
                     publicSpendingPib: 43.90,
-                    var_: 1.78
+                    var_: -0.2
 
                 },
                 {
-                    country: "germany",
-                    year: 2016,
-                    publicSpending: 4984839.0,
-                    educationExpense: 18.98,
-                    healthExpense: 1.36,
-                    defenseSpending: 8.73,
-                    publicSpendingPib: 63.90,
-                    var_: 4.78
 
-                },
-                {
-                    country: "germany",
-                    year: 2015,
-                    publicSpending: 457862.0,
-                    educationExpense: 65.98,
-                    healthExpense: 12.36,
-                    defenseSpending: 8.73,
-                    publicSpendingPib: 69.90,
-                    var_: 7.78
-
-                },
-                {
-                    country: "germany",
-                    year: 2014,
-                    publicSpending: 36542.0,
-                    educationExpense: 23.98,
-                    healthExpense: 1.36,
-                    defenseSpending: 20.73,
-                    publicSpendingPib: 4.90,
-                    var_: 1.78
+                    country: "united kingdom",
+                    year: 2018,
+                    publicSpending: 977606.2,
+                    educationExpense: 13.91,
+                    healthExpense: 18.88,
+                    defenseSpending: 4.66,
+                    publicSpendingPib: 40.80,
+                    var_: -8.20
 
                 },
                 {
                     country: "france",
+                    year: 2018,
+                    publicSpending: 1318483.0,
+                    educationExpense: 9.66,
+                    healthExpense: 16.97,
+                    defenseSpending: 4.01,
+                    publicSpendingPib: 56.00,
+                    var_: -0.50
+
+                },
+                {
+                    country: "italy",
+                    year: 2018,
+                    publicSpending: 853618.0,
+                    educationExpense: 8.11,
+                    healthExpense: 13.47,
+                    defenseSpending: 3.12,
+                    publicSpendingPib: 48.60,
+                    var_: -0.30
+
+                },
+                {
+                    country: "portugal",
+                    year: 2018,
+                    publicSpending: 88626.5,
+                    educationExpense: 10.13,
+                    healthExpense: 13.40,
+                    defenseSpending: 3.90,
+                    publicSpendingPib: 44.00,
+                    var_: 1.70
+
+                },
+                {
+                    country: "china",
+                    year: 2018,
+                    publicSpending: 3437619.8,
+                    educationExpense: 12.63,
+                    healthExpense: 9.05,
+                    defenseSpending: 6.10,
+                    publicSpendingPib: 33.99,
+                    var_: 1.82
+
+                },
+                {
+                    country: "united states",
                     year: 2017,
-                    publicSpending: 1291948.0,
-                    educationExpense: 9.66,
-                    healthExpense: 16.97,
-                    defenseSpending: 4.01,
-                    publicSpendingPib: 56.50,
-                    var_: -0.10
+                    publicSpending: 6002800.3,
+                    educationExpense: 13.45,
+                    healthExpense: 39.46,
+                    defenseSpending: 8.81,
+                    publicSpendingPib: 34.79,
+                    var_: -0.21
 
                 },
                 {
-                    country: "france",
-                    year: 2016,
-                    publicSpending: 1291948.0,
-                    educationExpense: 9.66,
-                    healthExpense: 16.97,
-                    defenseSpending: 4.01,
-                    publicSpendingPib: 56.50,
-                    var_: -0.10
+                    country: "japan",
+                    year: 2017,
+                    publicSpending: 1610424.3,
+                    educationExpense: 9.13,
+                    healthExpense: 23.39,
+                    defenseSpending: 2.55,
+                    publicSpendingPib: 37.42,
+                    var_: -0.53
 
                 },
                 {

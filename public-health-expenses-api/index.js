@@ -42,8 +42,8 @@ api.register = (app, publicHealthExpenses, request) => {
         req.pipe(request(url)).pipe(res);
     });
 
-    app.use("/proxySOS-G02", function(req, res) {
-        var proxySOS = "https://sos1819-02.herokuapp.com";
+    app.use("/proxyExterno", function(req, res) {
+        var proxySOS = "https://demo.ckan.org";
         var url = proxySOS + req.url;
         req.pipe(request(url)).pipe(res);
     });

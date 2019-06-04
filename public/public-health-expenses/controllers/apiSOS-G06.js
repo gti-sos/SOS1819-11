@@ -14,18 +14,14 @@ app.controller("apiSOS-G06", ["$scope", "$http", function($scope, $http) {
     $http.get(remoteAPI + "/api/v1/uefa-country-rankings/").then(function(response) {
 
         for (var i = 0; i < response.data.length; i++) {
-
             category.push({ label: response.data[i].country });
             data6.push({ value: response.data[i].points });
-
         }
 
         $http.get("https://sos1819-11.herokuapp.com/api/v2/public-health-expenses").then(function(response) {
 
             for (var i = 0; i < response.data.length; i++) {
-
                 data.push({ value: response.data[i].healthExpense });
-
             }
 
             console.log(category);

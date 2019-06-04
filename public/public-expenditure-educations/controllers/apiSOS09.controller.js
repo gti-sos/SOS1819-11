@@ -5,7 +5,7 @@ datos = []
 
 app.controller("ApiSOS09", ["$scope", "$http", "$httpParamSerializer", function($scope, $http, $httpParamSerializer) {
   
-    var apiEXT = "/proxySOS02/api/v2/climate-stats"
+    var apiEXT = "/proxySOS09/api/v2/climate-stats"
 
     $http.get(apiEXT).then(function(response) {
         

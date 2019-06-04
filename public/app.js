@@ -208,6 +208,10 @@ angular.module("App", ['chart.js',"ngRoute", "ngDialog"]).config(function($route
     when("/integrations/api-sos-ext1", {
             templateUrl: "/general-public-expenses-app/views/SOSext1.html",
             controller: "Api-sos-ext1"
+        }).
+    when("/integrations/api-sos-ext2", {
+            templateUrl: "/general-public-expenses-app/views/SOSext2.html",
+            controller: "Api-sos-ext2"
         })
         //------------------------------------------------- analytics TODO EL GRUPO------------------------------------------------ 
         .

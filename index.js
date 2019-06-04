@@ -50,6 +50,26 @@ clientAJSM.connect(err => {
     console.log("Connected! server general-public-expenses");
 });
 
+//// PROXY
+
+var paths='/proxy1';
+var apiServerHost1 = 'https://sos1819-09.herokuapp.com/api/v1/economy-stats';
+
+app.use("/proxy1", function(req, res) {
+  //var url = apiServerHost + req.baseUrl + req.url;
+  console.log('piped: '+ apiServerHost1);
+  req.pipe(request(apiServerHost1)).pipe(res);
+});
+
+var paths='/proxy-ext2';
+var apiServerHost2 = 'https://www.songsterr.com/a/ra/songs.js?pattern=Marley';
+
+app.use("/proxy-ext2", function(req, res) {
+  //var url = apiServerHost + req.baseUrl + req.url;
+  console.log('piped: '+ apiServerHost2);
+  req.pipe(request(apiServerHost2)).pipe(res);
+});
+
 //-----------------------------------------------------------------------
 
 // -------------------API REST Juan Manuel Centeno-----------------------
